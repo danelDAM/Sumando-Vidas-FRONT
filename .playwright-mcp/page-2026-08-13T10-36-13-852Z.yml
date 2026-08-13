@@ -1,0 +1,223 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "Saltar al contenido" [ref=e4] [cursor=pointer]:
+      - /url: "#contenido-principal"
+    - generic [ref=e5]:
+      - link "Por Ellos, inicio" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic "Por Ellos" [ref=e7]: PE
+      - navigation "Navegación principal" [ref=e10]:
+        - link "Quiénes somos" [ref=e11] [cursor=pointer]:
+          - /url: /sobre-nosotros
+        - link "Proyectos" [ref=e12] [cursor=pointer]:
+          - /url: /proyectos
+        - link "Historias" [ref=e13] [cursor=pointer]:
+          - /url: /historias
+        - link "Eventos" [ref=e14] [cursor=pointer]:
+          - /url: /eventos
+        - link "Transparencia" [ref=e15] [cursor=pointer]:
+          - /url: /transparencia
+        - link "Contacto" [ref=e16] [cursor=pointer]:
+          - /url: /contacto
+      - link "Donar" [ref=e17] [cursor=pointer]:
+        - /url: /donaciones
+  - main [ref=e18]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: Cáncer infantil
+        - heading "Acompañamos a niños y familias cuando más lo necesitan" [level=1] [ref=e23]
+        - paragraph [ref=e24]: Por Ellos nace para ofrecer apoyo humano, económico y comunitario a familias afectadas por el cáncer infantil en España.
+        - generic [ref=e25]:
+          - link "Donar ahora" [ref=e26] [cursor=pointer]:
+            - /url: /donaciones
+          - link "Colaborar" [ref=e27] [cursor=pointer]:
+            - /url: /voluntariado
+      - generic "Espacio reservado para imagen o vídeo" [ref=e28]: Imagen o vídeo principal
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: Quiénes somos
+        - heading "Una asociación centrada en las familias" [level=2] [ref=e33]
+        - paragraph [ref=e34]: Trabajamos para que ninguna familia se sienta sola durante el proceso de enfermedad.
+      - generic [ref=e35]:
+        - paragraph [ref=e36]: Nuestra misión es acompañar, escuchar y facilitar recursos a niños, madres, padres, hermanos y cuidadores durante las distintas etapas del cáncer infantil.
+        - paragraph [ref=e37]: Nuestros objetivos combinan apoyo directo, sensibilización social, colaboración con entidades y creación de redes de ayuda sostenibles.
+        - link "Conocer nuestra historia" [ref=e38] [cursor=pointer]:
+          - /url: /nuestra-historia
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - paragraph [ref=e42]: Qué hacemos
+        - heading "Programas preparados para crecer" [level=2] [ref=e43]
+        - paragraph [ref=e44]: La estructura queda lista para incorporar nuevos proyectos, campañas y líneas de ayuda.
+      - generic [ref=e45]:
+        - link "Acompañamiento familiar Apoyo cercano a familias durante el diagnóstico, tratamiento y recuperación. Ver más" [ref=e46] [cursor=pointer]:
+          - /url: /proyectos
+          - heading "Acompañamiento familiar" [level=3] [ref=e47]
+          - paragraph [ref=e48]: Apoyo cercano a familias durante el diagnóstico, tratamiento y recuperación.
+          - generic [ref=e49]: Ver más
+        - link "Ayudas directas Cobertura de necesidades esenciales vinculadas a desplazamientos, estancia y cuidados. Ver más" [ref=e50] [cursor=pointer]:
+          - /url: /proyectos
+          - heading "Ayudas directas" [level=3] [ref=e51]
+          - paragraph [ref=e52]: Cobertura de necesidades esenciales vinculadas a desplazamientos, estancia y cuidados.
+          - generic [ref=e53]: Ver más
+        - link "Bienestar emocional Recursos para mejorar el día a día de niños, hermanos, madres, padres y cuidadores. Ver más" [ref=e54] [cursor=pointer]:
+          - /url: /proyectos
+          - heading "Bienestar emocional" [level=3] [ref=e55]
+          - paragraph [ref=e56]: Recursos para mejorar el día a día de niños, hermanos, madres, padres y cuidadores.
+          - generic [ref=e57]: Ver más
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: Historias
+        - heading "Voces que dan sentido al camino" [level=2] [ref=e62]
+        - paragraph [ref=e63]: Cada historia puede incorporar imagen, título, resumen y enlace a una página ampliada.
+      - generic [ref=e64]:
+        - link "Una familia acompañada Espacio preparado para contar historias reales con sensibilidad y consentimiento. Imagen de una historia familiar Ver más" [ref=e65] [cursor=pointer]:
+          - /url: /historias
+          - heading "Una familia acompañada" [level=3] [ref=e66]
+          - paragraph [ref=e67]: Espacio preparado para contar historias reales con sensibilidad y consentimiento.
+          - generic "Imagen de una historia familiar" [ref=e68]: Imagen
+          - generic [ref=e69]: Ver más
+        - link "Pequeños grandes retos Relatos de superación, comunidad y apoyo durante el proceso oncológico infantil. Imagen de una historia infantil Ver más" [ref=e70] [cursor=pointer]:
+          - /url: /historias
+          - heading "Pequeños grandes retos" [level=3] [ref=e71]
+          - paragraph [ref=e72]: Relatos de superación, comunidad y apoyo durante el proceso oncológico infantil.
+          - generic "Imagen de una historia infantil" [ref=e73]: Imagen
+          - generic [ref=e74]: Ver más
+        - link "Personas que suman Testimonios de voluntariado, empresas colaboradoras y equipos sanitarios. Imagen de personas colaborando Ver más" [ref=e75] [cursor=pointer]:
+          - /url: /historias
+          - heading "Personas que suman" [level=3] [ref=e76]
+          - paragraph [ref=e77]: Testimonios de voluntariado, empresas colaboradoras y equipos sanitarios.
+          - generic "Imagen de personas colaborando" [ref=e78]: Imagen
+          - generic [ref=e79]: Ver más
+    - generic [ref=e81]:
+      - generic [ref=e82]:
+        - paragraph [ref=e83]: Impacto
+        - heading "Datos preparados para conectarse a métricas reales" [level=2] [ref=e84]
+        - paragraph [ref=e85]: Estos indicadores podrán alimentarse más adelante desde CMS, base de datos o informes internos.
+      - generic [ref=e86]:
+        - article [ref=e87]:
+          - strong [ref=e88]: "000"
+          - generic [ref=e89]: Familias acompañadas
+        - article [ref=e90]:
+          - strong [ref=e91]: "000"
+          - generic [ref=e92]: Ayudas gestionadas
+        - article [ref=e93]:
+          - strong [ref=e94]: "000"
+          - generic [ref=e95]: Personas colaboradoras
+        - article [ref=e96]:
+          - strong [ref=e97]: "000"
+          - generic [ref=e98]: Eventos solidarios
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - paragraph [ref=e102]: Colaborar
+        - heading "Distintas formas de sumar" [level=2] [ref=e103]
+        - paragraph [ref=e104]: La sección recoge las vías principales de participación y puede convertirse después en páginas independientes.
+      - generic [ref=e105]:
+        - link "Donaciones Aporta recursos para sostener programas de ayuda directa y acompañamiento. Ver más" [ref=e106] [cursor=pointer]:
+          - /url: /donaciones
+          - heading "Donaciones" [level=3] [ref=e107]
+          - paragraph [ref=e108]: Aporta recursos para sostener programas de ayuda directa y acompañamiento.
+          - generic [ref=e109]: Ver más
+        - link "Hacerse socio Contribuye de forma recurrente para dar estabilidad a los proyectos. Ver más" [ref=e110] [cursor=pointer]:
+          - /url: /donaciones
+          - heading "Hacerse socio" [level=3] [ref=e111]
+          - paragraph [ref=e112]: Contribuye de forma recurrente para dar estabilidad a los proyectos.
+          - generic [ref=e113]: Ver más
+        - link "Eventos Participa en carreras, retos, campañas y actividades solidarias. Ver más" [ref=e114] [cursor=pointer]:
+          - /url: /eventos
+          - heading "Eventos" [level=3] [ref=e115]
+          - paragraph [ref=e116]: Participa en carreras, retos, campañas y actividades solidarias.
+          - generic [ref=e117]: Ver más
+        - link "Empresas y voluntariado Colabora desde tu empresa o suma tu tiempo como persona voluntaria. Ver más" [ref=e118] [cursor=pointer]:
+          - /url: /voluntariado
+          - heading "Empresas y voluntariado" [level=3] [ref=e119]
+          - paragraph [ref=e120]: Colabora desde tu empresa o suma tu tiempo como persona voluntaria.
+          - generic [ref=e121]: Ver más
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - paragraph [ref=e125]: Próximos eventos
+        - heading "Carreras, retos y actividades solidarias" [level=2] [ref=e126]
+        - paragraph [ref=e127]: Cada evento queda estructurado con fecha, nombre, ubicación y enlace.
+      - generic [ref=e128]:
+        - link "Próximamente Carrera solidaria Por confirmar Ver más" [ref=e129] [cursor=pointer]:
+          - /url: /eventos
+          - paragraph [ref=e130]: Próximamente
+          - heading "Carrera solidaria" [level=3] [ref=e131]
+          - paragraph [ref=e132]: Por confirmar
+          - generic [ref=e133]: Ver más
+        - link "Próximamente Reto deportivo Por confirmar Ver más" [ref=e134] [cursor=pointer]:
+          - /url: /eventos
+          - paragraph [ref=e135]: Próximamente
+          - heading "Reto deportivo" [level=3] [ref=e136]
+          - paragraph [ref=e137]: Por confirmar
+          - generic [ref=e138]: Ver más
+        - link "Próximamente Encuentro familiar Por confirmar Ver más" [ref=e139] [cursor=pointer]:
+          - /url: /eventos
+          - paragraph [ref=e140]: Próximamente
+          - heading "Encuentro familiar" [level=3] [ref=e141]
+          - paragraph [ref=e142]: Por confirmar
+          - generic [ref=e143]: Ver más
+    - generic [ref=e145]:
+      - generic [ref=e146]:
+        - paragraph [ref=e147]: Transparencia
+        - heading "Claridad sobre cada ayuda recibida" [level=2] [ref=e148]
+        - paragraph [ref=e149]: Espacio para explicar el uso de las donaciones, resultados e informes públicos.
+      - generic [ref=e150]:
+        - paragraph [ref=e151]: Esta sección está preparada para publicar documentos, memorias, resultados de campañas y criterios de asignación de ayudas.
+        - generic [ref=e152]:
+          - link "Memoria anual" [ref=e153] [cursor=pointer]:
+            - /url: /transparencia
+          - link "Informes económicos" [ref=e154] [cursor=pointer]:
+            - /url: /transparencia
+          - link "Destino de donaciones" [ref=e155] [cursor=pointer]:
+            - /url: /transparencia
+    - generic [ref=e157]:
+      - heading "Tu ayuda puede aliviar el camino de una familia" [level=2] [ref=e158]
+      - paragraph [ref=e159]: Cada aportación, cada hora y cada gesto ayudan a sostener una red de apoyo real.
+      - generic [ref=e160]:
+        - link "Donar" [ref=e161] [cursor=pointer]:
+          - /url: /donaciones
+        - link "Colaborar" [ref=e162] [cursor=pointer]:
+          - /url: /voluntariado
+  - contentinfo [ref=e163]:
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - generic "Por Ellos" [ref=e166]: PE
+        - paragraph [ref=e169]: Asociación española de apoyo a niños y familias afectados por el cáncer infantil.
+      - navigation "Enlaces principales" [ref=e170]:
+        - heading "Secciones" [level=2] [ref=e171]
+        - link "Quiénes somos" [ref=e172] [cursor=pointer]:
+          - /url: /sobre-nosotros
+        - link "Proyectos" [ref=e173] [cursor=pointer]:
+          - /url: /proyectos
+        - link "Historias" [ref=e174] [cursor=pointer]:
+          - /url: /historias
+        - link "Eventos" [ref=e175] [cursor=pointer]:
+          - /url: /eventos
+        - link "Transparencia" [ref=e176] [cursor=pointer]:
+          - /url: /transparencia
+        - link "Contacto" [ref=e177] [cursor=pointer]:
+          - /url: /contacto
+      - navigation "Redes sociales" [ref=e178]:
+        - heading "Redes" [level=2] [ref=e179]
+        - link "Instagram" [ref=e180] [cursor=pointer]:
+          - /url: https://www.instagram.com/
+        - link "Facebook" [ref=e181] [cursor=pointer]:
+          - /url: https://www.facebook.com/
+        - link "LinkedIn" [ref=e182] [cursor=pointer]:
+          - /url: https://www.linkedin.com/
+      - generic [ref=e183]:
+        - heading "Contacto" [level=2] [ref=e184]
+        - link "info@porellos.org" [ref=e185] [cursor=pointer]:
+          - /url: mailto:info@porellos.org
+        - link "+34 000 000 000" [ref=e186] [cursor=pointer]:
+          - /url: tel:+34000000000
+        - generic [ref=e187]: España
+    - generic [ref=e188]:
+      - generic [ref=e189]: © 2026 Por Ellos
+      - navigation "Información legal" [ref=e190]:
+        - link "Aviso legal" [ref=e191] [cursor=pointer]:
+          - /url: /aviso-legal
+        - link "Política de privacidad" [ref=e192] [cursor=pointer]:
+          - /url: /politica-privacidad
+        - link "Política de cookies" [ref=e193] [cursor=pointer]:
+          - /url: /politica-cookies
