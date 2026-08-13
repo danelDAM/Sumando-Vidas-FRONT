@@ -1,0 +1,107 @@
+- generic [ref=f16e2]:
+  - banner [ref=f16e3]:
+    - link "Saltar al contenido" [ref=f16e4] [cursor=pointer]:
+      - /url: "#contenido-principal"
+    - generic [ref=f16e5]:
+      - link "Sumando Vidas, inicio" [ref=f16e6] [cursor=pointer]:
+        - /url: /
+        - generic "Sumando Vidas" [ref=f16e7]: SV
+      - navigation "Navegación principal" [ref=f16e10]:
+        - link "Quiénes somos" [ref=f16e11] [cursor=pointer]:
+          - /url: /sobre-nosotros
+        - link "Proyectos" [ref=f16e12] [cursor=pointer]:
+          - /url: /proyectos
+        - link "Historias" [ref=f16e13] [cursor=pointer]:
+          - /url: /historias
+        - link "Eventos" [ref=f16e14] [cursor=pointer]:
+          - /url: /eventos
+        - link "Transparencia" [ref=f16e15] [cursor=pointer]:
+          - /url: /transparencia
+        - link "Contacto" [ref=f16e16] [cursor=pointer]:
+          - /url: /contacto
+      - link "Donar" [ref=f16e17] [cursor=pointer]:
+        - /url: /donaciones
+  - main [ref=f16e18]:
+    - generic [ref=f16e20]:
+      - paragraph [ref=f16e21]: Proyectos
+      - heading "Iniciativas para sumar apoyo real" [level=1] [ref=f16e22]
+      - paragraph [ref=f16e23]: Sumando Vidas organizará sus campañas en proyectos concretos, medibles y fáciles de seguir. El primero será Por Ellos.
+    - article [ref=f16e26]:
+      - generic [ref=f16e27]:
+        - paragraph [ref=f16e28]: Primer proyecto de Sumando Vidas
+        - heading "Por Ellos" [level=2] [ref=f16e29]
+        - paragraph [ref=f16e30]: Una campaña deportiva y solidaria para recaudar el máximo dinero posible en apoyo a niños y familias afectados por el cáncer infantil.
+        - paragraph [ref=f16e31]: Felipe, fundador de Sumando Vidas y superviviente de cáncer de niño, correrá junto a un equipo de la asociación las cinco grandes medias maratones de España. Cada carrera será una oportunidad para visibilizar la causa, sumar donaciones y construir comunidad alrededor de las familias.
+        - generic [ref=f16e32]:
+          - link "Ver más" [ref=f16e33] [cursor=pointer]:
+            - /url: /proyectos/por-ellos
+          - link "Donar" [ref=f16e34] [cursor=pointer]:
+            - /url: /donaciones
+      - generic "Resumen del proyecto Por Ellos" [ref=f16e35]:
+        - article [ref=f16e36]:
+          - strong [ref=f16e37]: "5"
+          - generic [ref=f16e38]: Medias maratones
+        - article [ref=f16e39]:
+          - strong [ref=f16e40]: 50.000 €
+          - generic [ref=f16e41]: Meta simulada
+        - article [ref=f16e42]:
+          - strong [ref=f16e43]: 105,5 km
+          - generic [ref=f16e44]: Recorrido solidario
+    - generic [ref=f16e46]:
+      - generic [ref=f16e47]:
+        - paragraph [ref=f16e48]: Próximamente
+        - heading "Más proyectos de Sumando Vidas" [level=2] [ref=f16e49]
+        - paragraph [ref=f16e50]: Este espacio queda preparado para añadir nuevas campañas, programas de ayuda y colaboraciones.
+      - generic [ref=f16e51]:
+        - article [ref=f16e52]:
+          - heading "Acompañamiento familiar" [level=3] [ref=f16e53]
+          - paragraph [ref=f16e54]: Proyecto en definición para apoyar a familias durante el diagnóstico y tratamiento.
+        - article [ref=f16e55]:
+          - heading "Ayudas directas" [level=3] [ref=f16e56]
+          - paragraph [ref=f16e57]: Futura línea para necesidades asociadas a desplazamientos, estancia y cuidados.
+        - article [ref=f16e58]:
+          - heading "Bienestar emocional" [level=3] [ref=f16e59]
+          - paragraph [ref=f16e60]: Espacio preparado para recursos y actividades de apoyo emocional.
+  - contentinfo [ref=f16e61]:
+    - generic [ref=f16e62]:
+      - generic [ref=f16e63]:
+        - generic "Sumando Vidas" [ref=f16e64]: SV
+        - paragraph [ref=f16e67]: Asociación española de apoyo a niños y familias afectados por el cáncer infantil.
+      - navigation "Enlaces principales" [ref=f16e68]:
+        - heading "Secciones" [level=2] [ref=f16e69]
+        - link "Quiénes somos" [ref=f16e70] [cursor=pointer]:
+          - /url: /sobre-nosotros
+        - link "Proyectos" [ref=f16e71] [cursor=pointer]:
+          - /url: /proyectos
+        - link "Historias" [ref=f16e72] [cursor=pointer]:
+          - /url: /historias
+        - link "Eventos" [ref=f16e73] [cursor=pointer]:
+          - /url: /eventos
+        - link "Transparencia" [ref=f16e74] [cursor=pointer]:
+          - /url: /transparencia
+        - link "Contacto" [ref=f16e75] [cursor=pointer]:
+          - /url: /contacto
+      - navigation "Redes sociales" [ref=f16e76]:
+        - heading "Redes" [level=2] [ref=f16e77]
+        - link "Instagram" [ref=f16e78] [cursor=pointer]:
+          - /url: https://www.instagram.com/
+        - link "Facebook" [ref=f16e79] [cursor=pointer]:
+          - /url: https://www.facebook.com/
+        - link "LinkedIn" [ref=f16e80] [cursor=pointer]:
+          - /url: https://www.linkedin.com/
+      - generic [ref=f16e81]:
+        - heading "Contacto" [level=2] [ref=f16e82]
+        - link "info@sumandovidas.org" [ref=f16e83] [cursor=pointer]:
+          - /url: mailto:info@sumandovidas.org
+        - link "+34 000 000 000" [ref=f16e84] [cursor=pointer]:
+          - /url: tel:+34000000000
+        - generic [ref=f16e85]: España
+    - generic [ref=f16e86]:
+      - generic [ref=f16e87]: © 2026 Sumando Vidas
+      - navigation "Información legal" [ref=f16e88]:
+        - link "Aviso legal" [ref=f16e89] [cursor=pointer]:
+          - /url: /aviso-legal
+        - link "Política de privacidad" [ref=f16e90] [cursor=pointer]:
+          - /url: /politica-privacidad
+        - link "Política de cookies" [ref=f16e91] [cursor=pointer]:
+          - /url: /politica-cookies

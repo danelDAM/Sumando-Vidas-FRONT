@@ -32,13 +32,13 @@ export function Footer() {
         </nav>
         <address>
           <h2>Contacto</h2>
-          <a href="mailto:info@porellos.org">info@porellos.org</a>
+          <a href="mailto:info@sumandovidas.org">info@sumandovidas.org</a>
           <a href="tel:+34000000000">+34 000 000 000</a>
           <span>España</span>
         </address>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} Por Ellos</span>
+        <span>© {new Date().getFullYear()} Sumando Vidas</span>
         <nav aria-label="Información legal">
           {legalNavigation.map((item) => (
             <Link key={item.href} to={item.href}>

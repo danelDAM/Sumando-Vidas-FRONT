@@ -9,7 +9,7 @@ export function Header() {
         Saltar al contenido
       </a>
       <div className="container header-content">
-        <Link className="brand-link" to="/" aria-label="Por Ellos, inicio">
+        <Link className="brand-link" to="/" aria-label="Sumando Vidas, inicio">
           <Logo />
         </Link>
         <nav className="main-nav" aria-label="Navegación principal">

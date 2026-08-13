@@ -1,5 +1,11 @@
 export const programs = [
   {
+    title: "Por Ellos",
+    description:
+      "Proyecto solidario para recaudar el máximo dinero posible mientras Felipe, fundador de Sumando Vidas y superviviente de cáncer infantil, junto al equipo de la asociación, corre las cinco grandes medias maratones de España.",
+    href: "/proyectos/por-ellos",
+  },
+  {
     title: "Acompañamiento familiar",
     description: "Apoyo cercano a familias durante el diagnóstico, tratamiento y recuperación.",
     href: "/proyectos",
@@ -70,20 +76,32 @@ export const collaborationOptions = [
 export const events = [
   {
     date: "Próximamente",
-    title: "Carrera solidaria",
-    location: "Por confirmar",
+    title: "Media Maratón de Málaga",
+    location: "Málaga",
     href: "/eventos",
   },
   {
     date: "Próximamente",
-    title: "Reto deportivo",
-    location: "Por confirmar",
+    title: "Media Maratón de Donosti",
+    location: "San Sebastián",
     href: "/eventos",
   },
   {
     date: "Próximamente",
-    title: "Encuentro familiar",
-    location: "Por confirmar",
+    title: "Media Maratón de Madrid",
+    location: "Madrid",
+    href: "/eventos",
+  },
+  {
+    date: "Próximamente",
+    title: "Media Maratón de Valencia",
+    location: "Valencia",
+    href: "/eventos",
+  },
+  {
+    date: "Próximamente",
+    title: "Media Maratón de Barcelona",
+    location: "Barcelona",
     href: "/eventos",
   },
 ];

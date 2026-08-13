@@ -1,10 +1,10 @@
 export function Logo() {
   return (
-    <span className="logo" aria-label="Por Ellos">
+    <span className="logo" aria-label="Sumando Vidas">
       <span className="logo-mark" aria-hidden="true">
-        PE
+        SV
       </span>
-      <span className="logo-text">Por Ellos</span>
+      <span className="logo-text">Sumando Vidas</span>
     </span>
   );
 }

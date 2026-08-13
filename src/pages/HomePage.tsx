@@ -19,8 +19,8 @@ export function HomePage() {
             <p className="eyebrow">Cáncer infantil</p>
             <h1>Acompañamos a niños y familias cuando más lo necesitan</h1>
             <p>
-              Por Ellos nace para ofrecer apoyo humano, económico y comunitario a familias
-              afectadas por el cáncer infantil en España.
+              Sumando Vidas nace para ofrecer apoyo humano, económico y comunitario a
+              familias afectadas por el cáncer infantil en España.
             </p>
             <div className="action-row">
               <Link className="button button-primary" to="/donaciones">
@@ -31,13 +31,13 @@ export function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="media-placeholder" aria-label="Espacio reservado para imagen o vídeo">
+          <div className="media-placeholder is-interactive-media" aria-label="Espacio reservado para imagen o vídeo">
             Imagen o vídeo principal
           </div>
         </div>
       </section>
 
-      <section className="page-section" id="quienes-somos">
+      <section className="page-section reveal-group" id="quienes-somos" data-reveal>
         <div className="container split-section">
           <SectionHeader
             eyebrow="Quiénes somos"
@@ -60,12 +60,12 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-section" id="que-hacemos">
+      <section className="page-section reveal-group" id="que-hacemos" data-reveal>
         <div className="container">
           <SectionHeader
             eyebrow="Qué hacemos"
-            title="Programas preparados para crecer"
-            description="La estructura queda lista para incorporar nuevos proyectos, campañas y líneas de ayuda."
+            title="Proyectos preparados para crecer"
+            description="Por Ellos será el primer proyecto activo de la asociación, con una campaña deportiva y solidaria alrededor de cinco grandes medias maratones."
           />
           <div className="card-grid">
             {programs.map((program) => (
@@ -75,7 +75,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-section" id="historias">
+      <section className="page-section reveal-group" id="historias" data-reveal>
         <div className="container">
           <SectionHeader
             eyebrow="Historias"
@@ -94,7 +94,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-section" id="impacto">
+      <section className="page-section reveal-group" id="impacto" data-reveal>
         <div className="container">
           <SectionHeader
             eyebrow="Impacto"
@@ -112,7 +112,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-section" id="colaborar">
+      <section className="page-section reveal-group" id="colaborar" data-reveal>
         <div className="container">
           <SectionHeader
             eyebrow="Colaborar"
@@ -127,12 +127,12 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-section" id="eventos">
+      <section className="page-section reveal-group" id="eventos" data-reveal>
         <div className="container">
           <SectionHeader
             eyebrow="Próximos eventos"
-            title="Carreras, retos y actividades solidarias"
-            description="Cada evento queda estructurado con fecha, nombre, ubicación y enlace."
+            title="El recorrido de Por Ellos"
+            description="Málaga, Donosti, Madrid, Valencia y Barcelona serán las cinco grandes medias maratones que impulsarán la recaudación del proyecto."
           />
           <div className="card-grid">
             {events.map((event) => (
@@ -144,7 +144,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="page-section" id="transparencia">
+      <section className="page-section reveal-group" id="transparencia" data-reveal>
         <div className="container split-section">
           <SectionHeader
             eyebrow="Transparencia"
@@ -167,7 +167,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="final-cta">
+      <section className="final-cta reveal-group" data-reveal>
         <div className="container final-cta-content">
           <h2>Tu ayuda puede aliviar el camino de una familia</h2>
           <p>

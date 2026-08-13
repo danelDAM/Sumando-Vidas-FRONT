@@ -1,0 +1,155 @@
+- generic [ref=f16e2]:
+  - banner [ref=f16e3]:
+    - link "Saltar al contenido" [ref=f16e4] [cursor=pointer]:
+      - /url: "#contenido-principal"
+    - generic [ref=f16e5]:
+      - link "Sumando Vidas, inicio" [ref=f16e6] [cursor=pointer]:
+        - /url: /
+        - generic "Sumando Vidas" [ref=f16e7]: SV
+      - navigation "Navegación principal" [ref=f16e10]:
+        - link "Quiénes somos" [ref=f16e11] [cursor=pointer]:
+          - /url: /sobre-nosotros
+        - link "Proyectos" [ref=f16e12] [cursor=pointer]:
+          - /url: /proyectos
+        - link "Historias" [ref=f16e13] [cursor=pointer]:
+          - /url: /historias
+        - link "Eventos" [ref=f16e14] [cursor=pointer]:
+          - /url: /eventos
+        - link "Transparencia" [ref=f16e15] [cursor=pointer]:
+          - /url: /transparencia
+        - link "Contacto" [ref=f16e16] [cursor=pointer]:
+          - /url: /contacto
+      - link "Donar" [ref=f16e17] [cursor=pointer]:
+        - /url: /donaciones
+  - main [ref=f16e18]:
+    - generic [ref=f16e93]:
+      - generic [ref=f16e94]:
+        - paragraph [ref=f16e95]: Primer proyecto de Sumando Vidas
+        - heading "Por Ellos" [level=1] [ref=f16e96]
+        - paragraph [ref=f16e97]: Felipe, fundador de Sumando Vidas y superviviente de cáncer de niño, correrá junto a un equipo de la asociación las cinco grandes medias maratones de España. Cada carrera será una oportunidad para visibilizar la causa, sumar donaciones y construir comunidad alrededor de las familias.
+        - generic [ref=f16e98]:
+          - link "Donar ahora" [ref=f16e99] [cursor=pointer]:
+            - /url: /donaciones
+          - link "Ver recorrido" [ref=f16e100] [cursor=pointer]:
+            - /url: "#recorrido"
+      - complementary "Objetivo de recaudación" [ref=f16e101]:
+        - paragraph [ref=f16e102]: Meta de recaudación
+        - strong [ref=f16e103]: 50.000 €
+        - generic [ref=f16e104]: 12.750 € recaudados por ahora
+        - generic "Progreso de recaudación 26%" [ref=f16e105]
+        - generic "Donaciones rápidas" [ref=f16e107]:
+          - link "10 €" [ref=f16e108] [cursor=pointer]:
+            - /url: /donaciones
+          - link "25 €" [ref=f16e109] [cursor=pointer]:
+            - /url: /donaciones
+          - link "50 €" [ref=f16e110] [cursor=pointer]:
+            - /url: /donaciones
+          - link "100 €" [ref=f16e111] [cursor=pointer]:
+            - /url: /donaciones
+    - generic [ref=f16e113]:
+      - generic [ref=f16e114]:
+        - paragraph [ref=f16e115]: La carrera completa
+        - heading "Una meta, cinco paradas" [level=2] [ref=f16e116]
+        - paragraph [ref=f16e117]: Cada media maratón funciona como una parada del reto. Puedes seleccionar una ciudad para ver sus acciones solidarias.
+      - generic [ref=f16e118]:
+        - generic "Recorrido de las cinco medias maratones" [ref=f16e119]:
+          - button "1 Málaga" [ref=f16e121] [cursor=pointer]:
+            - generic [ref=f16e122]: "1"
+            - generic [ref=f16e123]: Málaga
+          - button "2 Donosti" [ref=f16e124] [cursor=pointer]:
+            - generic [ref=f16e125]: "2"
+            - generic [ref=f16e126]: Donosti
+          - button "3 Madrid" [ref=f16e127] [cursor=pointer]:
+            - generic [ref=f16e128]: "3"
+            - generic [ref=f16e129]: Madrid
+          - button "4 Valencia" [active] [pressed] [ref=f16e130] [cursor=pointer]:
+            - generic [ref=f16e131]: "4"
+            - generic [ref=f16e132]: Valencia
+          - button "5 Barcelona" [ref=f16e133] [cursor=pointer]:
+            - generic [ref=f16e134]: "5"
+            - generic [ref=f16e135]: Barcelona
+        - article [ref=f16e136]:
+          - paragraph [ref=f16e137]: Parada 4
+          - heading "Media Maratón de Valencia" [level=3] [ref=f16e174]
+          - paragraph [ref=f16e139]: Una nueva oportunidad para ampliar el alcance del proyecto y sumar apoyos.
+          - generic [ref=f16e140]:
+            - generic [ref=f16e141]:
+              - term [ref=f16e142]: Distancia
+              - definition [ref=f16e143]: 21,1 km
+            - generic [ref=f16e144]:
+              - term [ref=f16e145]: Estado
+              - definition [ref=f16e146]: Comunidad activa
+          - generic [ref=f16e147]:
+            - link "Donar en esta parada" [ref=f16e148] [cursor=pointer]:
+              - /url: /donaciones
+            - link "Comprar dorsal solidario" [ref=f16e149] [cursor=pointer]:
+              - /url: /eventos
+    - generic [ref=f16e151]:
+      - generic [ref=f16e152]:
+        - paragraph [ref=f16e153]: Cómo participar
+        - heading "Formas de empujar el reto" [level=2] [ref=f16e154]
+        - paragraph [ref=f16e155]: Estas acciones son simuladas por ahora, pero la estructura queda lista para pasarelas de pago, dorsales, patrocinio y retos personales.
+      - generic [ref=f16e156]:
+        - link "Donar a la campaña Aportación directa al objetivo general del proyecto Por Ellos. Empezar" [ref=f16e157] [cursor=pointer]:
+          - /url: /donaciones
+          - heading "Donar a la campaña" [level=3] [ref=f16e158]
+          - paragraph [ref=f16e159]: Aportación directa al objetivo general del proyecto Por Ellos.
+          - generic [ref=f16e160]: Empezar
+        - link "Comprar dorsal solidario Reserva simbólica preparada para conectar dorsales y retos personales. Empezar" [ref=f16e161] [cursor=pointer]:
+          - /url: /eventos
+          - heading "Comprar dorsal solidario" [level=3] [ref=f16e162]
+          - paragraph [ref=f16e163]: Reserva simbólica preparada para conectar dorsales y retos personales.
+          - generic [ref=f16e164]: Empezar
+        - link "Patrocinar una parada Espacio para empresas que quieran asociarse a una media maratón concreta. Empezar" [ref=f16e165] [cursor=pointer]:
+          - /url: /empresas-colaboradoras
+          - heading "Patrocinar una parada" [level=3] [ref=f16e166]
+          - paragraph [ref=f16e167]: Espacio para empresas que quieran asociarse a una media maratón concreta.
+          - generic [ref=f16e168]: Empezar
+        - link "Crear tu propio reto Permite que corredores y equipos recauden fondos dentro de la campaña. Empezar" [ref=f16e169] [cursor=pointer]:
+          - /url: /voluntariado
+          - heading "Crear tu propio reto" [level=3] [ref=f16e170]
+          - paragraph [ref=f16e171]: Permite que corredores y equipos recauden fondos dentro de la campaña.
+          - generic [ref=f16e172]: Empezar
+  - contentinfo [ref=f16e61]:
+    - generic [ref=f16e62]:
+      - generic [ref=f16e63]:
+        - generic "Sumando Vidas" [ref=f16e64]: SV
+        - paragraph [ref=f16e67]: Asociación española de apoyo a niños y familias afectados por el cáncer infantil.
+      - navigation "Enlaces principales" [ref=f16e68]:
+        - heading "Secciones" [level=2] [ref=f16e69]
+        - link "Quiénes somos" [ref=f16e70] [cursor=pointer]:
+          - /url: /sobre-nosotros
+        - link "Proyectos" [ref=f16e71] [cursor=pointer]:
+          - /url: /proyectos
+        - link "Historias" [ref=f16e72] [cursor=pointer]:
+          - /url: /historias
+        - link "Eventos" [ref=f16e73] [cursor=pointer]:
+          - /url: /eventos
+        - link "Transparencia" [ref=f16e74] [cursor=pointer]:
+          - /url: /transparencia
+        - link "Contacto" [ref=f16e75] [cursor=pointer]:
+          - /url: /contacto
+      - navigation "Redes sociales" [ref=f16e76]:
+        - heading "Redes" [level=2] [ref=f16e77]
+        - link "Instagram" [ref=f16e78] [cursor=pointer]:
+          - /url: https://www.instagram.com/
+        - link "Facebook" [ref=f16e79] [cursor=pointer]:
+          - /url: https://www.facebook.com/
+        - link "LinkedIn" [ref=f16e80] [cursor=pointer]:
+          - /url: https://www.linkedin.com/
+      - generic [ref=f16e81]:
+        - heading "Contacto" [level=2] [ref=f16e82]
+        - link "info@sumandovidas.org" [ref=f16e83] [cursor=pointer]:
+          - /url: mailto:info@sumandovidas.org
+        - link "+34 000 000 000" [ref=f16e84] [cursor=pointer]:
+          - /url: tel:+34000000000
+        - generic [ref=f16e85]: España
+    - generic [ref=f16e86]:
+      - generic [ref=f16e87]: © 2026 Sumando Vidas
+      - navigation "Información legal" [ref=f16e88]:
+        - link "Aviso legal" [ref=f16e89] [cursor=pointer]:
+          - /url: /aviso-legal
+        - link "Política de privacidad" [ref=f16e90] [cursor=pointer]:
+          - /url: /politica-privacidad
+        - link "Política de cookies" [ref=f16e91] [cursor=pointer]:
+          - /url: /politica-cookies

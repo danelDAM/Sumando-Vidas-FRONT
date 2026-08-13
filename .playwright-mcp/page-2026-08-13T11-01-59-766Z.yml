@@ -1,0 +1,240 @@
+- generic [ref=f10e2]:
+  - banner [ref=f10e3]:
+    - link "Saltar al contenido" [ref=f10e4] [cursor=pointer]:
+      - /url: "#contenido-principal"
+    - generic [ref=f10e5]:
+      - link "Sumando Vidas, inicio" [ref=f10e6] [cursor=pointer]:
+        - /url: /
+        - generic "Sumando Vidas" [ref=f10e7]: SV
+      - navigation "Navegación principal" [ref=f10e10]:
+        - link "Quiénes somos" [ref=f10e11] [cursor=pointer]:
+          - /url: /sobre-nosotros
+        - link "Proyectos" [ref=f10e12] [cursor=pointer]:
+          - /url: /proyectos
+        - link "Historias" [ref=f10e13] [cursor=pointer]:
+          - /url: /historias
+        - link "Eventos" [ref=f10e14] [cursor=pointer]:
+          - /url: /eventos
+        - link "Transparencia" [ref=f10e15] [cursor=pointer]:
+          - /url: /transparencia
+        - link "Contacto" [ref=f10e16] [cursor=pointer]:
+          - /url: /contacto
+      - link "Donar" [ref=f10e17] [cursor=pointer]:
+        - /url: /donaciones
+  - main [ref=f10e18]:
+    - generic [ref=f10e20]:
+      - generic [ref=f10e21]:
+        - paragraph [ref=f10e22]: Cáncer infantil
+        - heading "Acompañamos a niños y familias cuando más lo necesitan" [level=1] [ref=f10e23]
+        - paragraph [ref=f10e24]: Sumando Vidas nace para ofrecer apoyo humano, económico y comunitario a familias afectadas por el cáncer infantil en España.
+        - generic [ref=f10e25]:
+          - link "Donar ahora" [ref=f10e26] [cursor=pointer]:
+            - /url: /donaciones
+          - link "Colaborar" [ref=f10e27] [cursor=pointer]:
+            - /url: /voluntariado
+      - generic "Espacio reservado para imagen o vídeo" [ref=f10e28]: Imagen o vídeo principal
+    - generic [ref=f10e30]:
+      - generic [ref=f10e31]:
+        - paragraph [ref=f10e32]: Quiénes somos
+        - heading "Una asociación centrada en las familias" [level=2] [ref=f10e33]
+        - paragraph [ref=f10e34]: Trabajamos para que ninguna familia se sienta sola durante el proceso de enfermedad.
+      - generic [ref=f10e35]:
+        - paragraph [ref=f10e36]: Nuestra misión es acompañar, escuchar y facilitar recursos a niños, madres, padres, hermanos y cuidadores durante las distintas etapas del cáncer infantil.
+        - paragraph [ref=f10e37]: Nuestros objetivos combinan apoyo directo, sensibilización social, colaboración con entidades y creación de redes de ayuda sostenibles.
+        - link "Conocer nuestra historia" [ref=f10e38] [cursor=pointer]:
+          - /url: /nuestra-historia
+    - generic [ref=f10e40]:
+      - generic [ref=f10e41]:
+        - paragraph [ref=f10e42]: Qué hacemos
+        - heading "Proyectos preparados para crecer" [level=2] [ref=f10e43]
+        - paragraph [ref=f10e44]: Por Ellos será el primer proyecto activo de la asociación, con una campaña deportiva y solidaria alrededor de cinco grandes medias maratones.
+      - generic [ref=f10e45]:
+        - link "Por Ellos Proyecto solidario para recaudar el máximo dinero posible mientras Felipe, fundador de Sumando Vidas y superviviente de cáncer infantil, junto al equipo de la asociación, corre las cinco grandes medias maratones de España. Ver más" [ref=f10e46] [cursor=pointer]:
+          - /url: /proyectos
+          - heading "Por Ellos" [level=3] [ref=f10e47]
+          - paragraph [ref=f10e48]: Proyecto solidario para recaudar el máximo dinero posible mientras Felipe, fundador de Sumando Vidas y superviviente de cáncer infantil, junto al equipo de la asociación, corre las cinco grandes medias maratones de España.
+          - generic [ref=f10e49]: Ver más
+        - link "Acompañamiento familiar Apoyo cercano a familias durante el diagnóstico, tratamiento y recuperación. Ver más" [ref=f10e50] [cursor=pointer]:
+          - /url: /proyectos
+          - heading "Acompañamiento familiar" [level=3] [ref=f10e51]
+          - paragraph [ref=f10e52]: Apoyo cercano a familias durante el diagnóstico, tratamiento y recuperación.
+          - generic [ref=f10e53]: Ver más
+        - link "Ayudas directas Cobertura de necesidades esenciales vinculadas a desplazamientos, estancia y cuidados. Ver más" [ref=f10e54] [cursor=pointer]:
+          - /url: /proyectos
+          - heading "Ayudas directas" [level=3] [ref=f10e55]
+          - paragraph [ref=f10e56]: Cobertura de necesidades esenciales vinculadas a desplazamientos, estancia y cuidados.
+          - generic [ref=f10e57]: Ver más
+        - link "Bienestar emocional Recursos para mejorar el día a día de niños, hermanos, madres, padres y cuidadores. Ver más" [ref=f10e58] [cursor=pointer]:
+          - /url: /proyectos
+          - heading "Bienestar emocional" [level=3] [ref=f10e59]
+          - paragraph [ref=f10e60]: Recursos para mejorar el día a día de niños, hermanos, madres, padres y cuidadores.
+          - generic [ref=f10e61]: Ver más
+    - generic [ref=f10e63]:
+      - generic [ref=f10e64]:
+        - paragraph [ref=f10e65]: Historias
+        - heading "Voces que dan sentido al camino" [level=2] [ref=f10e66]
+        - paragraph [ref=f10e67]: Cada historia puede incorporar imagen, título, resumen y enlace a una página ampliada.
+      - generic [ref=f10e68]:
+        - link "Una familia acompañada Espacio preparado para contar historias reales con sensibilidad y consentimiento. Imagen de una historia familiar Ver más" [ref=f10e69] [cursor=pointer]:
+          - /url: /historias
+          - heading "Una familia acompañada" [level=3] [ref=f10e70]
+          - paragraph [ref=f10e71]: Espacio preparado para contar historias reales con sensibilidad y consentimiento.
+          - generic "Imagen de una historia familiar" [ref=f10e72]: Imagen
+          - generic [ref=f10e73]: Ver más
+        - link "Pequeños grandes retos Relatos de superación, comunidad y apoyo durante el proceso oncológico infantil. Imagen de una historia infantil Ver más" [ref=f10e74] [cursor=pointer]:
+          - /url: /historias
+          - heading "Pequeños grandes retos" [level=3] [ref=f10e75]
+          - paragraph [ref=f10e76]: Relatos de superación, comunidad y apoyo durante el proceso oncológico infantil.
+          - generic "Imagen de una historia infantil" [ref=f10e77]: Imagen
+          - generic [ref=f10e78]: Ver más
+        - link "Personas que suman Testimonios de voluntariado, empresas colaboradoras y equipos sanitarios. Imagen de personas colaborando Ver más" [ref=f10e79] [cursor=pointer]:
+          - /url: /historias
+          - heading "Personas que suman" [level=3] [ref=f10e80]
+          - paragraph [ref=f10e81]: Testimonios de voluntariado, empresas colaboradoras y equipos sanitarios.
+          - generic "Imagen de personas colaborando" [ref=f10e82]: Imagen
+          - generic [ref=f10e83]: Ver más
+    - generic [ref=f10e85]:
+      - generic [ref=f10e86]:
+        - paragraph [ref=f10e87]: Impacto
+        - heading "Datos preparados para conectarse a métricas reales" [level=2] [ref=f10e88]
+        - paragraph [ref=f10e89]: Estos indicadores podrán alimentarse más adelante desde CMS, base de datos o informes internos.
+      - generic [ref=f10e90]:
+        - article [ref=f10e91]:
+          - strong [ref=f10e92]: "000"
+          - generic [ref=f10e93]: Familias acompañadas
+        - article [ref=f10e94]:
+          - strong [ref=f10e95]: "000"
+          - generic [ref=f10e96]: Ayudas gestionadas
+        - article [ref=f10e97]:
+          - strong [ref=f10e98]: "000"
+          - generic [ref=f10e99]: Personas colaboradoras
+        - article [ref=f10e100]:
+          - strong [ref=f10e101]: "000"
+          - generic [ref=f10e102]: Eventos solidarios
+    - generic [ref=f10e104]:
+      - generic [ref=f10e105]:
+        - paragraph [ref=f10e106]: Colaborar
+        - heading "Distintas formas de sumar" [level=2] [ref=f10e107]
+        - paragraph [ref=f10e108]: La sección recoge las vías principales de participación y puede convertirse después en páginas independientes.
+      - generic [ref=f10e109]:
+        - link "Donaciones Aporta recursos para sostener programas de ayuda directa y acompañamiento. Ver más" [ref=f10e110] [cursor=pointer]:
+          - /url: /donaciones
+          - heading "Donaciones" [level=3] [ref=f10e111]
+          - paragraph [ref=f10e112]: Aporta recursos para sostener programas de ayuda directa y acompañamiento.
+          - generic [ref=f10e113]: Ver más
+        - link "Hacerse socio Contribuye de forma recurrente para dar estabilidad a los proyectos. Ver más" [ref=f10e114] [cursor=pointer]:
+          - /url: /donaciones
+          - heading "Hacerse socio" [level=3] [ref=f10e115]
+          - paragraph [ref=f10e116]: Contribuye de forma recurrente para dar estabilidad a los proyectos.
+          - generic [ref=f10e117]: Ver más
+        - link "Eventos Participa en carreras, retos, campañas y actividades solidarias. Ver más" [ref=f10e118] [cursor=pointer]:
+          - /url: /eventos
+          - heading "Eventos" [level=3] [ref=f10e119]
+          - paragraph [ref=f10e120]: Participa en carreras, retos, campañas y actividades solidarias.
+          - generic [ref=f10e121]: Ver más
+        - link "Empresas y voluntariado Colabora desde tu empresa o suma tu tiempo como persona voluntaria. Ver más" [ref=f10e122] [cursor=pointer]:
+          - /url: /voluntariado
+          - heading "Empresas y voluntariado" [level=3] [ref=f10e123]
+          - paragraph [ref=f10e124]: Colabora desde tu empresa o suma tu tiempo como persona voluntaria.
+          - generic [ref=f10e125]: Ver más
+    - generic [ref=f10e127]:
+      - generic [ref=f10e128]:
+        - paragraph [ref=f10e129]: Próximos eventos
+        - heading "El recorrido de Por Ellos" [level=2] [ref=f10e130]
+        - paragraph [ref=f10e131]: Málaga, Donosti, Madrid, Valencia y Barcelona serán las cinco grandes medias maratones que impulsarán la recaudación del proyecto.
+      - generic [ref=f10e132]:
+        - link "Próximamente Media Maratón de Málaga Málaga Ver más" [ref=f10e133] [cursor=pointer]:
+          - /url: /eventos
+          - paragraph [ref=f10e134]: Próximamente
+          - heading "Media Maratón de Málaga" [level=3] [ref=f10e135]
+          - paragraph [ref=f10e136]: Málaga
+          - generic [ref=f10e137]: Ver más
+        - link "Próximamente Media Maratón de Donosti San Sebastián Ver más" [ref=f10e138] [cursor=pointer]:
+          - /url: /eventos
+          - paragraph [ref=f10e139]: Próximamente
+          - heading "Media Maratón de Donosti" [level=3] [ref=f10e140]
+          - paragraph [ref=f10e141]: San Sebastián
+          - generic [ref=f10e142]: Ver más
+        - link "Próximamente Media Maratón de Madrid Madrid Ver más" [ref=f10e143] [cursor=pointer]:
+          - /url: /eventos
+          - paragraph [ref=f10e144]: Próximamente
+          - heading "Media Maratón de Madrid" [level=3] [ref=f10e145]
+          - paragraph [ref=f10e146]: Madrid
+          - generic [ref=f10e147]: Ver más
+        - link "Próximamente Media Maratón de Valencia Valencia Ver más" [ref=f10e148] [cursor=pointer]:
+          - /url: /eventos
+          - paragraph [ref=f10e149]: Próximamente
+          - heading "Media Maratón de Valencia" [level=3] [ref=f10e150]
+          - paragraph [ref=f10e151]: Valencia
+          - generic [ref=f10e152]: Ver más
+        - link "Próximamente Media Maratón de Barcelona Barcelona Ver más" [ref=f10e153] [cursor=pointer]:
+          - /url: /eventos
+          - paragraph [ref=f10e154]: Próximamente
+          - heading "Media Maratón de Barcelona" [level=3] [ref=f10e155]
+          - paragraph [ref=f10e156]: Barcelona
+          - generic [ref=f10e157]: Ver más
+    - generic [ref=f10e159]:
+      - generic [ref=f10e160]:
+        - paragraph [ref=f10e161]: Transparencia
+        - heading "Claridad sobre cada ayuda recibida" [level=2] [ref=f10e162]
+        - paragraph [ref=f10e163]: Espacio para explicar el uso de las donaciones, resultados e informes públicos.
+      - generic [ref=f10e164]:
+        - paragraph [ref=f10e165]: Esta sección está preparada para publicar documentos, memorias, resultados de campañas y criterios de asignación de ayudas.
+        - generic [ref=f10e166]:
+          - link "Memoria anual" [ref=f10e167] [cursor=pointer]:
+            - /url: /transparencia
+          - link "Informes económicos" [ref=f10e168] [cursor=pointer]:
+            - /url: /transparencia
+          - link "Destino de donaciones" [ref=f10e169] [cursor=pointer]:
+            - /url: /transparencia
+    - generic [ref=f10e171]:
+      - heading "Tu ayuda puede aliviar el camino de una familia" [level=2] [ref=f10e172]
+      - paragraph [ref=f10e173]: Cada aportación, cada hora y cada gesto ayudan a sostener una red de apoyo real.
+      - generic [ref=f10e174]:
+        - link "Donar" [ref=f10e175] [cursor=pointer]:
+          - /url: /donaciones
+        - link "Colaborar" [ref=f10e176] [cursor=pointer]:
+          - /url: /voluntariado
+  - contentinfo [ref=f10e177]:
+    - generic [ref=f10e178]:
+      - generic [ref=f10e179]:
+        - generic "Sumando Vidas" [ref=f10e180]: SV
+        - paragraph [ref=f10e183]: Asociación española de apoyo a niños y familias afectados por el cáncer infantil.
+      - navigation "Enlaces principales" [ref=f10e184]:
+        - heading "Secciones" [level=2] [ref=f10e185]
+        - link "Quiénes somos" [ref=f10e186] [cursor=pointer]:
+          - /url: /sobre-nosotros
+        - link "Proyectos" [ref=f10e187] [cursor=pointer]:
+          - /url: /proyectos
+        - link "Historias" [ref=f10e188] [cursor=pointer]:
+          - /url: /historias
+        - link "Eventos" [ref=f10e189] [cursor=pointer]:
+          - /url: /eventos
+        - link "Transparencia" [ref=f10e190] [cursor=pointer]:
+          - /url: /transparencia
+        - link "Contacto" [ref=f10e191] [cursor=pointer]:
+          - /url: /contacto
+      - navigation "Redes sociales" [ref=f10e192]:
+        - heading "Redes" [level=2] [ref=f10e193]
+        - link "Instagram" [ref=f10e194] [cursor=pointer]:
+          - /url: https://www.instagram.com/
+        - link "Facebook" [ref=f10e195] [cursor=pointer]:
+          - /url: https://www.facebook.com/
+        - link "LinkedIn" [ref=f10e196] [cursor=pointer]:
+          - /url: https://www.linkedin.com/
+      - generic [ref=f10e197]:
+        - heading "Contacto" [level=2] [ref=f10e198]
+        - link "info@sumandovidas.org" [ref=f10e199] [cursor=pointer]:
+          - /url: mailto:info@sumandovidas.org
+        - link "+34 000 000 000" [ref=f10e200] [cursor=pointer]:
+          - /url: tel:+34000000000
+        - generic [ref=f10e201]: España
+    - generic [ref=f10e202]:
+      - generic [ref=f10e203]: © 2026 Sumando Vidas
+      - navigation "Información legal" [ref=f10e204]:
+        - link "Aviso legal" [ref=f10e205] [cursor=pointer]:
+          - /url: /aviso-legal
+        - link "Política de privacidad" [ref=f10e206] [cursor=pointer]:
+          - /url: /politica-privacidad
+        - link "Política de cookies" [ref=f10e207] [cursor=pointer]:
+          - /url: /politica-cookies
