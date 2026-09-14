@@ -2,12 +2,20 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { featuredProject } from "../data/projects";
+import { createDonationCheckoutSession } from "../services/stripe";
+
+type DonationFeedback = {
+  type: "error" | "success" | "info";
+  message: string;
+};
 
 export function PorEllosProjectPage() {
   const [activeRaceIndex, setActiveRaceIndex] = useState(0);
   const [selectedRaceCity, setSelectedRaceCity] = useState(featuredProject.races[0].city);
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   const [donationAmount, setDonationAmount] = useState("25");
+  const [isSubmittingDonation, setIsSubmittingDonation] = useState(false);
+  const [donationFeedback, setDonationFeedback] = useState<DonationFeedback | null>(null);
 
   const activeRace = featuredProject.races[activeRaceIndex];
   const progress = Math.round((featuredProject.raisedAmount / featuredProject.targetAmount) * 100);
@@ -17,13 +25,56 @@ export function PorEllosProjectPage() {
   });
 
   const openDonationModal = (amount?: number) => {
+    setDonationFeedback(null);
     if (amount) {
       setDonationAmount(String(amount));
     }
     setIsDonationModalOpen(true);
   };
 
-  const closeDonationModal = () => setIsDonationModalOpen(false);
+  const closeDonationModal = () => {
+    setDonationFeedback(null);
+    setIsSubmittingDonation(false);
+    setIsDonationModalOpen(false);
+  };
+
+  const handleDonationSubmit = async () => {
+    const parsedAmount = Number(donationAmount);
+
+    if (!Number.isFinite(parsedAmount) || parsedAmount <= 0) {
+      setDonationFeedback({
+        type: "error",
+        message: "Introduce una cantidad válida para continuar.",
+      });
+      return;
+    }
+
+    setIsSubmittingDonation(true);
+    setDonationFeedback({
+      type: "info",
+      message: "Estamos preparando tu donación para Stripe…",
+    });
+
+    try {
+      const checkoutUrl = await createDonationCheckoutSession(
+        parsedAmount,
+        featuredProject.title,
+        activeRace.city,
+      );
+
+      setDonationFeedback({
+        type: "success",
+        message: "¡Gracias! Te estamos redirigiendo a la pasarela segura de pago…",
+      });
+      window.location.assign(checkoutUrl);
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : "No se pudo iniciar la donación. Inténtalo otra vez.";
+
+      setDonationFeedback({ type: "error", message });
+      setIsSubmittingDonation(false);
+    }
+  };
 
   return (
     <>
@@ -264,12 +315,30 @@ export function PorEllosProjectPage() {
               onChange={(event) => setDonationAmount(event.target.value)}
             />
 
+            {donationFeedback && (
+              <div className={`donation-feedback donation-feedback--${donationFeedback.type}`}>
+                {donationFeedback.message}
+              </div>
+            )}
+
             <div className="donation-modal-actions">
-              <button type="button" className="button button-secondary" onClick={closeDonationModal}>
+              <button
+                type="button"
+                className="button button-secondary"
+                onClick={closeDonationModal}
+                disabled={isSubmittingDonation}
+              >
                 Cancelar
               </button>
-              <button type="button" className="button button-primary" onClick={closeDonationModal}>
-                Confirmar {Number(donationAmount || 0).toLocaleString("es-ES")} €
+              <button
+                type="button"
+                className="button button-primary"
+                onClick={handleDonationSubmit}
+                disabled={isSubmittingDonation}
+              >
+                {isSubmittingDonation
+                  ? "Procesando…"
+                  : `Confirmar ${Number(donationAmount || 0).toLocaleString("es-ES")} €`}
               </button>
             </div>
           </div>
