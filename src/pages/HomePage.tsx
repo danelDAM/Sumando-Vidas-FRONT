@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "../components/ui/Card";
 import { SectionHeader } from "../components/ui/SectionHeader";
+import { SponsorCarousel } from "../components/ui/SponsorCarousel";
 import {
   collaborationOptions,
   events,
@@ -31,11 +32,20 @@ export function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="media-placeholder is-interactive-media" aria-label="Espacio reservado para imagen o vídeo">
-            Imagen o vídeo principal
+          <div
+            className="media-placeholder is-interactive-media hero-visual"
+            aria-label="Imagen principal del inicio"
+          >
+            <img
+              src="/images/niñaCancerPaginaInicio.png"
+              alt="Niña con cáncer en la página de inicio"
+            />
           </div>
         </div>
       </section>
+
+      {/* Carrusel de patrocinadores a pantalla completa */}
+      <SponsorCarousel />
 
       <section className="page-section reveal-group" id="quienes-somos" data-reveal>
         <div className="container split-section">

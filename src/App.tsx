@@ -6,6 +6,7 @@ import { HomePage } from "./pages/HomePage";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import { PorEllosProjectPage } from "./pages/PorEllosProjectPage";
+import { StoriesPage } from "./pages/StoriesPage";
 
 export default function App() {
   useScrollReveal();
@@ -16,7 +17,8 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="proyectos" element={<ProjectsPage />} />
         <Route path="proyectos/por-ellos" element={<PorEllosProjectPage />} />
-        {futurePages.filter((page) => page.path !== "proyectos").map((page) => (
+        <Route path="historias" element={<StoriesPage />} />
+        {futurePages.filter((page) => page.path !== "proyectos" && page.path !== "historias").map((page) => (
           <Route
             key={page.path}
             path={page.path}

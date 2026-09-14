@@ -5,12 +5,25 @@ import { featuredProject } from "../data/projects";
 
 export function PorEllosProjectPage() {
   const [activeRaceIndex, setActiveRaceIndex] = useState(0);
+  const [selectedRaceCity, setSelectedRaceCity] = useState(featuredProject.races[0].city);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+  const [donationAmount, setDonationAmount] = useState("25");
+
   const activeRace = featuredProject.races[activeRaceIndex];
   const progress = Math.round((featuredProject.raisedAmount / featuredProject.targetAmount) * 100);
   const routeProgress = (activeRaceIndex / (featuredProject.races.length - 1)) * 100;
   const accumulatedDistance = ((activeRaceIndex + 1) * 21.1).toLocaleString("es-ES", {
     maximumFractionDigits: 1,
   });
+
+  const openDonationModal = (amount?: number) => {
+    if (amount) {
+      setDonationAmount(String(amount));
+    }
+    setIsDonationModalOpen(true);
+  };
+
+  const closeDonationModal = () => setIsDonationModalOpen(false);
 
   return (
     <>
@@ -38,9 +51,13 @@ export function PorEllosProjectPage() {
             </div>
             <div className="donation-chips" aria-label="Donaciones rápidas">
               {featuredProject.donationOptions.map((amount) => (
-                <Link key={amount} to="/donaciones">
+                <button
+                  key={amount}
+                  type="button"
+                  onClick={() => openDonationModal(amount)}
+                >
                   {amount} €
-                </Link>
+                </button>
               ))}
             </div>
           </aside>
@@ -108,19 +125,74 @@ export function PorEllosProjectPage() {
                   <dd>{accumulatedDistance} km</dd>
                 </div>
                 <div>
-                  <dt>Acción clave</dt>
-                  <dd>Donar, correr o patrocinar</dd>
+                  <dt>Recaudado</dt>
+                  <dd>{activeRace.raisedAmount.toLocaleString("es-ES")} €</dd>
                 </div>
               </dl>
               <div className="action-row">
-                <Link className="button button-primary" to={activeRace.donationUrl}>
+                <button
+                  type="button"
+                  className="button button-primary"
+                  onClick={() => openDonationModal(Number(donationAmount))}
+                >
                   Donar en esta parada
-                </Link>
-                <Link className="button button-secondary" to={activeRace.bibUrl}>
-                  Comprar dorsal solidario
-                </Link>
+                </button>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section reveal-group" data-reveal>
+        <div className="container">
+          <SectionHeader
+            eyebrow="Tienda solidaria"
+            title="Compra apoyo en la parada que elijas"
+            description="Todo el dinero recaudado va destinado a la campaña Por Ellos. Elige una parada y compra un producto simbólico para apoyar esa etapa concreta del reto."
+          />
+
+          <div className="store-filter-bar" aria-label="Filtro de parada para la tienda solidaria">
+            {featuredProject.races.map((race) => (
+              <button
+                key={race.city}
+                type="button"
+                className={`store-filter-button ${selectedRaceCity === race.city ? "is-active" : ""}`}
+                onClick={() => setSelectedRaceCity(race.city)}
+              >
+                {race.city}
+              </button>
+            ))}
+          </div>
+
+          <div className="store-stop-card store-selected-stop">
+            <div className="store-stop-header">
+              <div>
+                <p className="card-meta">Parada seleccionada</p>
+                <h3>{selectedRaceCity}</h3>
+              </div>
+              <span>{featuredProject.storeItems.length} productos</span>
+            </div>
+
+            <div className="store-item-list">
+              {featuredProject.storeItems.map((item) => (
+                <div className="store-item" key={item.title}>
+                  <div className="store-item-image">
+                    <img src={item.image} alt={item.title} />
+                  </div>
+                  <div className="store-item-topline">
+                    <span className="store-tag">{item.tag}</span>
+                    <strong>{item.price} €</strong>
+                  </div>
+                  <h4>{item.title}</h4>
+                  <p>
+                    {item.description} El importe se destina a apoyar la parada de {selectedRaceCity}.
+                  </p>
+                  <Link className="button button-primary" to="/donaciones">
+                    Comprar para {selectedRaceCity}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -143,6 +215,66 @@ export function PorEllosProjectPage() {
           </div>
         </div>
       </section>
+
+      {isDonationModalOpen && (
+        <div className="donation-modal-backdrop" onClick={closeDonationModal}>
+          <div
+            className="donation-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="donation-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="donation-close-button"
+              aria-label="Cerrar modal de donación"
+              onClick={closeDonationModal}
+            >
+              ×
+            </button>
+
+            <p className="card-meta">Apoya la parada de {activeRace.city}</p>
+            <h3 id="donation-modal-title">¿Cuánto quieres donar?</h3>
+
+            <div className="donation-choice-list" aria-label="Opciones de donación">
+              {featuredProject.donationOptions.map((amount) => (
+                <button
+                  key={amount}
+                  type="button"
+                  className={Number(donationAmount) === amount ? "is-selected" : ""}
+                  onClick={() => {
+                    setDonationAmount(String(amount));
+                  }}
+                >
+                  {amount} €
+                </button>
+              ))}
+            </div>
+
+            <label className="donation-custom-amount" htmlFor="custom-donation-amount">
+              Cantidad personalizada
+            </label>
+            <input
+              id="custom-donation-amount"
+              type="number"
+              min="1"
+              step="1"
+              value={donationAmount}
+              onChange={(event) => setDonationAmount(event.target.value)}
+            />
+
+            <div className="donation-modal-actions">
+              <button type="button" className="button button-secondary" onClick={closeDonationModal}>
+                Cancelar
+              </button>
+              <button type="button" className="button button-primary" onClick={closeDonationModal}>
+                Confirmar {Number(donationAmount || 0).toLocaleString("es-ES")} €
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

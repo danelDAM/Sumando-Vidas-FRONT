@@ -24,6 +24,13 @@ export const programs = [
 
 export const stories = [
   {
+    title: "La historia de Felipe",
+    description:
+      "A los 12 años, al malagueño le diagnosticaron un linfoma de no Hodgkin de células T y, estando en la UCI, una amiga le acercó a esta sagrada imagen a través de una pulsera y una estampa. Desde entonces, no se ha separado de ella. Tras superarlo, se propuso estudiar Medicina y especializarse en oncología infantil para poder ayudar a todos los niños con su misma condición. Finalmente, mientras cursaba la carrera, decidió fundar la asociación.",
+    imageAlt: "Historia del fundador de la asociación",
+    href: "/historias",
+  },
+  {
     title: "Una familia acompañada",
     description: "Espacio preparado para contar historias reales con sensibilidad y consentimiento.",
     imageAlt: "Imagen de una historia familiar",
