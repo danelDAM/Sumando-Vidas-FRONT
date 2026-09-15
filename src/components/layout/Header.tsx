@@ -13,7 +13,7 @@ export function Header() {
           <Logo />
         </Link>
         <nav className="main-nav" aria-label="Navegación principal">
-          {mainNavigation.map((item) => (
+          {mainNavigation.filter((item) => item.label !== "Transparencia").map((item) => (
             <NavLink key={item.href} to={item.href}>
               {item.label}
             </NavLink>

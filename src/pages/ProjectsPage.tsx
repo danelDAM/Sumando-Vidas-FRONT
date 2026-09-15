@@ -48,15 +48,37 @@ export function ProjectsPage() {
               </article>
             </div>
           </article>
+          <article className="project-feature-card project-feature-card--secondary">
+            <div>
+              <p className="eyebrow">Reto mensual</p>
+              <h2>Héroes que suman</h2>
+              <p>
+                Empresas y personas compiten cada mes para liderar una clasificación solidaria y dejar su huella en la lucha contra el cáncer infantil.
+              </p>
+              <Link className="button button-primary" to="/proyectos/heroes-que-suman">
+                Ver el ranking
+              </Link>
+            </div>
+            <div className="project-mini-stats" aria-label="Resumen del proyecto Héroes que suman">
+              <article>
+                <strong>2</strong>
+                <span>Leaderboards mensuales</span>
+              </article>
+              <article>
+                <strong>12</strong>
+                <span>Retos al año</span>
+              </article>
+            </div>
+          </article>
         </div>
       </section>
 
       <section className="page-section reveal-group" data-reveal>
         <div className="container">
           <SectionHeader
-            eyebrow="Próximamente"
-            title="Más proyectos de Sumando Vidas"
-            description="Este espacio queda preparado para añadir nuevas campañas, programas de ayuda y colaboraciones."
+            eyebrow="Más proyectos"
+            title="Nuevas formas de sumar"
+            description="Campañas pensadas para convertir la solidaridad en comunidad, compromiso y ganas de seguir ayudando."
           />
           <div className="card-grid">
             <article className="card">
