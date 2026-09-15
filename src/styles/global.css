@@ -1608,9 +1608,8 @@ p {
   .action-row {
     width: 100%;
   }
+}
 
-
-/* Sponsor carousel styles */
 .sponsor-marquee-viewport {
   width: 100vw;
   position: relative;
@@ -1618,29 +1617,44 @@ p {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  padding-block: 0;
   overflow: hidden;
-  margin-top: 18px;
+  margin-top: 12px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 22%,
+    #000 32%,
+    #000 48%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 22%,
+    #000 32%,
+    #000 48%,
+    transparent 100%
+  );
 }
 
 .sponsor-marquee {
-  width: 100%;
-  overflow: hidden;
-}
-
-.sponsor-marquee-track {
   display: flex;
-  gap: 18px;
-  align-items: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  padding: 12px 24px;
-  animation: marquee var(--marquee-duration, 20s) linear infinite;
   width: max-content;
+  overflow: hidden;
+  animation: marquee var(--marquee-duration, 20s) linear infinite;
   will-change: transform;
 }
 
-.sponsor-marquee-track:hover {
-  animation-play-state: paused;
+.sponsor-marquee-group {
+  display: flex;
+  justify-content: center;
+  width: 78vw;
+  min-width: 78vw;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 6px 24px;
 }
 
 .sponsor-slide {
@@ -1650,31 +1664,19 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 8px;
-}
-
-/* Stronger selectors to avoid unexpected overrides that force vertical stacking */
-.sponsor-marquee .sponsor-marquee-track,
-.sponsor-marquee-track {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-}
-
-.sponsor-marquee .sponsor-marquee-track > .sponsor-slide,
-.sponsor-marquee-track > .sponsor-slide {
-  display: inline-flex !important;
-  flex: 0 0 auto !important;
+  background: transparent;
+  border: 0;
+  padding: 8px 18px;
 }
 
 .sponsor-slide img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+.sponsor-slide img.sponsor-logo-togga {
+  filter: brightness(0) opacity(0.55);
 }
 
 @keyframes marquee {
@@ -1693,6 +1695,8 @@ p {
     height: 56px;
   }
 }
+
+@media (max-width: 640px) {
   .card-grid,
   .metrics-grid,
   .four-columns,
