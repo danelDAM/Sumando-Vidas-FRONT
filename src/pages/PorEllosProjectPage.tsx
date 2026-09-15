@@ -18,6 +18,10 @@ export function PorEllosProjectPage() {
   const [donationFeedback, setDonationFeedback] = useState<DonationFeedback | null>(null);
 
   const activeRace = featuredProject.races[activeRaceIndex];
+  const rankedRaces = [...featuredProject.races].sort(
+    (firstRace, secondRace) => secondRace.raisedAmount - firstRace.raisedAmount,
+  );
+  const leadingAmount = rankedRaces[0].raisedAmount;
   const progress = Math.round((featuredProject.raisedAmount / featuredProject.targetAmount) * 100);
   const routeProgress = (activeRaceIndex / (featuredProject.races.length - 1)) * 100;
   const accumulatedDistance = ((activeRaceIndex + 1) * 21.1).toLocaleString("es-ES", {
@@ -251,18 +255,82 @@ export function PorEllosProjectPage() {
       <section className="page-section reveal-group" data-reveal>
         <div className="container">
           <SectionHeader
-            eyebrow="Cómo participar"
-            title="Formas de empujar el reto"
-            description="Estas acciones son simuladas por ahora, pero la estructura queda lista para pasarelas de pago, dorsales, patrocinio y retos personales."
+            eyebrow="Pique solidario"
+            title="¿Qué ciudad va a dar más por ellos?"
+            description="La clasificación se actualiza con lo recaudado en cada parada. Aquí no compiten las familias: compite la solidaridad."
           />
-          <div className="card-grid four-columns">
-            {featuredProject.waysToHelp.map((option) => (
-              <Link className="card card-interactive" key={option.title} to={option.href}>
-                <h3>{option.title}</h3>
-                <p>{option.description}</p>
-                <span className="card-link">Empezar</span>
-              </Link>
-            ))}
+          <div className="city-leaderboard" aria-label="Clasificación de recaudación por ciudad">
+            <div className="leaderboard-intro">
+              <strong>{rankedRaces[0].city} va en cabeza</strong>
+              <span>La próxima donación puede cambiar la clasificación.</span>
+            </div>
+            <div className="leaderboard-podium">
+              {rankedRaces.slice(0, 3).map((race, rank) => {
+                const cityProgress = Math.round((race.raisedAmount / leadingAmount) * 100);
+
+                return (
+                  <button
+                    className={`leaderboard-row ${rank < 3 ? `leaderboard-row--top-${rank + 1}` : ""} ${selectedRaceCity === race.city ? "is-selected" : ""}`}
+                    key={race.city}
+                    type="button"
+                    onClick={() => {
+                      setSelectedRaceCity(race.city);
+                      setActiveRaceIndex(featuredProject.races.findIndex((item) => item.city === race.city));
+                    }}
+                    aria-pressed={selectedRaceCity === race.city}
+                  >
+                    <span className="leaderboard-rank">{rank + 1}</span>
+                    <span className="leaderboard-city">
+                      <strong>{race.city}</strong>
+                      <span>{race.status}</span>
+                    </span>
+                    <span className="leaderboard-progress" aria-hidden="true">
+                      <span style={{ width: `${cityProgress}%` }} />
+                    </span>
+                    <strong className="leaderboard-amount">
+                      {race.raisedAmount.toLocaleString("es-ES")} €
+                    </strong>
+                  </button>
+                );
+              })}
+            </div>
+            <div className="leaderboard-chasers">
+              <p>Persiguiendo el podio</p>
+              <div className="leaderboard-list">
+                {rankedRaces.slice(3).map((race, index) => {
+                  const cityProgress = Math.round((race.raisedAmount / leadingAmount) * 100);
+                  const rank = index + 3;
+
+                  return (
+                    <button
+                      className={`leaderboard-row ${selectedRaceCity === race.city ? "is-selected" : ""}`}
+                      key={race.city}
+                      type="button"
+                      onClick={() => {
+                        setSelectedRaceCity(race.city);
+                        setActiveRaceIndex(featuredProject.races.findIndex((item) => item.city === race.city));
+                      }}
+                      aria-pressed={selectedRaceCity === race.city}
+                    >
+                      <span className="leaderboard-rank">{rank + 1}</span>
+                      <span className="leaderboard-city">
+                        <strong>{race.city}</strong>
+                        <span>{race.status}</span>
+                      </span>
+                      <span className="leaderboard-progress" aria-hidden="true">
+                        <span style={{ width: `${cityProgress}%` }} />
+                      </span>
+                      <strong className="leaderboard-amount">
+                        {race.raisedAmount.toLocaleString("es-ES")} €
+                      </strong>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            <Link className="button button-primary leaderboard-cta" to="/donaciones">
+              Haz subir a tu ciudad
+            </Link>
           </div>
         </div>
       </section>

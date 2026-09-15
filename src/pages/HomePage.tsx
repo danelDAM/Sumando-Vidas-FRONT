@@ -15,14 +15,22 @@ export function HomePage() {
   return (
     <>
       <section className="hero-section">
+        <video
+          className="hero-background-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/niñaCancerPaginaInicio.png"
+          aria-hidden="true"
+          src="/videos/hero-background.mp4"
+        />
+        <div className="hero-video-wash" aria-hidden="true" />
         <div className="container hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">Cáncer infantil</p>
             <h1>Acompañamos a niños y familias cuando más lo necesitan</h1>
-            <p>
-              Sumando Vidas nace para ofrecer apoyo humano, económico y comunitario a
-              familias afectadas por el cáncer infantil en España.
-            </p>
             <div className="action-row">
               <Link className="button button-primary" to="/donaciones">
                 Donar ahora
@@ -31,15 +39,6 @@ export function HomePage() {
                 Colaborar
               </Link>
             </div>
-          </div>
-          <div
-            className="media-placeholder is-interactive-media hero-visual"
-            aria-label="Imagen principal del inicio"
-          >
-            <img
-              src="/images/niñaCancerPaginaInicio.png"
-              alt="Niña con cáncer en la página de inicio"
-            />
           </div>
         </div>
       </section>
