@@ -5,7 +5,7 @@ type SponsorCarouselProps = {
 
 export function SponsorCarousel({
   images = ["/images/sponsor1.png", "/images/toggaLogo.png"],
-  speed = 30,
+  speed = 40,
 }: SponsorCarouselProps) {
   const validImages = images.filter(Boolean);
   const duration = `${Math.max(12, validImages.length * speed)}s`;

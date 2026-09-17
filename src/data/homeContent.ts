@@ -15,11 +15,6 @@ export const programs = [
     description: "Cobertura de necesidades esenciales vinculadas a desplazamientos, estancia y cuidados.",
     href: "/proyectos",
   },
-  {
-    title: "Bienestar emocional",
-    description: "Recursos para mejorar el día a día de niños, hermanos, madres, padres y cuidadores.",
-    href: "/proyectos",
-  },
 ];
 
 export const stories = [
@@ -28,6 +23,7 @@ export const stories = [
     description:
       "A los 12 años, al malagueño le diagnosticaron un linfoma de no Hodgkin de células T y, estando en la UCI, una amiga le acercó a esta sagrada imagen a través de una pulsera y una estampa. Desde entonces, no se ha separado de ella. Tras superarlo, se propuso estudiar Medicina y especializarse en oncología infantil para poder ayudar a todos los niños con su misma condición. Finalmente, mientras cursaba la carrera, decidió fundar la asociación.",
     imageAlt: "Historia del fundador de la asociación",
+    image: "/images/fotoFelipeMedina.png",
     href: "/historias",
   },
   {
@@ -40,12 +36,6 @@ export const stories = [
     title: "Pequeños grandes retos",
     description: "Relatos de superación, comunidad y apoyo durante el proceso oncológico infantil.",
     imageAlt: "Imagen de una historia infantil",
-    href: "/historias",
-  },
-  {
-    title: "Personas que suman",
-    description: "Testimonios de voluntariado, empresas colaboradoras y equipos sanitarios.",
-    imageAlt: "Imagen de personas colaborando",
     href: "/historias",
   },
 ];
@@ -82,33 +72,39 @@ export const collaborationOptions = [
 
 export const events = [
   {
-    date: "Próximamente",
-    title: "Media Maratón de Málaga",
-    location: "Málaga",
+    date: "25 oct 2026",
+    title: "Medio Maratón Valencia Trinidad Alfonso Zurich",
+    location: "Valencia",
     href: "/eventos",
   },
   {
-    date: "Próximamente",
+    date: "Fecha por confirmar",
     title: "Media Maratón de Donosti",
     location: "San Sebastián",
     href: "/eventos",
   },
   {
-    date: "Próximamente",
-    title: "Media Maratón de Madrid",
-    location: "Madrid",
+    date: "Fecha por confirmar",
+    title: "Media Maratón de Sevilla",
+    location: "Sevilla",
     href: "/eventos",
   },
   {
-    date: "Próximamente",
-    title: "Media Maratón de Valencia",
-    location: "Valencia",
-    href: "/eventos",
-  },
-  {
-    date: "Próximamente",
+    date: "Fecha por confirmar",
     title: "Media Maratón de Barcelona",
     location: "Barcelona",
+    href: "/eventos",
+  },
+  {
+    date: "7 mar 2027",
+    title: "Media Maratón de Málaga",
+    location: "Málaga",
+    href: "/eventos",
+  },
+  {
+    date: "4 abr 2027",
+    title: "Movistar Madrid Medio Maratón",
+    location: "Madrid",
     href: "/eventos",
   },
 ];

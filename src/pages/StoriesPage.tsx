@@ -50,7 +50,13 @@ export function StoriesPage() {
             </div>
 
             <div className="story-feature-media" aria-label={featuredStory.imageAlt}>
-              <div className="story-image-placeholder">Foto del fundador</div>
+              <div className="story-image-placeholder">
+                {featuredStory.image ? (
+                  <img src={featuredStory.image} alt={featuredStory.imageAlt} />
+                ) : (
+                  "Foto del fundador"
+                )}
+              </div>
             </div>
           </article>
         </div>

@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { SectionHeader } from "../components/ui/SectionHeader";
+import { sendContactMessage } from "../services/contact";
 
 type ContactFormState = {
   name: string;
@@ -17,16 +18,34 @@ const initialForm: ContactFormState = {
 
 export function ContactPage() {
   const [form, setForm] = useState<ContactFormState>(initialForm);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
   const updateField = (field: keyof ContactFormState, value: string) => {
-    setIsSubmitted(false);
+    setFeedback(null);
     setForm((currentForm) => ({ ...currentForm, [field]: value }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setFeedback(null);
+
+    try {
+      await sendContactMessage(form);
+      setForm(initialForm);
+      setFeedback({
+        type: "success",
+        message: "Tu mensaje se ha enviado correctamente. Te responderemos lo antes posible.",
+      });
+    } catch (error) {
+      setFeedback({
+        type: "error",
+        message: error instanceof Error ? error.message : "No se pudo enviar el mensaje.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -130,14 +149,14 @@ export function ContactPage() {
               <p>
                 Al escribirnos aceptas que usemos tus datos únicamente para responder a tu consulta.
               </p>
-              <button className="button button-primary" type="submit">
-                Preparar mensaje
+              <button className="button button-primary" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Enviando mensaje…" : "Enviar mensaje"}
               </button>
             </div>
 
-            {isSubmitted && (
-              <div className="contact-form-feedback" role="status">
-                Hemos preparado tu mensaje. La conexión con el envío al backend se añadirá cuando esté disponible.
+            {feedback && (
+              <div className={`contact-form-feedback is-${feedback.type}`} role="status">
+                {feedback.message}
               </div>
             )}
           </form>

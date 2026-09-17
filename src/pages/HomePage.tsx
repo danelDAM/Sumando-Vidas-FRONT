@@ -95,7 +95,7 @@ export function HomePage() {
             {stories.map((story) => (
               <Card key={story.title} title={story.title} description={story.description} href={story.href}>
                 <div className="story-image-placeholder" aria-label={story.imageAlt}>
-                  Imagen
+                  {story.image ? <img src={story.image} alt={story.imageAlt} /> : "Imagen"}
                 </div>
               </Card>
             ))}
@@ -140,8 +140,8 @@ export function HomePage() {
         <div className="container">
           <SectionHeader
             eyebrow="Próximos eventos"
-            title="El recorrido de Por Ellos"
-            description="Málaga, Donosti, Madrid, Valencia y Barcelona serán las cinco grandes medias maratones que impulsarán la recaudación del proyecto."
+            title="Una agenda para seguir sumando"
+            description="Estas son las primeras carreras de nuestro calendario. Pronto añadiremos nuevos eventos, encuentros y actividades de Sumando Vidas."
           />
           <div className="card-grid">
             {events.map((event) => (
