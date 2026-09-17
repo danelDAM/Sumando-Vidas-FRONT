@@ -46,6 +46,15 @@ export function HomePage() {
       {/* Carrusel de patrocinadores a pantalla completa */}
       <SponsorCarousel />
 
+      <div className="home-ribbon-stage">
+        <div className="home-gold-ribbon-background" aria-hidden="true">
+          <span className="gold-ribbon-mark gold-ribbon-mark-1" />
+          <span className="gold-ribbon-mark gold-ribbon-mark-2" />
+          <span className="gold-ribbon-mark gold-ribbon-mark-3" />
+          <span className="gold-ribbon-mark gold-ribbon-mark-4" />
+          <span className="gold-ribbon-mark gold-ribbon-mark-5" />
+        </div>
+
       <section className="page-section reveal-group" id="quienes-somos" data-reveal>
         <div className="container split-section">
           <SectionHeader
@@ -192,6 +201,7 @@ export function HomePage() {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 }

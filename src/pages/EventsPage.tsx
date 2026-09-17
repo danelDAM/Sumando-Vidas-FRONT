@@ -2,6 +2,23 @@ import { Link } from "react-router-dom";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { raceEvents } from "../data/raceEvents";
 
+function getTimelineDateParts(date: string, fallback: string) {
+  if (!date) {
+    return [fallback];
+  }
+
+  const eventDate = new Date(`${date}T00:00:00`);
+
+  return [
+    `${new Intl.DateTimeFormat("es-ES", { day: "numeric" }).format(eventDate)} ${new Intl.DateTimeFormat("es-ES", {
+      month: "short",
+    })
+      .format(eventDate)
+      .replace(".", "")}`,
+    new Intl.DateTimeFormat("es-ES", { year: "numeric" }).format(eventDate),
+  ];
+}
+
 export function EventsPage() {
   const confirmedEvents = raceEvents.filter((event) => event.status === "confirmed");
   const eventsToConfirm = raceEvents.filter((event) => event.status === "pending");
@@ -27,13 +44,14 @@ export function EventsPage() {
           />
 
           <div className="events-timeline" aria-label="Cronología de las medias maratones">
-            {confirmedEvents.map((event, index) => (
+            {confirmedEvents.map((event) => (
               <article className="event-timeline-item" key={event.city}>
-                <div className="event-timeline-marker">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+                <div className="event-timeline-marker" aria-label={event.dateLabel}>
+                  {getTimelineDateParts(event.date, event.dateLabel).map((part) => (
+                    <span key={part}>{part}</span>
+                  ))}
                 </div>
                 <div className="event-timeline-card">
-                  <div className="event-timeline-date">{event.dateLabel}</div>
                   <div className="event-timeline-content">
                     <div>
                       <p className="eyebrow">{event.city}</p>
