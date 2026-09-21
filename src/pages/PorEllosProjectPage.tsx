@@ -239,7 +239,7 @@ export function PorEllosProjectPage() {
                   </div>
                   <h4>{item.title}</h4>
                   <p>
-                    {item.description} El importe se destina a apoyar la parada de {selectedRaceCity}.
+                    {item.description}
                   </p>
                   <button className="button button-primary" type="button" onClick={() => openStoreModal(item)}>
                     Comprar por {item.price} €
