@@ -2674,31 +2674,6 @@ p {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
-  }
-
-  [data-reveal],
-  .reveal-group .section-header,
-  .reveal-group .content-stack,
-  .reveal-group .card,
-  .reveal-group .metric,
-  .reveal-group .final-cta-content {
-    opacity: 1;
-    transform: none;
-  }
-
-  .gold-ribbon-mark {
-    animation: none;
-  }
-}
-
 @media (max-width: 980px) {
   .home-gold-ribbon-background::before {
     left: -42px;
