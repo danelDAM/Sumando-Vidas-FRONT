@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Layout } from "./components/layout/Layout";
 import { legalNavigation, futurePages } from "./data/navigation";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
@@ -14,6 +15,7 @@ import { DonationsPage } from "./pages/DonationsPage";
 import { EventsPage } from "./pages/EventsPage";
 
 export default function App() {
+  const { t } = useTranslation();
   useScrollReveal();
 
   return (
@@ -33,14 +35,14 @@ export default function App() {
           <Route
             key={page.path}
             path={page.path}
-            element={<PlaceholderPage title={page.label} />}
+            element={<PlaceholderPage title={t(page.key)} />}
           />
         ))}
         {legalNavigation.map((page) => (
           <Route
             key={page.href}
             path={page.href.replace("/", "")}
-            element={<PlaceholderPage title={page.label} />}
+            element={<PlaceholderPage title={t(page.key)} />}
           />
         ))}
       </Route>

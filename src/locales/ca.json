@@ -1,0 +1,226 @@
+{
+  "common": {
+    "skipContent": "Saltar al contingut",
+    "donate": "Donar",
+    "donateNow": "Donar ara",
+    "collaborate": "Col·laborar",
+    "language": "Idioma",
+    "openMenu": "Obrir menú",
+    "closeMenu": "Tancar menú",
+    "readMore": "Llegir més",
+    "seeMore": "Veure més",
+    "supportCause": "Ajudar la causa",
+    "readStory": "Llegir història",
+    "viewRanking": "Veure la classificació",
+    "readHistory": "Coneix la nostra història",
+    "months": "mesos",
+    "distance": "km",
+    "country": "Espanya"
+  },
+  "nav": {
+    "about": "Qui som",
+    "projects": "Projectes",
+    "stories": "Històries",
+    "events": "Esdeveniments",
+    "transparency": "Transparència",
+    "contact": "Contacte",
+    "volunteering": "Voluntariat",
+    "donations": "Donacions",
+    "ourHistory": "La nostra història",
+    "collaboratingCompanies": "Empreses col·laboradores",
+    "legalNotice": "Avís legal",
+    "privacyPolicy": "Política de privadesa",
+    "cookiesPolicy": "Política de cookies"
+  },
+  "footer": {
+    "description": "Associació espanyola de suport a nens i famílies afectades pel càncer infantil.",
+    "sections": "Seccions",
+    "social": "Xarxes socials",
+    "contact": "Contacte",
+    "legal": "Informació legal",
+    "email": "info@sumandovidas.org",
+    "phone": "+34 000 000 000",
+    "country": "Espanya"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Càncer infantil",
+      "title": "Acompanyem nens i famílies quan més ho necessiten",
+      "donate": "Donar ara",
+      "collaborate": "Col·laborar"
+    },
+    "whoWeAre": {
+      "eyebrow": "Qui som",
+      "title": "Una associació centrada en les famílies",
+      "description": "Treballarem perquè cap família es senti sola durant el procés de la malaltia.",
+      "text1": "La nostra missió és acompanyar, escoltar i facilitar recursos a nens, mares, pares, germans i cuidadors durant les diferents etapes del càncer infantil.",
+      "text2": "Els nostres objectius combinen suport directe, sensibilització social, col·laboració amb entitats i creació de xarxes d'ajuda sostenibles.",
+      "cta": "Coneix la nostra història"
+    },
+    "whatWeDo": {
+      "eyebrow": "Què fem",
+      "title": "Projectes preparats per créixer",
+      "description": "Por Ellos serà el primer projecte actiu de l'associació, amb una campanya esportiva i solidària al voltant de cinc grans mitges maratons."
+    },
+    "stories": {
+      "eyebrow": "Històries",
+      "title": "Veus que donen sentit al camí",
+      "description": "Cada història pot incorporar imatge, títol, resum i enllaç a una pàgina ampliada.",
+      "placeholder": "Imatge"
+    },
+    "impact": {
+      "eyebrow": "Impacte",
+      "title": "Dades preparades per connectar amb mètriques reals",
+      "description": "Aquests indicadors es podran alimentar més endavant des de CMS, base de dades o informes interns.",
+      "families": "Famílies acompanyades",
+      "scholarships": "Ajuts gestionats",
+      "volunteers": "Persones col·laboradores",
+      "events": "Esdeveniments solidaris"
+    },
+    "collaborate": {
+      "eyebrow": "Col·laborar",
+      "title": "Diverses formes de sumar",
+      "description": "La secció recull les principals vies de participació i pot convertir-se després en pàgines independents."
+    },
+    "events": {
+      "eyebrow": "Propers esdeveniments",
+      "title": "Una agenda per seguir sumant",
+      "description": "Aquestes són les primeres curses del nostre calendari. Aviat afegirem nous esdeveniments, trobades i activitats de Sumando Vidas."
+    },
+    "transparency": {
+      "eyebrow": "Transparència",
+      "title": "Claredat sobre cada ajuda rebuda",
+      "description": "Espai per explicar l'ús de les donacions, resultats i informes públics.",
+      "text": "Aquesta secció està preparada per publicar documents, memòries, resultats de campanyes i criteris d'assignació d'ajuts.",
+      "annualMemory": "Memòria anual",
+      "economicReports": "Informes econòmics",
+      "donationDestination": "Destinació de les donacions"
+    },
+    "cta": {
+      "title": "La teva ajuda pot alleujar el camí d'una família",
+      "description": "Cada aportació, cada hora i cada gest ajuden a sostenir una xarxa d'ajuda real."
+    },
+    "programs": {
+      "porEllos": {
+        "title": "Por Ellos",
+        "description": "Projecte solidari per recaptar el màxim de diners possible mentre Felipe, fundador de Sumando Vidas i supervivent del càncer infantil, juntament amb l'equip de l'associació, corre les cinc grans mitges maratons d'Espanya."
+      },
+      "familySupport": {
+        "title": "Acompanyament familiar",
+        "description": "Suport proper a famílies durant el diagnòstic, tractament i recuperació."
+      },
+      "directAid": {
+        "title": "Ajuts directes",
+        "description": "Cobertura de necessitats essencials vinculades a desplaçaments, estada i cures."
+      }
+    },
+    "storyCards": {
+      "felipe": {
+        "title": "La història de Felipe",
+        "description": "Als 12 anys, al malagueny li van diagnosticar un limfoma de no Hodgkin de cèl·lules T i, mentre estava a la UCI, una amiga li va acostar aquesta imatge sagrada mitjançant una polsera i una estampa. Des de llavors, no s'ha separat d'ella. Després de superar-ho, es va proposar estudiar Medicina i especialitzar-se en oncologia infantil per poder ajudar tots els nens amb la mateixa condició. Finalment, mentre cursava la carrera, va decidir fundar l'associació.",
+        "imageAlt": "Història del fundador de l'associació"
+      },
+      "family": {
+        "title": "Una família acompanyada",
+        "description": "Espai preparat per explicar històries reals amb sensibilitat i consentiment.",
+        "imageAlt": "Imatge d'una història familiar"
+      },
+      "challenges": {
+        "title": "Petits grans reptes",
+        "description": "Relats de superació, comunitat i suport durant el procés oncològic infantil.",
+        "imageAlt": "Imatge d'una història infantil"
+      }
+    },
+    "cards": {
+      "donations": {
+        "title": "Donacions",
+        "description": "Aporta recursos per sostenir programes d'ajuda directa i acompanyament."
+      },
+      "join": {
+        "title": "Fer-se soci",
+        "description": "Contribueix de manera recurrent per donar estabilitat als projectes."
+      },
+      "events": {
+        "title": "Esdeveniments",
+        "description": "Participa en curses, reptes, campanyes i activitats solidàries."
+      },
+      "companies": {
+        "title": "Empreses i voluntariat",
+        "description": "Col·labora des de la teva empresa o suma el teu temps com a persona voluntària."
+      }
+    },
+    "eventsList": {
+      "valencia": "Mitja Marató València Trinidad Alfonso Zurich",
+      "donosti": "Mitja Marató de Donostia",
+      "sevilla": "Mitja Marató de Sevilla",
+      "barcelona": "Mitja Marató de Barcelona",
+      "malaga": "Mitja Marató de Màlaga",
+      "madrid": "Movistar Madrid Mitja Marató",
+      "locationValencia": "València",
+      "locationDonosti": "Sant Sebastià",
+      "locationSevilla": "Sevilla",
+      "locationBarcelona": "Barcelona",
+      "locationMalaga": "Màlaga",
+      "locationMadrid": "Madrid",
+      "dateValencia": "25 d'octubre de 2026",
+      "dateDonosti": "Data per confirmar",
+      "dateSevilla": "Data per confirmar",
+      "dateBarcelona": "Data per confirmar",
+      "dateMalaga": "7 de març de 2027",
+      "dateMadrid": "4 d'abril de 2027"
+    }
+  },
+  "projects": {
+    "page": {
+      "eyebrow": "Projectes",
+      "title": "Iniciatives per sumar suport real",
+      "description": "Sumando Vidas organitzarà les seves campanyes en projectes concrets, mesurables i fàcils de seguir. El primer serà Por Ellos.",
+      "stats": {
+        "marathons": "Mitges maratons",
+        "goal": "Meta simulada",
+        "distance": "Recorregut solidari",
+        "monthlyChallenge": "Repte mensual",
+        "leaderboards": "Taules mensuals",
+        "challenges": "Reptes a l'any"
+      },
+      "moreProjects": {
+        "eyebrow": "Més projectes",
+        "title": "Noves formes de sumar",
+        "description": "Campanyes pensades per convertir la solidaritat en comunitat, compromís i ganes de seguir ajudant."
+      }
+    },
+    "featured": {
+      "title": "Por Ellos",
+      "summary": "Una campanya per transformar cada quilòmetre en suport real per a famílies amb càncer infantil.",
+      "description": "Tots els fons i els reptes de les curses estaran orientats a sostenir ajuts concrets i acompanyament proper.",
+      "cta": "Veure més",
+      "btnDonate": "Donar",
+      "ranking": "Veure la classificació"
+    },
+    "category": {
+      "family": "Acompanyament familiar",
+      "aid": "Ajuts directes",
+      "wellbeing": "Benestar emocional"
+    },
+    "challenges": {
+      "title": "Héroes que suman",
+      "description": "Empreses i persones competeixen cada mes per liderar una classificació solidària i deixar la seva empremta a la lluita contra el càncer infantil.",
+      "text": "Empreses i persones competeixen cada mes per liderar una classificació solidària i deixar la seva empremta a la lluita contra el càncer infantil."
+    }
+  },
+  "storiesPage": {
+    "eyebrow": "Històries",
+    "title": "Històries que donen sentit al camí",
+    "description": "En aquesta secció recollim relats reals que acompanyen la missió de l'associació: històries de lluita, esperança, comunitat i suport en els moments més difícils.",
+    "featured": "Història destacada",
+    "readMore": "Llegir més",
+    "support": "Ajudar la causa",
+    "moreStories": "Més històries",
+    "titleMore": "Relats d'esperança i comunitat",
+    "descriptionMore": "Cada història reflecteix una manera diferent d'acompanyar, sostenir i caminar al costat de famílies i nens que viuen el càncer infantil.",
+    "photoFounder": "Foto del fundador",
+    "readHistory": "Llegir història",
+    "summary": "És el fundador de l'associació, va superar un càncer infantil i ara vol acabar Medicina per especialitzar-se en oncologia infantil i seguir ajudant altres nens.",
+    "longDescription": "Als 12 anys, al malagueny li van diagnosticar un limfoma no Hodgkin de cèl·lules T. Estant a la UCI, una amiga li va acostar una imatge sagrada mitjançant una polsera i una estampa, i des de llavors no s'ha separat d'ella. Després de superar la malaltia, va decidir estudiar Medicina per poder ajudar més nens amb la mateixa condició i, mentre cursava la carrera, va fundar l'associació."
+  }
+}

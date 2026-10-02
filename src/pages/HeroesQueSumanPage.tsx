@@ -60,7 +60,7 @@ export function HeroesQueSumanPage() {
 
   return (
     <>
-      <section className="page-section heroes-project-hero">
+      <section className="page-section page-hero heroes-project-hero">
         <div className="container heroes-project-hero-grid">
           <div>
             <p className="eyebrow">Proyecto mensual</p>

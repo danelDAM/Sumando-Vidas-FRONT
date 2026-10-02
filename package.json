@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",
+    "i18next": "^26.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-i18next": "^17.0.15",
     "react-router-dom": "^7.0.0",
     "typescript": "^5.8.0",
     "vite": "^7.0.0"

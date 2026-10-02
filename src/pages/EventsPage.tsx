@@ -25,8 +25,8 @@ export function EventsPage() {
 
   return (
     <>
-      <section className="page-section events-hero">
-        <div className="container events-hero-content">
+      <section className="page-section page-hero">
+        <div className="container page-hero-content">
             <p className="eyebrow">Agenda Sumando Vidas</p>
             <h1>Eventos para seguir sumando</h1>
           <p>

@@ -4,8 +4,8 @@ type PlaceholderPageProps = {
 
 export function PlaceholderPage({ title }: PlaceholderPageProps) {
   return (
-    <section className="page-section placeholder-page">
-      <div className="container">
+    <section className="page-section placeholder-page page-hero">
+      <div className="container page-hero-content">
         <p className="eyebrow">Página preparada</p>
         <h1>{title}</h1>
         <p>

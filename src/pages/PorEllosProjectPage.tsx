@@ -94,7 +94,7 @@ export function PorEllosProjectPage() {
 
   return (
     <>
-      <section className="por-ellos-hero">
+      <section className="por-ellos-hero page-hero">
         <div className="container por-ellos-hero-grid">
           <div className="por-ellos-copy">
             <p className="eyebrow">{featuredProject.status}</p>

@@ -1,0 +1,226 @@
+{
+  "common": {
+    "skipContent": "Saltar al contenido",
+    "donate": "Donar",
+    "donateNow": "Donar ahora",
+    "collaborate": "Colaborar",
+    "language": "Idioma",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "readMore": "Leer más",
+    "seeMore": "Ver más",
+    "supportCause": "Apoyar la causa",
+    "readStory": "Leer historia",
+    "viewRanking": "Ver el ranking",
+    "readHistory": "Conocer nuestra historia",
+    "months": "meses",
+    "distance": "km",
+    "country": "España"
+  },
+  "nav": {
+    "about": "Quiénes somos",
+    "projects": "Proyectos",
+    "stories": "Historias",
+    "events": "Eventos",
+    "transparency": "Transparencia",
+    "contact": "Contacto",
+    "volunteering": "Voluntariado",
+    "donations": "Donaciones",
+    "ourHistory": "Nuestra historia",
+    "collaboratingCompanies": "Empresas colaboradoras",
+    "legalNotice": "Aviso legal",
+    "privacyPolicy": "Política de privacidad",
+    "cookiesPolicy": "Política de cookies"
+  },
+  "footer": {
+    "description": "Asociación española de apoyo a niños y familias afectados por el cáncer infantil.",
+    "sections": "Secciones",
+    "social": "Redes",
+    "contact": "Contacto",
+    "legal": "Información legal",
+    "email": "info@sumandovidas.org",
+    "phone": "+34 000 000 000",
+    "country": "España"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Cáncer infantil",
+      "title": "Acompañamos a niños y familias cuando más lo necesitan",
+      "donate": "Donar ahora",
+      "collaborate": "Colaborar"
+    },
+    "whoWeAre": {
+      "eyebrow": "Quiénes somos",
+      "title": "Una asociación centrada en las familias",
+      "description": "Trabajamos para que ninguna familia se sienta sola durante el proceso de enfermedad.",
+      "text1": "Nuestra misión es acompañar, escuchar y facilitar recursos a niños, madres, padres, hermanos y cuidadores durante las distintas etapas del cáncer infantil.",
+      "text2": "Nuestros objetivos combinan apoyo directo, sensibilización social, colaboración con entidades y creación de redes de ayuda sostenibles.",
+      "cta": "Conocer nuestra historia"
+    },
+    "whatWeDo": {
+      "eyebrow": "Qué hacemos",
+      "title": "Proyectos preparados para crecer",
+      "description": "Por Ellos será el primer proyecto activo de la asociación, con una campaña deportiva y solidaria alrededor de cinco grandes medias maratones."
+    },
+    "stories": {
+      "eyebrow": "Historias",
+      "title": "Voces que dan sentido al camino",
+      "description": "Cada historia puede incorporar imagen, título, resumen y enlace a una página ampliada.",
+      "placeholder": "Imagen"
+    },
+    "impact": {
+      "eyebrow": "Impacto",
+      "title": "Datos preparados para conectarse a métricas reales",
+      "description": "Estos indicadores podrán alimentarse más adelante desde CMS, base de datos o informes internos.",
+      "families": "Familias acompañadas",
+      "scholarships": "Ayudas gestionadas",
+      "volunteers": "Personas colaboradoras",
+      "events": "Eventos solidarios"
+    },
+    "collaborate": {
+      "eyebrow": "Colaborar",
+      "title": "Distintas formas de sumar",
+      "description": "La sección recoge las vías principales de participación y puede convertirse después en páginas independientes."
+    },
+    "events": {
+      "eyebrow": "Próximos eventos",
+      "title": "Una agenda para seguir sumando",
+      "description": "Estas son las primeras carreras de nuestro calendario. Pronto añadiremos nuevos eventos, encuentros y actividades de Sumando Vidas."
+    },
+    "transparency": {
+      "eyebrow": "Transparencia",
+      "title": "Claridad sobre cada ayuda recibida",
+      "description": "Espacio para explicar el uso de las donaciones, resultados e informes públicos.",
+      "text": "Esta sección está preparada para publicar documentos, memorias, resultados de campañas y criterios de asignación de ayudas.",
+      "annualMemory": "Memoria anual",
+      "economicReports": "Informes económicos",
+      "donationDestination": "Destino de donaciones"
+    },
+    "cta": {
+      "title": "Tu ayuda puede aliviar el camino de una familia",
+      "description": "Cada aportación, cada hora y cada gesto ayudan a sostener una red de apoyo real."
+    },
+    "programs": {
+      "porEllos": {
+        "title": "Por Ellos",
+        "description": "Proyecto solidario para recaudar el máximo dinero posible mientras Felipe, fundador de Sumando Vidas y superviviente de cáncer infantil, junto al equipo de la asociación, corre las cinco grandes medias maratones de España."
+      },
+      "familySupport": {
+        "title": "Acompañamiento familiar",
+        "description": "Apoyo cercano a familias durante el diagnóstico, tratamiento y recuperación."
+      },
+      "directAid": {
+        "title": "Ayudas directas",
+        "description": "Cobertura de necesidades esenciales vinculadas a desplazamientos, estancia y cuidados."
+      }
+    },
+    "storyCards": {
+      "felipe": {
+        "title": "La historia de Felipe",
+        "description": "A los 12 años, al malagueño le diagnosticaron un linfoma de no Hodgkin de células T y, estando en la UCI, una amiga le acercó a esta sagrada imagen a través de una pulsera y una estampa. Desde entonces, no se ha separado de ella. Tras superarlo, se propuso estudiar Medicina y especializarse en oncología infantil para poder ayudar a todos los niños con su misma condición. Finalmente, mientras cursaba la carrera, decidió fundar la asociación.",
+        "imageAlt": "Historia del fundador de la asociación"
+      },
+      "family": {
+        "title": "Una familia acompañada",
+        "description": "Espacio preparado para contar historias reales con sensibilidad y consentimiento.",
+        "imageAlt": "Imagen de una historia familiar"
+      },
+      "challenges": {
+        "title": "Pequeños grandes retos",
+        "description": "Relatos de superación, comunidad y apoyo durante el proceso oncológico infantil.",
+        "imageAlt": "Imagen de una historia infantil"
+      }
+    },
+    "cards": {
+      "donations": {
+        "title": "Donaciones",
+        "description": "Aporta recursos para sostener programas de ayuda directa y acompañamiento."
+      },
+      "join": {
+        "title": "Hacerse socio",
+        "description": "Contribuye de forma recurrente para dar estabilidad a los proyectos."
+      },
+      "events": {
+        "title": "Eventos",
+        "description": "Participa en carreras, retos, campañas y actividades solidarias."
+      },
+      "companies": {
+        "title": "Empresas y voluntariado",
+        "description": "Colabora desde tu empresa o suma tu tiempo como persona voluntaria."
+      }
+    },
+    "eventsList": {
+      "valencia": "Medio Maratón Valencia Trinidad Alfonso Zurich",
+      "donosti": "Media Maratón de Donosti",
+      "sevilla": "Media Maratón de Sevilla",
+      "barcelona": "Media Maratón de Barcelona",
+      "malaga": "Media Maratón de Málaga",
+      "madrid": "Movistar Madrid Medio Maratón",
+      "locationValencia": "Valencia",
+      "locationDonosti": "San Sebastián",
+      "locationSevilla": "Sevilla",
+      "locationBarcelona": "Barcelona",
+      "locationMalaga": "Málaga",
+      "locationMadrid": "Madrid",
+      "dateValencia": "25 oct 2026",
+      "dateDonosti": "Fecha por confirmar",
+      "dateSevilla": "Fecha por confirmar",
+      "dateBarcelona": "Fecha por confirmar",
+      "dateMalaga": "7 mar 2027",
+      "dateMadrid": "4 abr 2027"
+    }
+  },
+  "projects": {
+    "page": {
+      "eyebrow": "Proyectos",
+      "title": "Iniciativas para sumar apoyo real",
+      "description": "Sumando Vidas organizará sus campañas en proyectos concretos, medibles y fáciles de seguir. El primero será Por Ellos.",
+      "stats": {
+        "marathons": "Medias maratones",
+        "goal": "Meta simulada",
+        "distance": "Recorrido solidario",
+        "monthlyChallenge": "Reto mensual",
+        "leaderboards": "Leaderboards mensuales",
+        "challenges": "Retos al año"
+      },
+      "moreProjects": {
+        "eyebrow": "Más proyectos",
+        "title": "Nuevas formas de sumar",
+        "description": "Campañas pensadas para convertir la solidaridad en comunidad, compromiso y ganas de seguir ayudando."
+      }
+    },
+    "featured": {
+      "title": "Por Ellos",
+      "summary": "Una campaña para transformar cada kilómetro en apoyo real para familias con cáncer infantil.",
+      "description": "Todos los fondos y los retos de las carreras estarán orientados a sostener ayudas concretas y acompañamiento cercano.",
+      "cta": "Ver más",
+      "btnDonate": "Donar",
+      "ranking": "Ver el ranking"
+    },
+    "category": {
+      "family": "Acompañamiento familiar",
+      "aid": "Ayudas directas",
+      "wellbeing": "Bienestar emocional"
+    },
+    "challenges": {
+      "title": "Héroes que suman",
+      "description": "Empresas y personas compiten cada mes para liderar una clasificación solidaria y dejar su huella en la lucha contra el cáncer infantil.",
+      "text": "Empresas y personas compiten cada mes para liderar una clasificación solidaria y dejar su huella en la lucha contra el cáncer infantil."
+    }
+  },
+  "storiesPage": {
+    "eyebrow": "Historias",
+    "title": "Historias que dan sentido al camino",
+    "description": "En esta sección recogemos relatos reales que acompañan la misión de la asociación: historias de lucha, esperanza, comunidad y apoyo en los momentos más difíciles.",
+    "featured": "Historia destacada",
+    "readMore": "Leer más",
+    "support": "Apoyar la causa",
+    "moreStories": "Más historias",
+    "titleMore": "Relatos de esperanza y comunidad",
+    "descriptionMore": "Cada historia refleja una forma distinta de acompañar, sostener y caminar junto a familias y niños que viven el cáncer infantil.",
+    "photoFounder": "Foto del fundador",
+    "readHistory": "Leer historia",
+    "summary": "Es el fundador de la asociación, superó un cáncer infantil y ahora quiere terminar Medicina para especializarse en oncología infantil y seguir ayudando a otros niños.",
+    "longDescription": "A los 12 años, al malagueño le diagnosticaron un linfoma de no Hodgkin de células T. Estando en la UCI, una amiga le acercó una imagen sagrada a través de una pulsera y una estampa, y desde entonces no se ha separado de ella. Tras superar la enfermedad, decidió estudiar Medicina para poder ayudar a más niños con su misma condición y, mientras cursaba la carrera, fundó la asociación."
+  }
+}

@@ -50,8 +50,8 @@ export function ContactPage() {
 
   return (
     <>
-      <section className="page-section contact-hero">
-        <div className="container contact-hero-content">
+      <section className="page-section page-hero">
+        <div className="container page-hero-content">
           <p className="eyebrow">Estamos para escucharte</p>
           <h1>Hablemos de cómo sumar</h1>
           <p>

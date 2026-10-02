@@ -1,0 +1,997 @@
+/* 16. Por Ellos project page */
+.por-ellos-hero {
+  padding-block: clamp(56px, 8vw, 112px);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Visual improvements for the Por Ellos project page */
+.por-ellos-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.por-ellos-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(31,41,51,0.02), rgba(31,41,51,0.045));
+}
+
+.por-ellos-copy h1 {
+  text-shadow: 0 6px 30px rgba(31, 41, 51, 0.06);
+}
+
+.por-ellos-copy .action-row .button-primary {
+  padding: 14px 22px;
+  font-size: 1.05rem;
+}
+
+.fundraising-panel {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  backdrop-filter: blur(6px);
+}
+
+.fundraising-panel strong {
+  color: #0f1720;
+  letter-spacing: -0.5px;
+}
+
+.race-map-card {
+  border-radius: 12px;
+}
+
+.race-stop-marker {
+  width: 68px;
+  height: 68px;
+}
+
+/* Por Ellos: fundraising panel at tablet widths */
+@media (max-width: 980px) {
+  .fundraising-panel {
+    position: static;
+  }
+  .race-stop-marker {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+.por-ellos-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.65fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.fundraising-panel {
+  display: grid;
+  gap: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 34px);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow-soft);
+}
+
+.fundraising-panel strong {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1;
+}
+
+.fundraising-panel span {
+  color: #4b5563;
+}
+
+.progress-track {
+  overflow: hidden;
+  height: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #1f2933;
+  transition: width 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.donation-chips {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.donation-chips button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1f2933;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform var(--motion-medium),
+    border-color var(--motion-fast),
+    background var(--motion-fast),
+    box-shadow var(--motion-fast);
+}
+
+.donation-chips button:hover {
+  border-color: #1f2933;
+  background: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 18px rgba(31, 41, 51, 0.05);
+}
+
+/* 17. Por Ellos: donation modal */
+.donation-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(3px);
+  padding: 24px;
+}
+
+.donation-modal {
+  position: relative;
+  width: min(100%, 460px);
+  display: grid;
+  gap: 18px;
+  border: 1px solid rgba(31, 41, 51, 0.08);
+  border-radius: 18px;
+  background: #ffffff;
+  padding: clamp(24px, 4vw, 34px);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.2);
+}
+
+.donation-modal h3 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.donation-close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.donation-choice-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.donation-choice-list button {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #1f2933;
+  padding: 12px 8px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    border-color var(--motion-fast),
+    background var(--motion-fast),
+    transform var(--motion-medium);
+}
+
+.donation-choice-list button:hover,
+.donation-choice-list button.is-selected {
+  border-color: #1f2933;
+  background: #1f2933;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.donation-custom-amount {
+  font-weight: 700;
+  color: #1f2933;
+}
+
+.donation-modal input {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  color: #111827;
+  background: #ffffff;
+}
+
+.donation-modal input:focus {
+  outline: 2px solid rgba(31, 41, 51, 0.15);
+  border-color: #1f2933;
+}
+
+.donation-city-field {
+  display: grid;
+  gap: 8px;
+}
+
+.donation-city-field label {
+  font-weight: 700;
+  color: #1f2933;
+}
+
+.donation-city-field select {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  background: #ffffff;
+  color: #111827;
+  font: inherit;
+}
+
+.donation-city-field select:focus {
+  outline: 2px solid rgba(31, 41, 51, 0.15);
+  border-color: #1f2933;
+}
+
+.donation-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.donation-feedback {
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.donation-feedback--info {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.donation-feedback--success {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.donation-feedback--error {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* 18. Por Ellos: race experience and city leaderboard */
+.race-experience {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: stretch;
+}
+
+.race-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(90px, 1fr));
+  gap: 14px;
+  align-items: center;
+  min-height: 300px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 34px 24px;
+  background: #f9fafb;
+}
+
+.race-line {
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 50%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #d1d5db;
+  transform: translateY(-50%);
+}
+
+.race-line span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #1f2933;
+  transition: width 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.race-stop {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  border: 0;
+  background: transparent;
+  color: #1f2933;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  transition: transform var(--motion-medium);
+}
+
+.race-stop:hover {
+  transform: translateY(-8px);
+}
+
+.race-stop-marker {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 2px solid #1f2933;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(31, 41, 51, 0.08);
+  transition:
+    background var(--motion-fast),
+    color var(--motion-fast),
+    transform var(--motion-medium),
+    box-shadow var(--motion-medium);
+}
+
+.race-stop:hover .race-stop-marker,
+.race-stop.is-active .race-stop-marker {
+  background: #1f2933;
+  color: #ffffff;
+  box-shadow: var(--shadow-soft);
+  transform: scale(1.08);
+}
+
+.race-detail-card {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: clamp(24px, 4vw, 36px);
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.city-leaderboard {
+  max-width: 900px;
+  margin-inline: auto;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 34px);
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.leaderboard-intro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.leaderboard-intro strong {
+  font-size: 1.25rem;
+}
+
+.leaderboard-intro span,
+.leaderboard-city span {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.leaderboard-list {
+  display: grid;
+  gap: 10px;
+}
+
+.leaderboard-podium {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.leaderboard-podium .leaderboard-row {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  min-height: 230px;
+  padding: 22px 14px;
+  text-align: center;
+}
+
+.leaderboard-podium .leaderboard-row--top-1 {
+  min-height: 270px;
+  order: 2;
+}
+
+.leaderboard-podium .leaderboard-row--top-2 {
+  order: 1;
+}
+
+.leaderboard-podium .leaderboard-row--top-3 {
+  order: 3;
+}
+
+.leaderboard-podium .leaderboard-city {
+  min-height: 54px;
+  align-content: center;
+}
+
+.leaderboard-podium .leaderboard-progress {
+  width: 100%;
+}
+
+.leaderboard-podium .leaderboard-amount {
+  min-width: 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.leaderboard-chasers {
+  margin-top: 28px;
+}
+
+.leaderboard-chasers > p {
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: 42px minmax(120px, 0.7fr) minmax(100px, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 13px 16px;
+  background: #ffffff;
+  color: #1f2933;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: transform var(--motion-medium), border-color var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.leaderboard-row:hover,
+.leaderboard-row.is-selected {
+  border-color: #1f2933;
+  box-shadow: 0 8px 18px rgba(31, 41, 51, 0.08);
+  transform: translateY(-2px);
+}
+
+.leaderboard-row--top-1 {
+  border-color: #b59a52;
+  background: #fffdf5;
+}
+
+.leaderboard-row--top-2 {
+  border-color: #b8bec5;
+}
+
+.leaderboard-row--top-3 {
+  border-color: #c79a78;
+}
+
+.leaderboard-rank {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f3f4f6;
+  font-weight: 800;
+}
+
+.leaderboard-city {
+  display: grid;
+  gap: 2px;
+}
+
+.leaderboard-progress {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.leaderboard-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #1f2933;
+  transition: width 500ms ease;
+}
+
+.leaderboard-amount {
+  min-width: 92px;
+  text-align: right;
+}
+
+.leaderboard-cta {
+  margin-top: 22px;
+}
+
+/* Por Ellos: city leaderboard on mobile */
+@media (max-width: 640px) {
+  .leaderboard-podium {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .leaderboard-podium .leaderboard-row,
+  .leaderboard-podium .leaderboard-row--top-1 {
+    order: initial;
+    min-height: 0;
+  }
+}
+
+/* 19. Por Ellos: race details, map, and store */
+.race-detail-card h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.race-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.race-facts div {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.race-facts dt {
+  font-weight: 700;
+}
+
+.race-facts dd {
+  margin: 4px 0 0;
+  color: #4b5563;
+}
+
+.race-map-card {
+  position: relative;
+  display: grid;
+  gap: 28px;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 34px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.6)),
+    repeating-linear-gradient(45deg, rgba(31, 41, 51, 0.035) 0 1px, transparent 1px 18px),
+    #f3f6f7;
+  box-shadow: 0 20px 45px rgba(31, 41, 51, 0.08);
+}
+
+.race-map-card::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -80px;
+  top: -90px;
+  border: 1px solid rgba(31, 41, 51, 0.12);
+  border-radius: 999px;
+}
+
+.race-map-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.race-map-header h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.4rem, 3vw, 2.15rem);
+  line-height: 1.1;
+}
+
+.race-map-header > span {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: #ffffff;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.store-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.store-filter-button {
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1f2933;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background var(--motion-fast),
+    border-color var(--motion-fast),
+    transform var(--motion-medium);
+}
+
+.store-filter-button:hover,
+.store-filter-button.is-active {
+  background: #1f2933;
+  border-color: #1f2933;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.store-stop-card {
+  display: grid;
+  gap: 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 22px;
+  background: #ffffff;
+  box-shadow: 0 10px 22px rgba(31, 41, 51, 0.04);
+}
+
+.store-selected-stop {
+  margin-top: 8px;
+}
+
+.store-stop-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 14px;
+}
+
+.store-stop-header h3 {
+  margin-bottom: 0;
+}
+
+.store-stop-header span {
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.store-item-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.store-item {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+.store-item-image {
+  height: 180px;
+  background: #eef2ff;
+}
+
+.store-item-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.store-item-topline,
+.store-item h4,
+.store-item p,
+.store-item .button {
+  margin-inline: 16px;
+}
+
+.store-item-topline {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.store-item h4 {
+  margin-bottom: 0;
+  font-size: 1.05rem;
+}
+
+.store-item p {
+  margin-bottom: 0;
+  color: #4b5563;
+}
+
+.store-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.store-item strong {
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+.store-item .button {
+  justify-self: flex-start;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+.race-map-card .race-track {
+  grid-template-columns: repeat(5, minmax(86px, 1fr));
+  min-height: 360px;
+  border: 0;
+  padding: 42px 8px 62px;
+  background: transparent;
+}
+
+.race-map-card .race-line {
+  left: 7%;
+  right: 7%;
+  top: 49%;
+  height: 10px;
+  overflow: visible;
+  border: 0;
+  background: rgba(31, 41, 51, 0.14);
+  box-shadow: inset 0 1px 2px rgba(31, 41, 51, 0.16);
+}
+
+.race-map-card .race-line::before {
+  content: "";
+  position: absolute;
+  inset: -18px -2px;
+  border-top: 1px dashed rgba(31, 41, 51, 0.22);
+  transform: translateY(18px);
+}
+
+.race-map-card .race-line span {
+  position: relative;
+  background: linear-gradient(90deg, #1f2933, #52606d);
+  box-shadow: 0 0 18px rgba(31, 41, 51, 0.24);
+}
+
+.race-map-card .race-line span::after {
+  content: "";
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #1f2933;
+  box-shadow: 0 0 0 8px rgba(31, 41, 51, 0.12);
+  transform: translateY(-50%);
+}
+
+.race-map-card .race-stop {
+  align-self: center;
+}
+
+.race-map-card .race-stop:nth-of-type(even) {
+  transform: translateY(-58px);
+}
+
+.race-map-card .race-stop:nth-of-type(odd) {
+  transform: translateY(58px);
+}
+
+.race-map-card .race-stop:hover:nth-of-type(even) {
+  transform: translateY(-68px);
+}
+
+.race-map-card .race-stop:hover:nth-of-type(odd) {
+  transform: translateY(48px);
+}
+
+.race-map-card .race-stop.is-active:nth-of-type(even) {
+  transform: translateY(-68px) scale(1.02);
+}
+
+.race-map-card .race-stop.is-active:nth-of-type(odd) {
+  transform: translateY(48px) scale(1.02);
+}
+
+.race-stop-text {
+  display: grid;
+  gap: 2px;
+  min-width: 94px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 18px rgba(31, 41, 51, 0.06);
+  transition:
+    border-color var(--motion-fast),
+    box-shadow var(--motion-medium),
+    background var(--motion-fast);
+}
+
+.race-stop-text small {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.race-stop.is-active .race-stop-text,
+.race-stop:hover .race-stop-text {
+  border-color: #1f2933;
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.finish-label {
+  position: absolute;
+  right: 4px;
+  bottom: 14px;
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  border: 1px solid #1f2933;
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: #1f2933;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.race-detail-card {
+  overflow: hidden;
+}
+
+.race-detail-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #1f2933, #9ca3af);
+}
+
+/* 20. Scroll reveals and animation */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 620ms ease,
+    transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-group .section-header,
+.reveal-group .content-stack,
+.reveal-group .card,
+.reveal-group .metric,
+.reveal-group .final-cta-content {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 560ms ease,
+    transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow var(--motion-medium),
+    border-color var(--motion-fast),
+    background var(--motion-fast);
+}
+
+.reveal-group.is-visible .section-header,
+.reveal-group.is-visible .content-stack,
+.reveal-group.is-visible .card,
+.reveal-group.is-visible .metric,
+.reveal-group.is-visible .final-cta-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-group.is-visible .card:nth-child(2),
+.reveal-group.is-visible .metric:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.reveal-group.is-visible .card:nth-child(3),
+.reveal-group.is-visible .metric:nth-child(3) {
+  transition-delay: 160ms;
+}
+
+.reveal-group.is-visible .card:nth-child(4),
+.reveal-group.is-visible .metric:nth-child(4) {
+  transition-delay: 240ms;
+}
+
+.reveal-group.is-visible .card-interactive:hover,
+.reveal-group.is-visible .metric:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-6px);
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gold-ribbon-drift {
+  0% {
+    transform: translateY(0) rotate(-10deg);
+  }
+
+  50% {
+    transform: translateY(18px) rotate(170deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(350deg);
+  }
+}
+

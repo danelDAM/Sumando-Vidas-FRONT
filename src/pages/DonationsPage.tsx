@@ -55,8 +55,8 @@ export function DonationsPage() {
 
   return (
     <>
-      <section className="page-section donations-hero">
-        <div className="container donations-hero-content">
+      <section className="page-section page-hero">
+        <div className="container page-hero-content">
           <p className="eyebrow">Tu apoyo cuenta</p>
           <h1>Tu apoyo puede cambiar el camino de una familia</h1>
           <p>

@@ -1,27 +1,27 @@
 export const mainNavigation = [
-  { label: "Quiénes somos", href: "/sobre-nosotros" },
-  { label: "Proyectos", href: "/proyectos" },
-  { label: "Historias", href: "/historias" },
-  { label: "Eventos", href: "/eventos" },
-  { label: "Transparencia", href: "/transparencia" },
-  { label: "Contacto", href: "/contacto" },
+  { key: "nav.about", label: "Quiénes somos", href: "/sobre-nosotros" },
+  { key: "nav.projects", label: "Proyectos", href: "/proyectos" },
+  { key: "nav.stories", label: "Historias", href: "/historias" },
+  { key: "nav.events", label: "Eventos", href: "/eventos" },
+  { key: "nav.transparency", label: "Transparencia", href: "/transparencia" },
+  { key: "nav.contact", label: "Contacto", href: "/contacto" },
 ];
 
 export const futurePages = [
-  { label: "Sobre nosotros", path: "sobre-nosotros" },
-  { label: "Nuestra historia", path: "nuestra-historia" },
-  { label: "Proyectos", path: "proyectos" },
-  { label: "Historias", path: "historias" },
-  { label: "Eventos", path: "eventos" },
-  { label: "Donaciones", path: "donaciones" },
-  { label: "Transparencia", path: "transparencia" },
-  { label: "Voluntariado", path: "voluntariado" },
-  { label: "Empresas colaboradoras", path: "empresas-colaboradoras" },
-  { label: "Contacto", path: "contacto" },
+  { key: "nav.about", label: "Sobre nosotros", path: "sobre-nosotros" },
+  { key: "nav.ourHistory", label: "Nuestra historia", path: "nuestra-historia" },
+  { key: "nav.projects", label: "Proyectos", path: "proyectos" },
+  { key: "nav.stories", label: "Historias", path: "historias" },
+  { key: "nav.events", label: "Eventos", path: "eventos" },
+  { key: "nav.donations", label: "Donaciones", path: "donaciones" },
+  { key: "nav.transparency", label: "Transparencia", path: "transparencia" },
+  { key: "nav.volunteering", label: "Voluntariado", path: "voluntariado" },
+  { key: "nav.collaboratingCompanies", label: "Empresas colaboradoras", path: "empresas-colaboradoras" },
+  { key: "nav.contact", label: "Contacto", path: "contacto" },
 ];
 
 export const legalNavigation = [
-  { label: "Aviso legal", href: "/aviso-legal" },
-  { label: "Política de privacidad", href: "/politica-privacidad" },
-  { label: "Política de cookies", href: "/politica-cookies" },
+  { key: "nav.legalNotice", label: "Aviso legal", href: "/aviso-legal" },
+  { key: "nav.privacyPolicy", label: "Política de privacidad", href: "/politica-privacidad" },
+  { key: "nav.cookiesPolicy", label: "Política de cookies", href: "/politica-cookies" },
 ];

@@ -1,0 +1,82 @@
+/* 22. Sponsor carousel */
+.sponsor-marquee-viewport {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding-block: 0;
+  overflow: hidden;
+  margin-top: 12px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 22%,
+    #000 32%,
+    #000 38%,
+    transparent 82%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 22%,
+    #000 32%,
+    #000 38%,
+    transparent 82%,
+    transparent 100%
+  );
+}
+
+.sponsor-marquee {
+  display: flex;
+  width: max-content;
+  overflow: hidden;
+  animation: marquee var(--marquee-duration, 20s) linear infinite;
+  will-change: transform;
+}
+
+.sponsor-marquee-group {
+  display: flex;
+  justify-content: center;
+  width: 78vw;
+  min-width: 78vw;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 6px 24px;
+}
+
+.sponsor-slide {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 8px 18px;
+}
+
+.sponsor-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.sponsor-slide img.sponsor-logo-togga {
+  filter: brightness(0) opacity(0.55);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+

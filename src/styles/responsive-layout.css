@@ -1,0 +1,165 @@
+/* 21. Responsive layout: tablet and mobile */
+@media (max-width: 980px) {
+  .home-gold-ribbon-background::before {
+    left: -42px;
+    opacity: 0.26;
+  }
+
+  .gold-ribbon-mark {
+    width: 58px;
+    height: 74px;
+    opacity: 0.22;
+  }
+
+  .gold-ribbon-mark::before,
+  .gold-ribbon-mark::after {
+    width: 23px;
+    height: 64px;
+  }
+
+  .gold-ribbon-mark::before {
+    left: 14px;
+  }
+
+  .gold-ribbon-mark::after {
+    right: 14px;
+  }
+
+  .header-content {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-block: 16px;
+  }
+
+  .main-nav {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .hero-grid,
+  .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid,
+  .metrics-grid,
+  .four-columns,
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-feature-card,
+  .por-ellos-hero-grid,
+  .race-experience {
+    grid-template-columns: 1fr;
+  }
+
+  .race-track {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .race-map-header {
+    display: grid;
+  }
+
+  .race-map-card .race-track {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 12px 0 18px;
+  }
+
+  .race-line {
+    left: 52px;
+    right: auto;
+    top: 34px;
+    bottom: 34px;
+    width: 6px;
+    height: auto;
+    transform: none;
+  }
+
+  .race-line span {
+    width: 100% !important;
+  }
+
+  .race-map-card .race-line {
+    left: 28px;
+    right: auto;
+    top: 20px;
+    bottom: 20px;
+    width: 10px;
+    height: auto;
+  }
+
+  .race-map-card .race-line span {
+    width: 100% !important;
+    height: 100%;
+  }
+
+  .race-map-card .race-line span::after {
+    bottom: -7px;
+    right: auto;
+    left: 50%;
+    top: auto;
+    transform: translateX(-50%);
+  }
+
+  .race-stop {
+    grid-template-columns: 58px minmax(0, 1fr);
+    justify-items: start;
+    text-align: left;
+  }
+
+  .race-map-card .race-stop,
+  .race-map-card .race-stop:nth-of-type(even),
+  .race-map-card .race-stop:nth-of-type(odd),
+  .race-map-card .race-stop:hover:nth-of-type(even),
+  .race-map-card .race-stop:hover:nth-of-type(odd),
+  .race-map-card .race-stop.is-active:nth-of-type(even),
+  .race-map-card .race-stop.is-active:nth-of-type(odd) {
+    transform: none;
+  }
+
+  .finish-label {
+    position: static;
+    width: fit-content;
+    margin-left: 72px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .header-content {
+    gap: 14px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .main-nav {
+    gap: 14px;
+    font-size: 0.9rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .header-content > .button {
+    width: auto;
+    margin-left: auto;
+  }
+
+  .action-row {
+    width: 100%;
+  }
+}
+

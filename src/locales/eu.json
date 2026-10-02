@@ -1,0 +1,226 @@
+{
+  "common": {
+    "skipContent": "Edukiari salto",
+    "donate": "Egin dohaintza",
+    "donateNow": "Egin dohaintza orain",
+    "collaborate": "Lana egin",
+    "language": "Hizkuntza",
+    "openMenu": "Menua ireki",
+    "closeMenu": "Menua itxi",
+    "readMore": "Gehiago irakurri",
+    "seeMore": "Ikusi gehiago",
+    "supportCause": "Kausa eutsi",
+    "readStory": "Istorioa irakurri",
+    "viewRanking": "Ranking-a ikusi",
+    "readHistory": "Gure historia ezagutu",
+    "months": "hilabeteak",
+    "distance": "km",
+    "country": "Espainia"
+  },
+  "nav": {
+    "about": "Nor gara",
+    "projects": "Proiektuak",
+    "stories": "Istorioak",
+    "events": "Ekitaldiak",
+    "transparency": "Gardenakotasuna",
+    "contact": "Kontaktua",
+    "volunteering": "Boluntariotza",
+    "donations": "Dohaintzak",
+    "ourHistory": "Gure historia",
+    "collaboratingCompanies": "Lankidetzako enpresak",
+    "legalNotice": "Lege-oharra",
+    "privacyPolicy": "Pribatutasun politika",
+    "cookiesPolicy": "Cookieen politika"
+  },
+  "footer": {
+    "description": "Haurren eta familiaren ondoan dagoen Espainiako elkartea, haurren minbizia duten familiei laguntzeko.",
+    "sections": "Atalak",
+    "social": "Sare sozialak",
+    "contact": "Kontaktua",
+    "legal": "Informazio juridikoa",
+    "email": "info@sumandovidas.org",
+    "phone": "+34 000 000 000",
+    "country": "Espainia"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Haur minbizia",
+      "title": "Haurriei eta familiei laguntzen diegu behartsuen bitartean",
+      "donate": "Dohaintza egin orain",
+      "collaborate": "Lagundu"
+    },
+    "whoWeAre": {
+      "eyebrow": "Nor gara",
+      "title": "Familiei zuzendutako elkartea",
+      "description": "Lan egiten dugu familia bat ere bakarrik ez sentitzea, gaixotasun prozesuan.",
+      "text1": "Gure misioa haurrei, amei, aitari, anaiei eta zaintzaileei laguntzea, entzutea eta baliabideak erraztu da haurren minbiziaren hainbat etapatan.",
+      "text2": "Gure helburuak laguntza zuzena, gizarte-sentsibilizazioa, erakundeekin lankidetza eta jasangarritasuna duten laguntza-sareak sortzea uztartzen ditu.",
+      "cta": "Gure historia ezagutu"
+    },
+    "whatWeDo": {
+      "eyebrow": "Zer egiten dugu",
+      "title": "Hazteko prest dauden proiektuak",
+      "description": "Por Ellos elkartearen lehen proiektua izango da, bost erriko erdi maratoen inguruan kirol eta laguntza kanpaina bat."
+    },
+    "stories": {
+      "eyebrow": "Istorioak",
+      "title": "Bidea zentzua ematen duten ahotsak",
+      "description": "Istorio bakoitzak irudia, titulua, laburpena eta orri zabaldu batera doazen loturak eduki ditzake.",
+      "placeholder": "Irudia"
+    },
+    "impact": {
+      "eyebrow": "Eragina",
+      "title": "Metrikekin konektatzeko prest dauden datuak",
+      "description": "Adierazle hauek geroago CMS, datu-base edo barne-informetatik elikatu ahal izango dira.",
+      "families": "Lagundutako familiek",
+      "scholarships": "Kudeatutako laguntzak",
+      "volunteers": "Boluntarioak",
+      "events": "Ekitaldi solidarioak"
+    },
+    "collaborate": {
+      "eyebrow": "Lana egin",
+      "title": "Gehitu daitekeen modu desberdinak",
+      "description": "Atalak parte-hartze modu nagusiak biltzen ditu eta gero orrialde independente bihur daiteke."
+    },
+    "events": {
+      "eyebrow": "Hurrengo ekitaldiak",
+      "title": "Gehiago batzen jarraitzeko egutegia",
+      "description": "Hauek dira gure egutegiaren lehen lasterketak. Laster Sumando Vidasen ekitaldi eta jarduera berriak gehituko dira."
+    },
+    "transparency": {
+      "eyebrow": "Gardenakotasuna",
+      "title": "Laguntza bakoitzaren argitasuna",
+      "description": "Dohaintzen erabilera, emaitzak eta publikoak diren txostenak azaltzeko tokia.",
+      "text": "Atal hau dokumentuak, memoria, kanpainen emaitzak eta laguntzen esleipen-irizpideak argitaratzeko prest dago.",
+      "annualMemory": "Urteko memoria",
+      "economicReports": "Ekonomia txostenak",
+      "donationDestination": "Dohaintzen xedea"
+    },
+    "cta": {
+      "title": "Zure laguntzak familia baten ibilbidea arinduta utz dezake",
+      "description": "Ekarpen bakoitzak, ordu bakoitzak eta ekintza bakoitzak laguntza-sare erreal bat eusten laguntzen du."
+    },
+    "programs": {
+      "porEllos": {
+        "title": "Por Ellos",
+        "description": "Errekurtso handiena biltzeko proiektu solidarioa, Felipe, Sumando Vidas fundatzailea eta haur minbiziaren biktima, elkarteko taldea eta Espainiako bost erriko erdi maratoetan korrika dabil."
+      },
+      "familySupport": {
+        "title": "Familien laguntza",
+        "description": "Familiei laguntza hurbila diagnostikoan, tratamenduan eta berreskuratzean."
+      },
+      "directAid": {
+        "title": "Laguntza zuzenak",
+        "description": "Bidaiak, ostatu eta arretarekin lotutako oinarrizko beharrak estaltzea."
+      }
+    },
+    "storyCards": {
+      "felipe": {
+        "title": "Feliperen istoria",
+        "description": "12 urte zituela, malagarrari T-gelako linfoma ez-Hodgkin diagnostikatu zioten eta UCIan zegoela, lagun batek irudi sakratu bat hurbildu zion pulsera eta argazkiz. Orduz geroztik, ez du bereizten utzi. Gaixotasuna gainditu ondoren, Medikuntza ikasi eta haurren onkologia infantil espezializatu nahi izan zuen, bere baldintzak zituzten umeei laguntzeko. Azkenean, ikasketak egiten ari zela, elkartea sortu zuen.",
+        "imageAlt": "Elkartearen fundatzailearen historia"
+      },
+      "family": {
+        "title": "Familia lagundua",
+        "description": "Istorio errealak sentikortasunez eta baimenarekin kontatzeko espazio prestatua.",
+        "imageAlt": "Familia-istorio baten irudia"
+      },
+      "challenges": {
+        "title": "Erronka txikiak, handiak",
+        "description": "Gainditze, komunitate eta laguntzaren istorioak haurren minbiziaren prozesuan.",
+        "imageAlt": "Haur-istorio baten irudia"
+      }
+    },
+    "cards": {
+      "donations": {
+        "title": "Dohaintzak",
+        "description": "Ekarri baliabideak laguntza zuzen eta laguntza programak eusteko."
+      },
+      "join": {
+        "title": "Bazkide bihurtu",
+        "description": "Ekarpen errepikatuak eginez, proiektuak egonkortzen lagundu."
+      },
+      "events": {
+        "title": "Ekitaldiak",
+        "description": "Parte hartu lasterketetan, erronketan, kanpainan eta ekitaldi solidarioetan."
+      },
+      "companies": {
+        "title": "Enpresak eta boluntariotza",
+        "description": "Lankidetzan parte hartu enpresan edo eman denbora boluntario gisa."
+      }
+    },
+    "eventsList": {
+      "valencia": "Valentziako Erdi Maratoia Trinidad Alfonso Zurich",
+      "donosti": "Donostia Erdi Maratoia",
+      "sevilla": "Sevillako Erdi Maratoia",
+      "barcelona": "Bartzelonako Erdi Maratoia",
+      "malaga": "Málagako Erdi Maratoia",
+      "madrid": "Movistar Madril Erdi Maratoia",
+      "locationValencia": "Valentzia",
+      "locationDonosti": "Donostia",
+      "locationSevilla": "Sevilla",
+      "locationBarcelona": "Bartzelona",
+      "locationMalaga": "Málaga",
+      "locationMadrid": "Madril",
+      "dateValencia": "2026ko urriak 25",
+      "dateDonosti": "Data baieztatu gabe",
+      "dateSevilla": "Data baieztatu gabe",
+      "dateBarcelona": "Data baieztatu gabe",
+      "dateMalaga": "2027ko martxoak 7",
+      "dateMadrid": "2027ko apirilak 4"
+    }
+  },
+  "projects": {
+    "page": {
+      "eyebrow": "Proiektuak",
+      "title": "Laguntza errealerako ekimenak",
+      "description": "Sumando Vidas-ek bere kanpainak proiektu zehatz, neurgarri eta jarraitzeko errazetan antolatuko ditu. Lehenengoa Por Ellos izango da.",
+      "stats": {
+        "marathons": "Erdi maratoiak",
+        "goal": "Helburu simulatu",
+        "distance": "Laguntza-bidaia",
+        "monthlyChallenge": "Hilabeteroko erronka",
+        "leaderboards": "Hilabete-mailak",
+        "challenges": "Erronkak urtero"
+      },
+      "moreProjects": {
+        "eyebrow": "Proiektu gehiago",
+        "title": "Gehitu modu berriak",
+        "description": "Solidaritatea komunitate, konpromiso eta laguntza jarraitzeko gogora bihurtzeko pentsatutako kanpainak."
+      }
+    },
+    "featured": {
+      "title": "Por Ellos",
+      "summary": "Kilometro bakoitza haur minbiziaren familiei laguntza errealera bihurtzeko kanpaina.",
+      "description": "Funts guztiak eta lasterketa erronkak laguntza zehatzak eta hurbileko laguntza eusteko bideratuko dira.",
+      "cta": "Gehiago ikusi",
+      "btnDonate": "Egin dohaintza",
+      "ranking": "Ranking-a ikusi"
+    },
+    "category": {
+      "family": "Familien laguntza",
+      "aid": "Laguntza zuzenak",
+      "wellbeing": "Onura emozionala"
+    },
+    "challenges": {
+      "title": "Héroes que suman",
+      "description": "Enpresak eta pertsonak hilabetero lehiatzen dira, laguntza sailkapen solidarioaren buru izateko eta haur minbiziaren aurkako borrokan marka uzteko.",
+      "text": "Enpresak eta pertsonak hilabetero lehiatzen dira, laguntza sailkapen solidarioaren buru izateko eta haur minbiziaren aurkako borrokan marka uzteko."
+    }
+  },
+  "storiesPage": {
+    "eyebrow": "Istorioak",
+    "title": "Bidea zentzua ematen duten istorioak",
+    "description": "Atal honetan benetako istorioak biltzen ditugu, elkartearen misioarekin batera doazenak: borroka, itxaropen, komunitate eta laguntzaren istorioak zailen momentuetan.",
+    "featured": "Nabarmendutako istoria",
+    "readMore": "Gehiago irakurri",
+    "support": "Kausa eutsi",
+    "moreStories": "Istorio gehiago",
+    "titleMore": "Itxaropen eta komunitatearen istorioak",
+    "descriptionMore": "Istorio bakoitzak familiak eta haurrak minbizi infantilarekin batera ibiltzeko era desberdina islatzen du.",
+    "photoFounder": "Fundatzailearen argazkia",
+    "readHistory": "Istorioa irakurri",
+    "summary": "Elkartearen fundatzailea da, haurren minbizia gainditu zuen eta orain Medikuntza amaitzea nahi du, haurren onkologia infantil espezializatzeko eta beste umeei laguntzeko.",
+    "longDescription": "12 urte zituela, malagarrari T zelulen linfoma ez-Hodgkin diagnostikatu zioten. UCIan zegoela, lagun batek irudi sakratu bat hurbildu zion, pulsera eta estampa baten bidez, eta hortik aurrera ez du bereizten utzi. Gaixotasunaz gainditu ondoren, Medikuntza ikasi nahi izan zuen, bere baldintza berdineko umeei laguntzeko, eta ikasketak egiten ari zela elkartea sortu zuen."
+  }
+}
