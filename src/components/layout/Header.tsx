@@ -72,7 +72,10 @@ export function Header() {
               aria-haspopup="menu"
               onClick={() => setIsLanguageMenuOpen((open) => !open)}
             >
-              {languageOptions.find((option) => option.code === (i18n.resolvedLanguage || i18n.language || "es"))?.label ?? "ES"}
+              <span>{languageOptions.find((option) => option.code === (i18n.resolvedLanguage || i18n.language || "es"))?.label ?? "ES"}</span>
+              <span className={`language-chevron ${isLanguageMenuOpen ? "is-open" : ""}`} aria-hidden="true">
+                ▾
+              </span>
             </button>
             {isLanguageMenuOpen && (
               <div className="language-menu" role="menu" aria-label={t("common.language")}>
