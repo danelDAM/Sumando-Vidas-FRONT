@@ -199,13 +199,40 @@
     },
     "category": {
       "family": "Familien laguntza",
+      "familyDescription": "Diagnostikoan eta tratamenduan familiei laguntzeko zehazten ari den proiektua.",
       "aid": "Laguntza zuzenak",
-      "wellbeing": "Onura emozionala"
+      "aidDescription": "Bidaietarako, egonaldietarako eta zaintzarako beharrak estaltzeko etorkizuneko ildoa.",
+      "wellbeing": "Ongizate emozionala",
+      "wellbeingDescription": "Laguntza emozionalerako baliabide eta jarduerentzako prestatutako gunea."
     },
     "challenges": {
       "title": "Héroes que suman",
       "description": "Enpresak eta pertsonak hilabetero lehiatzen dira, laguntza sailkapen solidarioaren buru izateko eta haur minbiziaren aurkako borrokan marka uzteko.",
       "text": "Enpresak eta pertsonak hilabetero lehiatzen dira, laguntza sailkapen solidarioaren buru izateko eta haur minbiziaren aurkako borrokan marka uzteko."
+    }
+  },
+  "porEllos": {
+    "stopStatus": {
+      "planned": "Prestatzen",
+      "ready": "Prest",
+      "inProgress": "Abian",
+      "completed": "Osatuta",
+      "cancelled": "Bertan behera utzita"
+    },
+    "cityLeaderboard": {
+      "eyebrow": "Erronka solidarioa",
+      "title": "Zein hiritan bilduko dute gehien haien alde?",
+      "description": "Sailkapena geltoki bakoitzari esleitutako eta ordaindutako ekarpenekin eguneratzen da.",
+      "ariaLabel": "Hirien araberako diru-bilketaren sailkapena",
+      "leadingCity": "{{city}} dago lehen postuan",
+      "starting": "Sailkapena hasteko dago",
+      "paidOnly": "Ordaindutako ekarpenak bakarrik zenbatzen dira.",
+      "zeroNotice": "Hiri guztiak 0 €-rekin agertzen dira lehen ekarpenak erregistratu arte.",
+      "unavailable": "Hiriak eta haien zenbatekoak hemen agertuko dira datuak kontsultatu ahal direnean.",
+      "otherStops": "Gainerako geltokiak",
+      "upcomingStops": "Hurrengo geltokiak",
+      "supportCity": "Hiri bati lagundu",
+      "pendingAmount": "Zain"
     }
   },
   "storiesPage": {

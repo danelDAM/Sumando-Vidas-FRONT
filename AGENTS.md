@@ -14,7 +14,9 @@ Vite + React + TypeScript website for Por Ellos.
 - Do not refactor unrelated code.
 - Do not introduce dependencies, frameworks, libraries, or tooling unless required.
 - Preserve existing architecture and conventions.
-- Keep user-facing content in Spanish unless explicitly requested otherwise.
+- Keep all user-facing text available in every supported language: Spanish, Catalan, and Basque.
+- Whenever UI copy or other user-facing content changes, update the matching keys in `src/locales/es.json`, `src/locales/ca.json`, and `src/locales/eu.json` in the same change.
+- Prefer translation keys over user-visible string literals in components; preserve proper names where translation is not appropriate.
 - Keep UI responsive and consistent with the existing design.
 - Do not invent content, data, claims, or organization information.
 

@@ -4,12 +4,33 @@ import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicStories } from "../services/publicData";
+import { fallbackStories, mergePublicRows } from "../data/publicFallbacks";
 
 export function StoriesPage() {
   const { t, i18n } = useTranslation();
   const locale = (i18n.resolvedLanguage || i18n.language || "es").split("-")[0];
-  const { data: stories, loading, error } = usePublicQuery(`stories:${locale}`, getPublicStories, locale);
-  const [featuredStory, ...moreStories] = stories ?? [];
+  const { data, loading, error } = usePublicQuery(`stories:${locale}`, getPublicStories, locale);
+  const localizedFallbackStories = fallbackStories.map((story) => {
+    if (story.slug === "historia-de-felipe") {
+      return {
+        ...story,
+        title: t("home.storyCards.felipe.title"),
+        summary: t("storiesPage.summary"),
+        body: t("storiesPage.longDescription"),
+        image_alt: t("home.storyCards.felipe.imageAlt"),
+      };
+    }
+
+    const storyKey = story.slug === "familia-acompanada" ? "family" : "challenges";
+    return {
+      ...story,
+      title: t(`home.storyCards.${storyKey}.title`),
+      summary: t(`home.storyCards.${storyKey}.description`),
+      image_alt: t(`home.storyCards.${storyKey}.imageAlt`),
+    };
+  });
+  const stories = mergePublicRows(data, localizedFallbackStories, (story) => story.slug);
+  const [featuredStory, ...moreStories] = stories;
 
   return (
     <>
@@ -23,12 +44,7 @@ export function StoriesPage() {
 
       <section className="page-section reveal-group" data-reveal>
         <div className="container project-feature-grid">
-          <PublicDataStatus
-            loading={loading}
-            error={error}
-            empty={!loading && !error && (stories?.length ?? 0) === 0}
-            emptyMessage="Todavía no hay historias publicadas."
-          />
+          {(loading || error) && <PublicDataStatus loading={loading} error={error ? "No se pudieron actualizar las historias; mostramos la historia disponible." : null} empty={false} />}
           {featuredStory && <article className="project-feature-card story-feature-card">
             <div className="story-feature-copy">
               <p className="eyebrow">{t("storiesPage.featured")}</p>

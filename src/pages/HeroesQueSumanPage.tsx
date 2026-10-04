@@ -4,6 +4,7 @@ import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicHeroesData } from "../services/publicData";
+import { fallbackProjects } from "../data/publicFallbacks";
 
 type LeaderboardType = "companies" | "people";
 
@@ -63,17 +64,7 @@ export function HeroesQueSumanPage() {
     [timeLeft],
   );
 
-  if (loading || error) {
-    return (
-      <section className="page-section page-hero">
-        <div className="container page-hero-content">
-          <p className="eyebrow">Proyecto mensual</p>
-          <h1>Héroes que suman</h1>
-          <PublicDataStatus loading={loading} error={error} empty={false} />
-        </div>
-      </section>
-    );
-  }
+  const project = data?.project ?? fallbackProjects[1];
 
   return (
     <>
@@ -81,8 +72,9 @@ export function HeroesQueSumanPage() {
         <div className="container heroes-project-hero-grid">
           <div>
             <p className="eyebrow">Proyecto mensual</p>
-            <h1>{data?.project?.title ?? "Héroes que suman"}</h1>
-            {data?.project?.summary && <p>{data.project.summary}</p>}
+            <h1>{project.title}</h1>
+            {project.summary && <p>{project.summary}</p>}
+            <p>Las aportaciones se mostrarán aquí cuando el reto esté activo. Solo aparecerán participantes que hayan dado su consentimiento público.</p>
             <div className="action-row">
               <Link className="button button-primary" to="/donaciones">
                 Sumar mi apoyo
@@ -106,6 +98,8 @@ export function HeroesQueSumanPage() {
           </aside>
         </div>
       </section>
+
+      {(loading || error) && <section className="page-section"><div className="container"><PublicDataStatus loading={loading} error={error ? "No se pudo actualizar el ranking; la información del proyecto sigue disponible." : null} empty={false} /></div></section>}
 
       <section className="page-section reveal-group" id="clasificacion" data-reveal>
         <div className="container">
@@ -167,7 +161,7 @@ export function HeroesQueSumanPage() {
                     ))}
                   </div>
                 </>
-              ) : <PublicDataStatus loading={false} error={null} empty emptyMessage="Todavía no hay participantes con aportaciones públicas este mes." />}
+              ) : <PublicDataStatus loading={loading} error={null} empty={!loading} emptyMessage="El ranking mensual se publicará cuando comience el reto y haya aportaciones consentidas." />}
             </div>
           </div>
         </div>
@@ -188,7 +182,7 @@ export function HeroesQueSumanPage() {
                 <i aria-hidden="true"><em style={{ width: `${topAmount ? Math.round((entry.amount / topAmount) * 100) : 0}%` }} /></i>
                 <b>{formatAmount(entry.amount)}</b>
               </div>
-            )) : <PublicDataStatus loading={false} error={null} empty emptyMessage="Todavía no hay aportaciones históricas públicas." />}
+            )) : <PublicDataStatus loading={loading} error={null} empty={!loading} emptyMessage="El ranking histórico se irá completando con aportaciones y consentimiento público." />}
           </div>
         </div>
       </section>

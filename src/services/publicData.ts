@@ -105,6 +105,16 @@ export type PublicLeaderboardEntry = {
   amount: number;
 };
 
+export type PublicCityLeaderboardEntry = {
+  campaign_stop_id: string;
+  campaign_id: string;
+  stop_number: number;
+  city: string;
+  title: string;
+  currency: string;
+  amount: number;
+};
+
 type QueryResult = { message: string } | null;
 
 function throwOnError(error: QueryResult) {
@@ -179,15 +189,17 @@ export async function getPorEllosPublicData() {
     throw new Error("La campaña Por Ellos no está publicada.");
   }
 
-  const [stopsResult, eventsResult, productsResult] = await Promise.all([
+  const [stopsResult, eventsResult, productsResult, cityLeaderboardResult] = await Promise.all([
     client.from("campaign_stops").select("id, event_id, stop_number, city, title, label, distance_km, description, status").eq("campaign_id", campaignResult.data.id).eq("is_published", true).order("stop_number"),
     client.from("events").select("*").eq("campaign_id", campaignResult.data.id).eq("is_published", true).order("starts_on", { ascending: true, nullsFirst: false }),
     client.from("products").select("id, slug, title, description, category, image_url, price_amount, currency").eq("campaign_id", campaignResult.data.id).eq("is_active", true).eq("is_published", true).order("title"),
+    client.from("public_city_leaderboard").select("campaign_stop_id, campaign_id, stop_number, city, title, currency, amount").eq("campaign_id", campaignResult.data.id).order("amount", { ascending: false }).order("stop_number"),
   ]);
 
   throwOnError(stopsResult.error);
   throwOnError(eventsResult.error);
   throwOnError(productsResult.error);
+  throwOnError(cityLeaderboardResult.error);
 
   return {
     project: projectResult.data as PublicProject,
@@ -195,6 +207,7 @@ export async function getPorEllosPublicData() {
     stops: (stopsResult.data ?? []) as PublicCampaignStop[],
     events: (eventsResult.data ?? []) as PublicEvent[],
     products: (productsResult.data ?? []) as PublicProduct[],
+    cityLeaderboard: (cityLeaderboardResult.data ?? []) as PublicCityLeaderboardEntry[],
   };
 }
 

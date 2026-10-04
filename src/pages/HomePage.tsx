@@ -6,6 +6,7 @@ import { SponsorCarousel } from "../components/ui/SponsorCarousel";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicHomeData } from "../services/publicData";
+import { fallbackEvents, fallbackProjects, fallbackStories, mergePublicRows } from "../data/publicFallbacks";
 
 function formatEventDate(date: string | null, locale: string, fallback: string) {
   if (!date) {
@@ -30,9 +31,23 @@ export function HomePage() {
   const { t, i18n } = useTranslation();
   const locale = (i18n.resolvedLanguage || i18n.language || "es").split("-")[0];
   const { data, loading, error } = usePublicQuery(`home:${locale}`, getPublicHomeData, locale);
-  const projects = data?.projects ?? [];
-  const stories = data?.stories ?? [];
-  const events = data?.events ?? [];
+  const projects = mergePublicRows(data?.projects, fallbackProjects, (project) => project.slug);
+  const localizedFallbackStories = fallbackStories.map((story) => {
+    const storyKey = story.slug === "historia-de-felipe"
+      ? "felipe"
+      : story.slug === "familia-acompanada"
+        ? "family"
+        : "challenges";
+
+    return {
+      ...story,
+      title: t(`home.storyCards.${storyKey}.title`),
+      summary: t(`home.storyCards.${storyKey}.description`),
+      image_alt: t(`home.storyCards.${storyKey}.imageAlt`),
+    };
+  });
+  const stories = mergePublicRows(data?.stories, localizedFallbackStories, (story) => story.slug);
+  const events = mergePublicRows(data?.events, fallbackEvents, (event) => event.slug);
   const metrics = (data?.metrics ?? []).filter(
     (metric, index, allMetrics) => allMetrics.findIndex((item) => item.metric_key === metric.metric_key) === index,
   );
@@ -111,7 +126,11 @@ export function HomePage() {
         {(loading || error) && (
           <section className="page-section">
             <div className="container">
-              <PublicDataStatus loading={loading} error={error} empty={false} />
+              <PublicDataStatus
+                loading={loading}
+                error={error ? "No se pudieron actualizar algunos contenidos; mostramos la información disponible." : null}
+                empty={false}
+              />
             </div>
           </section>
         )}
@@ -149,6 +168,16 @@ export function HomePage() {
                   href={`/proyectos/${project.slug}`}
                 />
               ))}
+              <Card
+                title={t("home.programs.familySupport.title")}
+                description={t("home.programs.familySupport.description")}
+                href="/proyectos"
+              />
+              <Card
+                title={t("home.programs.directAid.title")}
+                description={t("home.programs.directAid.description")}
+                href="/proyectos"
+              />
             </div>
           </div>
         </section>

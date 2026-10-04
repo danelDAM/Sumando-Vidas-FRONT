@@ -3,6 +3,7 @@ import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicEvents } from "../services/publicData";
+import { fallbackEvents, mergePublicRows } from "../data/publicFallbacks";
 
 function getTimelineDateParts(date: string | null, fallback: string) {
   if (!date) {
@@ -22,9 +23,10 @@ function getTimelineDateParts(date: string | null, fallback: string) {
 }
 
 export function EventsPage() {
-  const { data: events, loading, error } = usePublicQuery("events", getPublicEvents, null);
-  const confirmedEvents = (events ?? []).filter((event) => event.schedule_status === "confirmed");
-  const eventsToConfirm = (events ?? []).filter((event) => event.schedule_status === "pending");
+  const { data, loading, error } = usePublicQuery("events", getPublicEvents, null);
+  const events = mergePublicRows(data, fallbackEvents, (event) => event.slug);
+  const confirmedEvents = events.filter((event) => event.schedule_status === "confirmed");
+  const eventsToConfirm = events.filter((event) => event.schedule_status === "pending");
 
   return (
     <>
@@ -46,12 +48,7 @@ export function EventsPage() {
               description="Por ahora, las medias maratones del proyecto Por Ellos son los primeros eventos publicados. Iremos incorporando nuevas actividades a medida que se confirmen."
           />
 
-          <PublicDataStatus
-            loading={loading}
-            error={error}
-            empty={!loading && !error && (events?.length ?? 0) === 0}
-            emptyMessage="Todavía no hay eventos publicados."
-          />
+          {(loading || error) && <PublicDataStatus loading={loading} error={error ? "No se pudo actualizar la agenda; mostramos las fechas disponibles." : null} empty={false} />}
 
           <div className="events-timeline" aria-label="Cronología de las medias maratones">
             {confirmedEvents.map((event) => (

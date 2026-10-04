@@ -199,13 +199,40 @@
     },
     "category": {
       "family": "Acompanyament familiar",
+      "familyDescription": "Projecte en definició per donar suport a les famílies durant el diagnòstic i el tractament.",
       "aid": "Ajuts directes",
-      "wellbeing": "Benestar emocional"
+      "aidDescription": "Futura línia per a necessitats relacionades amb desplaçaments, estada i cures.",
+      "wellbeing": "Benestar emocional",
+      "wellbeingDescription": "Espai preparat per a recursos i activitats de suport emocional."
     },
     "challenges": {
       "title": "Héroes que suman",
       "description": "Empreses i persones competeixen cada mes per liderar una classificació solidària i deixar la seva empremta a la lluita contra el càncer infantil.",
       "text": "Empreses i persones competeixen cada mes per liderar una classificació solidària i deixar la seva empremta a la lluita contra el càncer infantil."
+    }
+  },
+  "porEllos": {
+    "stopStatus": {
+      "planned": "En preparació",
+      "ready": "Preparada",
+      "inProgress": "En curs",
+      "completed": "Completada",
+      "cancelled": "Cancel·lada"
+    },
+    "cityLeaderboard": {
+      "eyebrow": "Repte solidari",
+      "title": "Quina ciutat sumarà més per ells?",
+      "description": "La classificació s'actualitza amb les aportacions pagades i assignades a cada parada.",
+      "ariaLabel": "Classificació de recaptació per ciutat",
+      "leadingCity": "{{city}} va al capdavant",
+      "starting": "La classificació està per començar",
+      "paidOnly": "Només es compten les aportacions pagades.",
+      "zeroNotice": "Les ciutats apareixen amb 0 € fins que es registrin les primeres aportacions.",
+      "unavailable": "Les ciutats i els seus imports apareixeran aquí quan es puguin consultar les dades.",
+      "otherStops": "Resta de parades",
+      "upcomingStops": "Properes parades",
+      "supportCity": "Donar suport a una ciutat",
+      "pendingAmount": "Pendent"
     }
   },
   "storiesPage": {

@@ -199,13 +199,40 @@
     },
     "category": {
       "family": "Acompañamiento familiar",
+      "familyDescription": "Proyecto en definición para apoyar a familias durante el diagnóstico y el tratamiento.",
       "aid": "Ayudas directas",
-      "wellbeing": "Bienestar emocional"
+      "aidDescription": "Futura línea para necesidades asociadas a desplazamientos, estancia y cuidados.",
+      "wellbeing": "Bienestar emocional",
+      "wellbeingDescription": "Espacio preparado para recursos y actividades de apoyo emocional."
     },
     "challenges": {
       "title": "Héroes que suman",
       "description": "Empresas y personas compiten cada mes para liderar una clasificación solidaria y dejar su huella en la lucha contra el cáncer infantil.",
       "text": "Empresas y personas compiten cada mes para liderar una clasificación solidaria y dejar su huella en la lucha contra el cáncer infantil."
+    }
+  },
+  "porEllos": {
+    "stopStatus": {
+      "planned": "En preparación",
+      "ready": "Preparada",
+      "inProgress": "En curso",
+      "completed": "Completada",
+      "cancelled": "Cancelada"
+    },
+    "cityLeaderboard": {
+      "eyebrow": "Pique solidario",
+      "title": "¿Qué ciudad va a sumar más por ellos?",
+      "description": "La clasificación se actualiza con las aportaciones pagadas y asignadas a cada parada.",
+      "ariaLabel": "Clasificación de recaudación por ciudad",
+      "leadingCity": "{{city}} va en cabeza",
+      "starting": "La clasificación está por empezar",
+      "paidOnly": "Solo se cuentan aportaciones pagadas.",
+      "zeroNotice": "Las ciudades aparecen con 0 € hasta que se registren las primeras aportaciones.",
+      "unavailable": "Las ciudades y sus importes aparecerán aquí cuando se puedan consultar los datos.",
+      "otherStops": "Resto de paradas",
+      "upcomingStops": "Próximas paradas",
+      "supportCity": "Apoyar una ciudad",
+      "pendingAmount": "Pendiente"
     }
   },
   "storiesPage": {
