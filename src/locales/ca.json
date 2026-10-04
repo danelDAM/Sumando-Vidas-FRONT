@@ -60,18 +60,18 @@
     "whatWeDo": {
       "eyebrow": "Què fem",
       "title": "Projectes preparats per créixer",
-      "description": "Por Ellos serà el primer projecte actiu de l'associació, amb una campanya esportiva i solidària al voltant de cinc grans mitges maratons."
+      "description": "Consulta els projectes publicats i les seves campanyes actives."
     },
     "stories": {
       "eyebrow": "Històries",
       "title": "Veus que donen sentit al camí",
-      "description": "Cada història pot incorporar imatge, títol, resum i enllaç a una pàgina ampliada.",
+      "description": "Històries publicades per l'associació, amb les seves imatges i relats.",
       "placeholder": "Imatge"
     },
     "impact": {
       "eyebrow": "Impacte",
-      "title": "Dades preparades per connectar amb mètriques reals",
-      "description": "Aquests indicadors es podran alimentar més endavant des de CMS, base de dades o informes interns.",
+      "title": "Xifres d'impacte",
+      "description": "Indicadors publicats per l'associació, amb la seva data de referència.",
       "families": "Famílies acompanyades",
       "scholarships": "Ajuts gestionats",
       "volunteers": "Persones col·laboradores",
@@ -90,8 +90,8 @@
     "transparency": {
       "eyebrow": "Transparència",
       "title": "Claredat sobre cada ajuda rebuda",
-      "description": "Espai per explicar l'ús de les donacions, resultats i informes públics.",
-      "text": "Aquesta secció està preparada per publicar documents, memòries, resultats de campanyes i criteris d'assignació d'ajuts.",
+      "description": "Informes públics sobre l'activitat i l'ús de les aportacions.",
+      "text": "Consulta els informes i les memòries disponibles a la pàgina de transparència.",
       "annualMemory": "Memòria anual",
       "economicReports": "Informes econòmics",
       "donationDestination": "Destinació de les donacions"
@@ -174,10 +174,10 @@
     "page": {
       "eyebrow": "Projectes",
       "title": "Iniciatives per sumar suport real",
-      "description": "Sumando Vidas organitzarà les seves campanyes en projectes concrets, mesurables i fàcils de seguir. El primer serà Por Ellos.",
+      "description": "Projectes publicats i campanyes actives de Sumando Vidas.",
       "stats": {
         "marathons": "Mitges maratons",
-        "goal": "Meta simulada",
+        "goal": "Objectiu de campanya",
         "distance": "Recorregut solidari",
         "monthlyChallenge": "Repte mensual",
         "leaderboards": "Taules mensuals",

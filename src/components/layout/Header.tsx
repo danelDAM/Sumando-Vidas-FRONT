@@ -56,7 +56,7 @@ export function Header() {
           id="navegacion-principal"
           aria-label="Navegación principal"
         >
-          {mainNavigation.filter((item) => item.key !== "nav.transparency").map((item) => (
+          {mainNavigation.map((item) => (
             <NavLink key={item.href} to={item.href} onClick={closeMenu}>
               {t(item.key)}
             </NavLink>

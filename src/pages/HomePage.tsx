@@ -3,56 +3,39 @@ import { useTranslation } from "react-i18next";
 import { Card } from "../components/ui/Card";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { SponsorCarousel } from "../components/ui/SponsorCarousel";
+import { PublicDataStatus } from "../components/ui/PublicDataStatus";
+import { usePublicQuery } from "../hooks/usePublicQuery";
+import { getPublicHomeData } from "../services/publicData";
+
+function formatEventDate(date: string | null, locale: string, fallback: string) {
+  if (!date) {
+    return fallback;
+  }
+
+  return new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", year: "numeric" }).format(
+    new Date(`${date}T00:00:00`),
+  );
+}
+
+function formatMetricValue(value: number, unit: string, locale: string) {
+  if (unit === "EUR") {
+    return new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
+  }
+
+  const formatted = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(value);
+  return unit === "count" ? formatted : `${formatted} ${unit}`;
+}
 
 export function HomePage() {
-  const { t } = useTranslation();
-
-  const programs = [
-    {
-      title: t("home.programs.porEllos.title"),
-      description: t("home.programs.porEllos.description"),
-      href: "/proyectos/por-ellos",
-    },
-    {
-      title: t("home.programs.familySupport.title"),
-      description: t("home.programs.familySupport.description"),
-      href: "/proyectos",
-    },
-    {
-      title: t("home.programs.directAid.title"),
-      description: t("home.programs.directAid.description"),
-      href: "/proyectos",
-    },
-  ];
-
-  const stories = [
-    {
-      title: t("home.storyCards.felipe.title"),
-      description: t("home.storyCards.felipe.description"),
-      imageAlt: t("home.storyCards.felipe.imageAlt"),
-      image: "/images/fotoFelipeMedina.png",
-      href: "/historias",
-    },
-    {
-      title: t("home.storyCards.family.title"),
-      description: t("home.storyCards.family.description"),
-      imageAlt: t("home.storyCards.family.imageAlt"),
-      href: "/historias",
-    },
-    {
-      title: t("home.storyCards.challenges.title"),
-      description: t("home.storyCards.challenges.description"),
-      imageAlt: t("home.storyCards.challenges.imageAlt"),
-      href: "/historias",
-    },
-  ];
-
-  const impactMetrics = [
-    { value: "000", label: t("home.impact.families") },
-    { value: "000", label: t("home.impact.scholarships") },
-    { value: "000", label: t("home.impact.volunteers") },
-    { value: "000", label: t("home.impact.events") },
-  ];
+  const { t, i18n } = useTranslation();
+  const locale = (i18n.resolvedLanguage || i18n.language || "es").split("-")[0];
+  const { data, loading, error } = usePublicQuery(`home:${locale}`, getPublicHomeData, locale);
+  const projects = data?.projects ?? [];
+  const stories = data?.stories ?? [];
+  const events = data?.events ?? [];
+  const metrics = (data?.metrics ?? []).filter(
+    (metric, index, allMetrics) => allMetrics.findIndex((item) => item.metric_key === metric.metric_key) === index,
+  );
 
   const collaborationOptions = [
     {
@@ -74,45 +57,6 @@ export function HomePage() {
       title: t("home.cards.companies.title"),
       description: t("home.cards.companies.description"),
       href: "/voluntariado",
-    },
-  ];
-
-  const events = [
-    {
-      date: t("home.eventsList.dateValencia"),
-      title: t("home.eventsList.valencia"),
-      location: t("home.eventsList.locationValencia"),
-      href: "/eventos",
-    },
-    {
-      date: t("home.eventsList.dateDonosti"),
-      title: t("home.eventsList.donosti"),
-      location: t("home.eventsList.locationDonosti"),
-      href: "/eventos",
-    },
-    {
-      date: t("home.eventsList.dateSevilla"),
-      title: t("home.eventsList.sevilla"),
-      location: t("home.eventsList.locationSevilla"),
-      href: "/eventos",
-    },
-    {
-      date: t("home.eventsList.dateBarcelona"),
-      title: t("home.eventsList.barcelona"),
-      location: t("home.eventsList.locationBarcelona"),
-      href: "/eventos",
-    },
-    {
-      date: t("home.eventsList.dateMalaga"),
-      title: t("home.eventsList.malaga"),
-      location: t("home.eventsList.locationMalaga"),
-      href: "/eventos",
-    },
-    {
-      date: t("home.eventsList.dateMadrid"),
-      title: t("home.eventsList.madrid"),
-      location: t("home.eventsList.locationMadrid"),
-      href: "/eventos",
     },
   ];
 
@@ -153,7 +97,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <SponsorCarousel />
+      {data?.sponsors.length ? <SponsorCarousel sponsors={data.sponsors} /> : null}
 
       <div className="home-ribbon-stage">
         <div className="home-gold-ribbon-background" aria-hidden="true">
@@ -163,6 +107,14 @@ export function HomePage() {
           <span className="gold-ribbon-mark gold-ribbon-mark-4" />
           <span className="gold-ribbon-mark gold-ribbon-mark-5" />
         </div>
+
+        {(loading || error) && (
+          <section className="page-section">
+            <div className="container">
+              <PublicDataStatus loading={loading} error={error} empty={false} />
+            </div>
+          </section>
+        )}
 
         <section className="page-section reveal-group" id="quienes-somos" data-reveal>
           <div className="container split-section">
@@ -189,8 +141,13 @@ export function HomePage() {
               description={t("home.whatWeDo.description")}
             />
             <div className="card-grid">
-              {programs.map((program) => (
-                <Card key={program.title} {...program} />
+              {projects.map((project) => (
+                <Card
+                  key={project.id}
+                  title={project.title}
+                  description={project.summary ?? project.description ?? undefined}
+                  href={`/proyectos/${project.slug}`}
+                />
               ))}
             </div>
           </div>
@@ -204,10 +161,10 @@ export function HomePage() {
               description={t("home.stories.description")}
             />
             <div className="card-grid">
-              {stories.map((story) => (
-                <Card key={story.title} title={story.title} description={story.description} href={story.href}>
-                  <div className="story-image-placeholder" aria-label={story.imageAlt}>
-                    {story.image ? <img src={story.image} alt={story.imageAlt} /> : t("home.stories.placeholder")}
+              {stories.slice(0, 3).map((story) => (
+                <Card key={story.id} title={story.title} description={story.summary ?? undefined} href="/historias">
+                  <div className="story-image-placeholder" aria-label={story.image_alt ?? story.title}>
+                    {story.image_url ? <img src={story.image_url} alt={story.image_alt ?? story.title} /> : t("home.stories.placeholder")}
                   </div>
                 </Card>
               ))}
@@ -215,7 +172,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="page-section reveal-group" id="impacto" data-reveal>
+        {metrics.length > 0 && <section className="page-section reveal-group" id="impacto" data-reveal>
           <div className="container">
             <SectionHeader
               eyebrow={t("home.impact.eyebrow")}
@@ -223,15 +180,15 @@ export function HomePage() {
               description={t("home.impact.description")}
             />
             <div className="metrics-grid">
-              {impactMetrics.map((metric) => (
-                <article className="metric" key={metric.label}>
-                  <strong>{metric.value}</strong>
+              {metrics.map((metric) => (
+                <article className="metric" key={metric.id}>
+                  <strong>{formatMetricValue(metric.value, metric.unit, locale)}</strong>
                   <span>{metric.label}</span>
                 </article>
               ))}
             </div>
           </div>
-        </section>
+        </section>}
 
         <section className="page-section reveal-group" id="colaborar" data-reveal>
           <div className="container">
@@ -248,7 +205,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="page-section reveal-group" id="eventos" data-reveal>
+        {events.length > 0 && <section className="page-section reveal-group" id="eventos" data-reveal>
           <div className="container">
             <SectionHeader
               eyebrow={t("home.events.eyebrow")}
@@ -256,14 +213,19 @@ export function HomePage() {
               description={t("home.events.description")}
             />
             <div className="card-grid">
-              {events.map((event) => (
-                <Card key={event.title} title={event.title} href={event.href} meta={event.date}>
-                  <p>{event.location}</p>
+              {events.slice(0, 6).map((event) => (
+                <Card
+                  key={event.id}
+                  title={event.title}
+                  href="/eventos"
+                  meta={formatEventDate(event.starts_on, locale, "Fecha por confirmar")}
+                >
+                  <p>{event.city}</p>
                 </Card>
               ))}
             </div>
           </div>
-        </section>
+        </section>}
 
         <section className="page-section reveal-group" id="transparencia" data-reveal>
           <div className="container split-section">

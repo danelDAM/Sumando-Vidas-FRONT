@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { SectionHeader } from "../components/ui/SectionHeader";
-import { raceEvents } from "../data/raceEvents";
+import { PublicDataStatus } from "../components/ui/PublicDataStatus";
+import { usePublicQuery } from "../hooks/usePublicQuery";
+import { getPublicEvents } from "../services/publicData";
 
-function getTimelineDateParts(date: string, fallback: string) {
+function getTimelineDateParts(date: string | null, fallback: string) {
   if (!date) {
     return [fallback];
   }
@@ -20,8 +22,9 @@ function getTimelineDateParts(date: string, fallback: string) {
 }
 
 export function EventsPage() {
-  const confirmedEvents = raceEvents.filter((event) => event.status === "confirmed");
-  const eventsToConfirm = raceEvents.filter((event) => event.status === "pending");
+  const { data: events, loading, error } = usePublicQuery("events", getPublicEvents, null);
+  const confirmedEvents = (events ?? []).filter((event) => event.schedule_status === "confirmed");
+  const eventsToConfirm = (events ?? []).filter((event) => event.schedule_status === "pending");
 
   return (
     <>
@@ -43,11 +46,18 @@ export function EventsPage() {
               description="Por ahora, las medias maratones del proyecto Por Ellos son los primeros eventos publicados. Iremos incorporando nuevas actividades a medida que se confirmen."
           />
 
+          <PublicDataStatus
+            loading={loading}
+            error={error}
+            empty={!loading && !error && (events?.length ?? 0) === 0}
+            emptyMessage="Todavía no hay eventos publicados."
+          />
+
           <div className="events-timeline" aria-label="Cronología de las medias maratones">
             {confirmedEvents.map((event) => (
-              <article className="event-timeline-item" key={event.city}>
-                <div className="event-timeline-marker" aria-label={event.dateLabel}>
-                  {getTimelineDateParts(event.date, event.dateLabel).map((part) => (
+              <article className="event-timeline-item" key={event.id}>
+                <div className="event-timeline-marker" aria-label={event.starts_on ?? "Fecha por confirmar"}>
+                  {getTimelineDateParts(event.starts_on, "Fecha por confirmar").map((part) => (
                     <span key={part}>{part}</span>
                   ))}
                 </div>
@@ -56,15 +66,17 @@ export function EventsPage() {
                     <div>
                       <p className="eyebrow">{event.city}</p>
                       <h2>{event.title}</h2>
-                      <p>{event.description}</p>
+                      {event.description && <p>{event.description}</p>}
                     </div>
                     <div className="event-timeline-meta">
-                      <span>{event.distance}</span>
-                      <a href={event.officialUrl} target="_blank" rel="noreferrer">
-                        Web oficial
-                      </a>
-                      {event.registrationUrl && (
-                        <a href={event.registrationUrl} target="_blank" rel="noreferrer">
+                      {event.distance_km && <span>{event.distance_km.toLocaleString("es-ES")} km</span>}
+                      {event.official_url && (
+                        <a href={event.official_url} target="_blank" rel="noreferrer">
+                          Web oficial
+                        </a>
+                      )}
+                      {event.registration_url && (
+                        <a href={event.registration_url} target="_blank" rel="noreferrer">
                           Inscripciones
                         </a>
                       )}
@@ -86,14 +98,16 @@ export function EventsPage() {
           />
           <div className="events-pending-grid">
             {eventsToConfirm.map((event, index) => (
-              <article className="event-pending-card" key={event.city}>
+              <article className="event-pending-card" key={event.id}>
                 <span>{String(confirmedEvents.length + index + 1).padStart(2, "0")}</span>
                 <p className="eyebrow">{event.city}</p>
                 <h2>{event.title}</h2>
-                <p>{event.description}</p>
-                <a href={event.officialUrl} target="_blank" rel="noreferrer">
-                  Consultar web oficial
-                </a>
+                {event.description && <p>{event.description}</p>}
+                {event.official_url && (
+                  <a href={event.official_url} target="_blank" rel="noreferrer">
+                    Consultar web oficial
+                  </a>
+                )}
               </article>
             ))}
           </div>

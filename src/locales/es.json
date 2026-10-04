@@ -59,19 +59,19 @@
     },
     "whatWeDo": {
       "eyebrow": "Qué hacemos",
-      "title": "Proyectos preparados para crecer",
-      "description": "Por Ellos será el primer proyecto activo de la asociación, con una campaña deportiva y solidaria alrededor de cinco grandes medias maratones."
+      "title": "Proyectos y campañas",
+      "description": "Consulta los proyectos publicados y sus campañas activas."
     },
     "stories": {
       "eyebrow": "Historias",
       "title": "Voces que dan sentido al camino",
-      "description": "Cada historia puede incorporar imagen, título, resumen y enlace a una página ampliada.",
+      "description": "Historias publicadas por la asociación, con sus imágenes y relatos.",
       "placeholder": "Imagen"
     },
     "impact": {
       "eyebrow": "Impacto",
-      "title": "Datos preparados para conectarse a métricas reales",
-      "description": "Estos indicadores podrán alimentarse más adelante desde CMS, base de datos o informes internos.",
+      "title": "Cifras de impacto",
+      "description": "Indicadores publicados por la asociación, con su fecha de referencia.",
       "families": "Familias acompañadas",
       "scholarships": "Ayudas gestionadas",
       "volunteers": "Personas colaboradoras",
@@ -90,8 +90,8 @@
     "transparency": {
       "eyebrow": "Transparencia",
       "title": "Claridad sobre cada ayuda recibida",
-      "description": "Espacio para explicar el uso de las donaciones, resultados e informes públicos.",
-      "text": "Esta sección está preparada para publicar documentos, memorias, resultados de campañas y criterios de asignación de ayudas.",
+      "description": "Informes públicos sobre la actividad y el uso de las aportaciones.",
+      "text": "Consulta los informes y memorias disponibles en la página de transparencia.",
       "annualMemory": "Memoria anual",
       "economicReports": "Informes económicos",
       "donationDestination": "Destino de donaciones"
@@ -174,10 +174,10 @@
     "page": {
       "eyebrow": "Proyectos",
       "title": "Iniciativas para sumar apoyo real",
-      "description": "Sumando Vidas organizará sus campañas en proyectos concretos, medibles y fáciles de seguir. El primero será Por Ellos.",
+      "description": "Proyectos publicados y campañas activas de Sumando Vidas.",
       "stats": {
         "marathons": "Medias maratones",
-        "goal": "Meta simulada",
+        "goal": "Objetivo de campaña",
         "distance": "Recorrido solidario",
         "monthlyChallenge": "Reto mensual",
         "leaderboards": "Leaderboards mensuales",

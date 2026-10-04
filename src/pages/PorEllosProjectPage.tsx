@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SectionHeader } from "../components/ui/SectionHeader";
-import { featuredProject } from "../data/projects";
+import { PublicDataStatus } from "../components/ui/PublicDataStatus";
+import { usePublicQuery } from "../hooks/usePublicQuery";
+import { getPorEllosPublicData, type PublicProduct } from "../services/publicData";
 import { createDonationCheckoutSession } from "../services/stripe";
+
+const donationOptions = [10, 25, 50, 100];
 
 type DonationFeedback = {
   type: "error" | "success" | "info";
@@ -10,25 +14,85 @@ type DonationFeedback = {
 };
 
 export function PorEllosProjectPage() {
+  const { data, loading, error } = usePublicQuery("por-ellos", getPorEllosPublicData, null);
   const [activeRaceIndex, setActiveRaceIndex] = useState(0);
-  const [selectedRaceCity, setSelectedRaceCity] = useState(featuredProject.races[0].city);
+  const [selectedRaceCity, setSelectedRaceCity] = useState("");
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   const [donationAmount, setDonationAmount] = useState("25");
   const [isCustomAmount, setIsCustomAmount] = useState(false);
-  const [selectedStoreItem, setSelectedStoreItem] = useState<(typeof featuredProject.storeItems)[number] | null>(null);
+  const [selectedStoreItem, setSelectedStoreItem] = useState<PublicProduct | null>(null);
   const [isSubmittingDonation, setIsSubmittingDonation] = useState(false);
   const [donationFeedback, setDonationFeedback] = useState<DonationFeedback | null>(null);
 
-  const activeRace = featuredProject.races[activeRaceIndex];
-  const rankedRaces = [...featuredProject.races].sort(
-    (firstRace, secondRace) => secondRace.raisedAmount - firstRace.raisedAmount,
-  );
-  const leadingAmount = rankedRaces[0].raisedAmount;
-  const progress = Math.round((featuredProject.raisedAmount / featuredProject.targetAmount) * 100);
-  const routeProgress = (activeRaceIndex / (featuredProject.races.length - 1)) * 100;
-  const accumulatedDistance = ((activeRaceIndex + 1) * 21.1).toLocaleString("es-ES", {
+  if (loading || error || !data) {
+    return (
+      <section className="page-section page-hero">
+        <div className="container page-hero-content">
+          <p className="eyebrow">Campaña solidaria</p>
+          <h1>Por Ellos</h1>
+          <PublicDataStatus loading={loading} error={error} empty={false} />
+        </div>
+      </section>
+    );
+  }
+
+  const eventsById = new Map(data.events.map((event) => [event.id, event]));
+  const races = data.stops.map((stop) => {
+    const event = stop.event_id ? eventsById.get(stop.event_id) : undefined;
+    const date = event?.starts_on
+      ? new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "short", year: "numeric" }).format(new Date(`${event.starts_on}T00:00:00`))
+      : stop.label ?? `Parada ${stop.stop_number}`;
+    const distance = stop.distance_km ?? event?.distance_km;
+    const statusLabels: Record<string, string> = {
+      planned: "En preparación",
+      ready: "Preparada",
+      in_progress: "En curso",
+      completed: "Completada",
+      cancelled: "Cancelada",
+    };
+
+    return {
+      stop,
+      event,
+      city: stop.city,
+      name: stop.title,
+      date,
+      distance: distance == null ? "" : `${distance.toLocaleString("es-ES")} km`,
+      distanceKm: distance ?? 0,
+      description: stop.description ?? event?.description ?? "",
+      status: statusLabels[stop.status] ?? stop.status,
+    };
+  });
+
+  if (races.length === 0) {
+    return (
+      <section className="page-section">
+        <div className="container">
+          <PublicDataStatus loading={false} error={null} empty emptyMessage="Todavía no hay paradas publicadas para esta campaña." />
+        </div>
+      </section>
+    );
+  }
+
+  const activeRaceIndexSafe = Math.min(activeRaceIndex, races.length - 1);
+  const activeRace = races[activeRaceIndexSafe];
+  const routeProgress = races.length > 1 ? (activeRaceIndexSafe / (races.length - 1)) * 100 : 0;
+  const accumulatedDistance = races
+    .slice(0, activeRaceIndexSafe + 1)
+    .reduce((total, race) => total + race.distanceKm, 0)
+    .toLocaleString("es-ES", {
+      maximumFractionDigits: 1,
+    });
+  const totalDistance = races.reduce((total, race) => total + race.distanceKm, 0).toLocaleString("es-ES", {
     maximumFractionDigits: 1,
   });
+  const campaignGoal = data.campaign.goal_amount == null
+    ? null
+    : new Intl.NumberFormat("es-ES", {
+        style: "currency",
+        currency: data.campaign.currency,
+        maximumFractionDigits: 0,
+      }).format(data.campaign.goal_amount);
 
   const openDonationModal = (amount?: number) => {
     setDonationFeedback(null);
@@ -40,11 +104,11 @@ export function PorEllosProjectPage() {
     setIsDonationModalOpen(true);
   };
 
-  const openStoreModal = (item: (typeof featuredProject.storeItems)[number]) => {
+  const openStoreModal = (item: PublicProduct) => {
     setDonationFeedback(null);
     setSelectedStoreItem(item);
     setIsCustomAmount(false);
-    setDonationAmount(String(item.price));
+    setDonationAmount(String(item.price_amount));
     setIsDonationModalOpen(true);
   };
 
@@ -74,7 +138,7 @@ export function PorEllosProjectPage() {
     try {
       const checkoutUrl = await createDonationCheckoutSession(
         parsedAmount,
-        selectedStoreItem?.title || featuredProject.title,
+        selectedStoreItem?.title || data.project.title,
         activeRace.city,
       );
 
@@ -97,9 +161,9 @@ export function PorEllosProjectPage() {
       <section className="por-ellos-hero page-hero">
         <div className="container por-ellos-hero-grid">
           <div className="por-ellos-copy">
-            <p className="eyebrow">{featuredProject.status}</p>
-            <h1>{featuredProject.title}</h1>
-            <p>{featuredProject.description}</p>
+            <p className="eyebrow">{data.campaign.status === "active" ? "Campaña activa" : data.campaign.status}</p>
+            <h1>{data.project.title}</h1>
+            {data.project.description && <p>{data.project.description}</p>}
             <div className="action-row">
               <Link className="button button-primary" to="/donaciones">
                 Donar ahora
@@ -111,13 +175,9 @@ export function PorEllosProjectPage() {
           </div>
           <aside className="fundraising-panel" aria-label="Objetivo de recaudación">
             <p className="card-meta">Meta de recaudación</p>
-            <strong>{featuredProject.targetAmount.toLocaleString("es-ES")} €</strong>
-            <span>{featuredProject.raisedAmount.toLocaleString("es-ES")} € recaudados por ahora</span>
-            <div className="progress-track" aria-label={`Progreso de recaudación ${progress}%`}>
-              <span style={{ width: `${progress}%` }} />
-            </div>
+            <strong>{campaignGoal ?? "Sin objetivo publicado"}</strong>
             <div className="donation-chips" aria-label="Donaciones rápidas">
-              {featuredProject.donationOptions.map((amount) => (
+              {donationOptions.map((amount) => (
                 <button
                   key={amount}
                   type="button"
@@ -135,7 +195,7 @@ export function PorEllosProjectPage() {
         <div className="container">
           <SectionHeader
             eyebrow="La carrera completa"
-            title="Una meta, cinco paradas"
+            title={`Una meta, ${races.length} paradas`}
             description="Cada media maratón funciona como una parada del reto. Puedes seleccionar una ciudad para ver sus acciones solidarias."
           />
 
@@ -144,19 +204,19 @@ export function PorEllosProjectPage() {
               <div className="race-map-header">
                 <div>
                   <p className="card-meta">Recorrido solidario</p>
-                  <h3>105,5 km para llegar a la meta</h3>
+                  <h3>{totalDistance} km para llegar a la meta</h3>
                 </div>
                 <span>{Math.round(routeProgress)}% del reto</span>
               </div>
 
-              <div className="race-track" aria-label="Recorrido de las cinco medias maratones">
+                <div className="race-track" aria-label={`Recorrido de ${races.length} medias maratones`}>
                 <div className="race-line" aria-hidden="true">
                   <span style={{ width: `${routeProgress}%` }} />
                 </div>
-                {featuredProject.races.map((race, index) => (
+                {races.map((race, index) => (
                   <button
                     className={`race-stop ${index === activeRaceIndex ? "is-active" : ""}`}
-                    key={race.city}
+                    key={race.stop.id}
                     onClick={() => setActiveRaceIndex(index)}
                     type="button"
                     aria-pressed={index === activeRaceIndex}
@@ -192,8 +252,8 @@ export function PorEllosProjectPage() {
                   <dd>{accumulatedDistance} km</dd>
                 </div>
                 <div>
-                  <dt>Recaudado</dt>
-                  <dd>{activeRace.raisedAmount.toLocaleString("es-ES")} €</dd>
+                  <dt>Número de parada</dt>
+                  <dd>{activeRace.stop.stop_number}</dd>
                 </div>
               </dl>
               <div className="action-row">
@@ -224,112 +284,27 @@ export function PorEllosProjectPage() {
                 <p className="card-meta">Productos solidarios</p>
                 <h3>Elige tu producto y su ciudad</h3>
               </div>
-              <span>{featuredProject.storeItems.length} productos</span>
+              <span>{data.products.length} productos</span>
             </div>
 
-            <div className="store-item-list">
-              {featuredProject.storeItems.map((item) => (
-                <div className="store-item" key={item.title}>
+            {data.products.length > 0 ? <div className="store-item-list">
+              {data.products.map((item) => (
+                <div className="store-item" key={item.id}>
                   <div className="store-item-image">
-                    <img src={item.image} alt={item.title} />
+                    {item.image_url && <img src={item.image_url} alt={item.title} />}
                   </div>
                   <div className="store-item-topline">
-                    <span className="store-tag">{item.tag}</span>
-                    <strong>{item.price} €</strong>
+                    <span className="store-tag">{item.category}</span>
+                    <strong>{item.price_amount.toLocaleString("es-ES")} {item.currency}</strong>
                   </div>
                   <h4>{item.title}</h4>
-                  <p>
-                    {item.description}
-                  </p>
+                  {item.description && <p>{item.description}</p>}
                   <button className="button button-primary" type="button" onClick={() => openStoreModal(item)}>
-                    Comprar por {item.price} €
+                    Comprar por {item.price_amount.toLocaleString("es-ES")} {item.currency}
                   </button>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="page-section reveal-group" data-reveal>
-        <div className="container">
-          <SectionHeader
-            eyebrow="Pique solidario"
-            title="¿Qué ciudad va a dar más por ellos?"
-            description="La clasificación se actualiza con lo recaudado en cada parada. Aquí no compiten las familias: compite la solidaridad."
-          />
-          <div className="city-leaderboard" aria-label="Clasificación de recaudación por ciudad">
-            <div className="leaderboard-intro">
-              <strong>{rankedRaces[0].city} va en cabeza</strong>
-              <span>La próxima donación puede cambiar la clasificación.</span>
-            </div>
-            <div className="leaderboard-podium">
-              {rankedRaces.slice(0, 3).map((race, rank) => {
-                const cityProgress = Math.round((race.raisedAmount / leadingAmount) * 100);
-
-                return (
-                  <button
-                    className={`leaderboard-row ${rank < 3 ? `leaderboard-row--top-${rank + 1}` : ""} ${selectedRaceCity === race.city ? "is-selected" : ""}`}
-                    key={race.city}
-                    type="button"
-                    onClick={() => {
-                      setSelectedRaceCity(race.city);
-                      setActiveRaceIndex(featuredProject.races.findIndex((item) => item.city === race.city));
-                    }}
-                    aria-pressed={selectedRaceCity === race.city}
-                  >
-                    <span className="leaderboard-rank">{rank + 1}</span>
-                    <span className="leaderboard-city">
-                      <strong>{race.city}</strong>
-                      <span>{race.status}</span>
-                    </span>
-                    <span className="leaderboard-progress" aria-hidden="true">
-                      <span style={{ width: `${cityProgress}%` }} />
-                    </span>
-                    <strong className="leaderboard-amount">
-                      {race.raisedAmount.toLocaleString("es-ES")} €
-                    </strong>
-                  </button>
-                );
-              })}
-            </div>
-            <div className="leaderboard-chasers">
-              <p>Persiguiendo el podio</p>
-              <div className="leaderboard-list">
-                {rankedRaces.slice(3).map((race, index) => {
-                  const cityProgress = Math.round((race.raisedAmount / leadingAmount) * 100);
-                  const rank = index + 3;
-
-                  return (
-                    <button
-                      className={`leaderboard-row ${selectedRaceCity === race.city ? "is-selected" : ""}`}
-                      key={race.city}
-                      type="button"
-                      onClick={() => {
-                        setSelectedRaceCity(race.city);
-                        setActiveRaceIndex(featuredProject.races.findIndex((item) => item.city === race.city));
-                      }}
-                      aria-pressed={selectedRaceCity === race.city}
-                    >
-                      <span className="leaderboard-rank">{rank + 1}</span>
-                      <span className="leaderboard-city">
-                        <strong>{race.city}</strong>
-                        <span>{race.status}</span>
-                      </span>
-                      <span className="leaderboard-progress" aria-hidden="true">
-                        <span style={{ width: `${cityProgress}%` }} />
-                      </span>
-                      <strong className="leaderboard-amount">
-                        {race.raisedAmount.toLocaleString("es-ES")} €
-                      </strong>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-            <Link className="button button-primary leaderboard-cta" to="/donaciones">
-              Haz subir a tu ciudad
-            </Link>
+            </div> : <p role="status">Todavía no hay productos publicados.</p>}
           </div>
         </div>
       </section>
@@ -364,15 +339,15 @@ export function PorEllosProjectPage() {
                 <label htmlFor="donation-city">¿A qué ciudad quieres apoyar?</label>
                 <select
                   id="donation-city"
-                  value={selectedRaceCity}
+                  value={selectedRaceCity || activeRace.city}
                   onChange={(event) => {
                     const city = event.target.value;
                     setSelectedRaceCity(city);
-                    setActiveRaceIndex(featuredProject.races.findIndex((race) => race.city === city));
+                    setActiveRaceIndex(races.findIndex((race) => race.city === city));
                   }}
                 >
-                  {featuredProject.races.map((race) => (
-                    <option key={race.city} value={race.city}>
+                  {races.map((race) => (
+                      <option key={race.stop.id} value={race.city}>
                       {race.city}
                     </option>
                   ))}
@@ -381,7 +356,7 @@ export function PorEllosProjectPage() {
             )}
 
             <div className="donation-choice-list" aria-label="Opciones de donación">
-              {featuredProject.donationOptions.map((amount) => (
+              {donationOptions.map((amount) => (
                 <button
                   key={amount}
                   type="button"

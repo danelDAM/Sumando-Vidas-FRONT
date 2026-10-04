@@ -13,6 +13,7 @@ import { HeroesQueSumanPage } from "./pages/HeroesQueSumanPage";
 import { ContactPage } from "./pages/ContactPage";
 import { DonationsPage } from "./pages/DonationsPage";
 import { EventsPage } from "./pages/EventsPage";
+import { TransparencyPage } from "./pages/TransparencyPage";
 
 export default function App() {
   const { t } = useTranslation();
@@ -29,9 +30,10 @@ export default function App() {
         <Route path="contacto" element={<ContactPage />} />
         <Route path="donaciones" element={<DonationsPage />} />
         <Route path="eventos" element={<EventsPage />} />
+        <Route path="transparencia" element={<TransparencyPage />} />
         <Route path="donaciones/exito" element={<DonationStatusPage status="success" />} />
         <Route path="donaciones/cancelado" element={<DonationStatusPage status="cancel" />} />
-        {futurePages.filter((page) => !["proyectos", "historias", "contacto", "donaciones", "eventos"].includes(page.path)).map((page) => (
+        {futurePages.filter((page) => !["proyectos", "historias", "contacto", "donaciones", "eventos", "transparencia"].includes(page.path)).map((page) => (
           <Route
             key={page.path}
             path={page.path}

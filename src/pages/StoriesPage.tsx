@@ -1,30 +1,15 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { SectionHeader } from "../components/ui/SectionHeader";
+import { PublicDataStatus } from "../components/ui/PublicDataStatus";
+import { usePublicQuery } from "../hooks/usePublicQuery";
+import { getPublicStories } from "../services/publicData";
 
 export function StoriesPage() {
-  const { t } = useTranslation();
-
-  const featuredStory = {
-    title: t("home.storyCards.felipe.title"),
-    description: t("storiesPage.summary"),
-    imageAlt: t("home.storyCards.felipe.imageAlt"),
-    image: "/images/fotoFelipeMedina.png",
-    href: "/historias",
-  };
-
-  const moreStories = [
-    {
-      title: t("home.storyCards.family.title"),
-      description: t("home.storyCards.family.description"),
-      href: "/historias",
-    },
-    {
-      title: t("home.storyCards.challenges.title"),
-      description: t("home.storyCards.challenges.description"),
-      href: "/historias",
-    },
-  ];
+  const { t, i18n } = useTranslation();
+  const locale = (i18n.resolvedLanguage || i18n.language || "es").split("-")[0];
+  const { data: stories, loading, error } = usePublicQuery(`stories:${locale}`, getPublicStories, locale);
+  const [featuredStory, ...moreStories] = stories ?? [];
 
   return (
     <>
@@ -38,17 +23,25 @@ export function StoriesPage() {
 
       <section className="page-section reveal-group" data-reveal>
         <div className="container project-feature-grid">
-          <article className="project-feature-card story-feature-card">
+          <PublicDataStatus
+            loading={loading}
+            error={error}
+            empty={!loading && !error && (stories?.length ?? 0) === 0}
+            emptyMessage="Todavía no hay historias publicadas."
+          />
+          {featuredStory && <article className="project-feature-card story-feature-card">
             <div className="story-feature-copy">
               <p className="eyebrow">{t("storiesPage.featured")}</p>
               <h2>{featuredStory.title}</h2>
-              <p>{t("storiesPage.summary")}</p>
-              <details className="story-expander">
-                <summary>{t("storiesPage.readMore")}</summary>
-                <p>{t("storiesPage.longDescription")}</p>
-              </details>
+              {featuredStory.summary && <p>{featuredStory.summary}</p>}
+              {featuredStory.body && (
+                <details className="story-expander">
+                  <summary>{t("storiesPage.readMore")}</summary>
+                  <p>{featuredStory.body}</p>
+                </details>
+              )}
               <div className="action-row">
-                <Link className="button button-primary" to={featuredStory.href}>
+                <Link className="button button-primary" to="/historias">
                   {t("storiesPage.readHistory")}
                 </Link>
                 <Link className="button button-secondary" to="/donaciones">
@@ -57,16 +50,16 @@ export function StoriesPage() {
               </div>
             </div>
 
-            <div className="story-feature-media" aria-label={featuredStory.imageAlt}>
+            <div className="story-feature-media" aria-label={featuredStory.image_alt ?? featuredStory.title}>
               <div className="story-image-placeholder">
-                {featuredStory.image ? (
-                  <img src={featuredStory.image} alt={featuredStory.imageAlt} />
+                {featuredStory.image_url ? (
+                  <img src={featuredStory.image_url} alt={featuredStory.image_alt ?? featuredStory.title} />
                 ) : (
                   t("storiesPage.photoFounder")
                 )}
               </div>
             </div>
-          </article>
+          </article>}
         </div>
       </section>
 
@@ -78,17 +71,21 @@ export function StoriesPage() {
             description={t("storiesPage.descriptionMore")}
           />
 
-          <div className="card-grid">
+          {moreStories.length > 0 && <div className="card-grid">
             {moreStories.map((story) => (
-              <article key={story.title} className="card">
+              <article key={story.id} className="card">
                 <h3>{story.title}</h3>
-                <p>{story.description}</p>
-                <Link className="card-link" to={story.href}>
-                  {t("common.readMore")}
-                </Link>
+                {story.summary && <p>{story.summary}</p>}
+                {story.body && (
+                  <details className="story-expander">
+                    <summary>{t("common.readMore")}</summary>
+                    <p>{story.body}</p>
+                  </details>
+                )}
+                <Link className="card-link" to="/historias">{t("common.readMore")}</Link>
               </article>
             ))}
-          </div>
+          </div>}
         </div>
       </section>
     </>

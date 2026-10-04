@@ -60,18 +60,18 @@
     "whatWeDo": {
       "eyebrow": "Zer egiten dugu",
       "title": "Hazteko prest dauden proiektuak",
-      "description": "Por Ellos elkartearen lehen proiektua izango da, bost erriko erdi maratoen inguruan kirol eta laguntza kanpaina bat."
+      "description": "Argitaratutako proiektuak eta kanpaina aktiboak kontsultatu."
     },
     "stories": {
       "eyebrow": "Istorioak",
       "title": "Bidea zentzua ematen duten ahotsak",
-      "description": "Istorio bakoitzak irudia, titulua, laburpena eta orri zabaldu batera doazen loturak eduki ditzake.",
+      "description": "Elkarteak argitaratutako istorioak, irudi eta kontakizunekin.",
       "placeholder": "Irudia"
     },
     "impact": {
       "eyebrow": "Eragina",
-      "title": "Metrikekin konektatzeko prest dauden datuak",
-      "description": "Adierazle hauek geroago CMS, datu-base edo barne-informetatik elikatu ahal izango dira.",
+      "title": "Eraginaren adierazleak",
+      "description": "Elkarteak argitaratutako datuak, erreferentzia-datarekin.",
       "families": "Lagundutako familiek",
       "scholarships": "Kudeatutako laguntzak",
       "volunteers": "Boluntarioak",
@@ -90,8 +90,8 @@
     "transparency": {
       "eyebrow": "Gardenakotasuna",
       "title": "Laguntza bakoitzaren argitasuna",
-      "description": "Dohaintzen erabilera, emaitzak eta publikoak diren txostenak azaltzeko tokia.",
-      "text": "Atal hau dokumentuak, memoria, kanpainen emaitzak eta laguntzen esleipen-irizpideak argitaratzeko prest dago.",
+      "description": "Jarduerari eta ekarpenen erabilerari buruzko txosten publikoak.",
+      "text": "Argitaratutako txostenak eta memoriak gardentasun-orrian kontsulta daitezke.",
       "annualMemory": "Urteko memoria",
       "economicReports": "Ekonomia txostenak",
       "donationDestination": "Dohaintzen xedea"
@@ -174,10 +174,10 @@
     "page": {
       "eyebrow": "Proiektuak",
       "title": "Laguntza errealerako ekimenak",
-      "description": "Sumando Vidas-ek bere kanpainak proiektu zehatz, neurgarri eta jarraitzeko errazetan antolatuko ditu. Lehenengoa Por Ellos izango da.",
+      "description": "Sumando Vidasen argitaratutako proiektuak eta kanpaina aktiboak.",
       "stats": {
         "marathons": "Erdi maratoiak",
-        "goal": "Helburu simulatu",
+        "goal": "Kanpainaren helburua",
         "distance": "Laguntza-bidaia",
         "monthlyChallenge": "Hilabeteroko erronka",
         "leaderboards": "Hilabete-mailak",

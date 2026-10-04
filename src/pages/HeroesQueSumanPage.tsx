@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { SectionHeader } from "../components/ui/SectionHeader";
-import { heroesProject } from "../data/heroes";
+import { PublicDataStatus } from "../components/ui/PublicDataStatus";
+import { usePublicQuery } from "../hooks/usePublicQuery";
+import { getPublicHeroesData } from "../services/publicData";
 
 type LeaderboardType = "companies" | "people";
 
@@ -34,12 +36,15 @@ function formatAmount(amount: number) {
 }
 
 export function HeroesQueSumanPage() {
+  const { data, loading, error } = usePublicQuery("heroes-leaderboards", getPublicHeroesData, null);
   const [leaderboardType, setLeaderboardType] = useState<LeaderboardType>("companies");
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(getNextMonthStart()));
-  const currentEntries = leaderboardType === "companies" ? heroesProject.companies : heroesProject.people;
+  const monthlyEntries = data?.monthly ?? [];
+  const currentEntries = monthlyEntries.filter((entry) => entry.participant_type === (leaderboardType === "companies" ? "company" : "person"));
   const currentTotal = currentEntries.reduce((total, entry) => total + entry.amount, 0);
-  const currentLeader = currentEntries[0];
-  const topAmount = Math.max(...heroesProject.historic.map((entry) => entry.amount));
+  const currentLeaderAmount = currentEntries[0]?.amount ?? 0;
+  const historicEntries = data?.historic ?? [];
+  const topAmount = historicEntries[0]?.amount ?? 0;
 
   useEffect(() => {
     const countdownTarget = getNextMonthStart();
@@ -58,14 +63,26 @@ export function HeroesQueSumanPage() {
     [timeLeft],
   );
 
+  if (loading || error) {
+    return (
+      <section className="page-section page-hero">
+        <div className="container page-hero-content">
+          <p className="eyebrow">Proyecto mensual</p>
+          <h1>Héroes que suman</h1>
+          <PublicDataStatus loading={loading} error={error} empty={false} />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <>
       <section className="page-section page-hero heroes-project-hero">
         <div className="container heroes-project-hero-grid">
           <div>
             <p className="eyebrow">Proyecto mensual</p>
-            <h1>{heroesProject.title}</h1>
-            <p>{heroesProject.summary}</p>
+            <h1>{data?.project?.title ?? "Héroes que suman"}</h1>
+            {data?.project?.summary && <p>{data.project.summary}</p>}
             <div className="action-row">
               <Link className="button button-primary" to="/donaciones">
                 Sumar mi apoyo
@@ -101,7 +118,7 @@ export function HeroesQueSumanPage() {
           <div className="heroes-scoreboard">
             <div className="heroes-scoreboard-header">
               <div>
-                <p className="card-meta">Recaudado este mes</p>
+                <p className="card-meta">Aportaciones visibles en el ranking este mes</p>
                 <strong>{formatAmount(currentTotal)}</strong>
               </div>
               <span>Clasificación abierta hasta fin de mes</span>
@@ -127,26 +144,30 @@ export function HeroesQueSumanPage() {
               </button>
             </div>
             <div className="heroes-monthly-board">
-              <div className="heroes-podium">
-                {currentEntries.slice(0, 3).map((entry, index) => (
-                  <div className={`heroes-podium-place heroes-podium-place--${index + 1}`} key={entry.name}>
-                    <span className="heroes-podium-medal">{index === 0 ? "Oro" : index === 1 ? "Plata" : "Bronce"}</span>
-                    <strong>{entry.name}</strong>
-                    <b>{formatAmount(entry.amount)}</b>
-                    <small>{index === 0 ? "Líder del mes" : `A ${formatAmount(currentLeader.amount - entry.amount)} del primer puesto`}</small>
+              {currentEntries.length > 0 ? (
+                <>
+                  <div className="heroes-podium">
+                    {currentEntries.slice(0, 3).map((entry, index) => (
+                      <div className={`heroes-podium-place heroes-podium-place--${index + 1}`} key={entry.participant_id}>
+                        <span className="heroes-podium-medal">{index === 0 ? "Oro" : index === 1 ? "Plata" : "Bronce"}</span>
+                        <strong>{entry.display_name}</strong>
+                        <b>{formatAmount(entry.amount)}</b>
+                        <small>{index === 0 ? "Líder del mes" : `A ${formatAmount(currentLeaderAmount - entry.amount)} del primer puesto`}</small>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <div className="heroes-ranking-list">
-                {currentEntries.slice(3).map((entry, index) => (
-                  <div className="heroes-ranking-row" key={entry.name}>
-                    <span>{index + 4}</span>
-                    <strong>{entry.name}</strong>
-                    <i aria-hidden="true"><em style={{ width: `${Math.round((entry.amount / currentLeader.amount) * 100)}%` }} /></i>
-                    <b>{formatAmount(entry.amount)}</b>
+                  <div className="heroes-ranking-list">
+                    {currentEntries.slice(3).map((entry, index) => (
+                      <div className="heroes-ranking-row" key={entry.participant_id}>
+                        <span>{index + 4}</span>
+                        <strong>{entry.display_name}</strong>
+                        <i aria-hidden="true"><em style={{ width: `${Math.round((entry.amount / currentLeaderAmount) * 100)}%` }} /></i>
+                        <b>{formatAmount(entry.amount)}</b>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </>
+              ) : <PublicDataStatus loading={false} error={null} empty emptyMessage="Todavía no hay participantes con aportaciones públicas este mes." />}
             </div>
           </div>
         </div>
@@ -160,14 +181,14 @@ export function HeroesQueSumanPage() {
             description="El ranking histórico reúne a quienes han mantenido su compromiso más allá de un solo mes."
           />
           <div className="heroes-historic-board">
-            {heroesProject.historic.map((entry, index) => (
-              <div className="heroes-historic-row" key={`${entry.name}-${entry.type}`}>
+            {historicEntries.length > 0 ? historicEntries.map((entry, index) => (
+              <div className="heroes-historic-row" key={entry.participant_id}>
                 <span className="heroes-historic-rank">{index + 1}</span>
-                <div><strong>{entry.name}</strong><small>{entry.type}</small></div>
-                <i aria-hidden="true"><em style={{ width: `${Math.round((entry.amount / topAmount) * 100)}%` }} /></i>
+                <div><strong>{entry.display_name}</strong><small>{entry.participant_type === "company" ? "Empresa" : "Persona"}</small></div>
+                <i aria-hidden="true"><em style={{ width: `${topAmount ? Math.round((entry.amount / topAmount) * 100) : 0}%` }} /></i>
                 <b>{formatAmount(entry.amount)}</b>
               </div>
-            ))}
+            )) : <PublicDataStatus loading={false} error={null} empty emptyMessage="Todavía no hay aportaciones históricas públicas." />}
           </div>
         </div>
       </section>
