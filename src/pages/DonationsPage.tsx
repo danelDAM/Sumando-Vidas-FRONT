@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { createDonationCheckoutSession } from "../services/stripe";
+import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { createDonationCheckoutSession } from "../services/payments";
 
 const donationOptions = [10, 25, 50, 100];
 type DonationMode = "single" | "subscription";
 type SubscriptionFrequency = "month" | "year";
 
 export function DonationsPage() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   const [mode, setMode] = useState<DonationMode>("single");
   const [frequency, setFrequency] = useState<SubscriptionFrequency>("month");
   const [amount, setAmount] = useState("25");
@@ -30,14 +33,12 @@ export function DonationsPage() {
 
   const handleSubmit = async () => {
     if (!Number.isFinite(numericAmount) || numericAmount <= 0) {
-      setFeedback("Introduce una cantidad mayor que 0 para continuar.");
+      setFeedback(t("payments.amountInvalid"));
       return;
     }
 
     if (mode === "subscription") {
-      setFeedback(
-        "La opción de suscripción está preparada en esta página. El backend deberá activar el modo recurrente de Stripe antes de ponerla en producción.",
-      );
+      setFeedback(t("payments.subscriptionUnavailable"));
       return;
     }
 
@@ -45,8 +46,8 @@ export function DonationsPage() {
     setFeedback(null);
 
     try {
-      const checkoutUrl = await createDonationCheckoutSession(numericAmount, "Sumando Vidas");
-      window.location.assign(checkoutUrl);
+      const payment = await createDonationCheckoutSession({ amount: numericAmount, currency: "EUR" });
+      navigate(`/donaciones/estado?donation_id=${encodeURIComponent(payment.donationId)}`);
     } catch (error) {
       setFeedback(error instanceof Error ? error.message : "No se pudo iniciar la donación.");
       setIsSubmitting(false);
@@ -74,7 +75,7 @@ export function DonationsPage() {
               Cada aportación ayuda a sostener acompañamiento, recursos y oportunidades para niños y familias afectados por el cáncer infantil.
             </p>
             <div className="donations-trust-list">
-              <span>Pago seguro con Stripe</span>
+              <span>{t("payments.fakeModeLabel")}</span>
               <span>Sin compromiso en la donación puntual</span>
               <span>Apoyo destinado a la causa</span>
             </div>
@@ -178,8 +179,12 @@ export function DonationsPage() {
               <strong>{formattedAmount} €{mode === "subscription" ? ` / ${frequency === "month" ? "mes" : "año"}` : ""}</strong>
             </div>
 
-            <button className="button button-primary donation-submit" type="button" onClick={handleSubmit} disabled={isSubmitting}>
-              {isSubmitting ? "Preparando pago…" : mode === "single" ? "Donar ahora" : "Crear mi suscripción"}
+            <button className="button button-primary donation-submit" type="button" onClick={handleSubmit} disabled={isSubmitting || !import.meta.env.DEV}>
+              {!import.meta.env.DEV
+                ? t("payments.developmentOnly")
+                : isSubmitting
+                  ? t("payments.preparing")
+                  : mode === "single" ? "Donar ahora" : "Crear mi suscripción"}
             </button>
 
             {feedback && (
@@ -189,7 +194,7 @@ export function DonationsPage() {
             )}
 
             <p className="donation-legal-note">
-              Al continuar serás dirigido a una pasarela segura. No almacenamos los datos de tu tarjeta en esta web.
+              {t("payments.testNotice")}
             </p>
           </div>
         </div>

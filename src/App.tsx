@@ -31,8 +31,7 @@ export default function App() {
         <Route path="donaciones" element={<DonationsPage />} />
         <Route path="eventos" element={<EventsPage />} />
         <Route path="transparencia" element={<TransparencyPage />} />
-        <Route path="donaciones/exito" element={<DonationStatusPage status="success" />} />
-        <Route path="donaciones/cancelado" element={<DonationStatusPage status="cancel" />} />
+        <Route path="donaciones/estado" element={<DonationStatusPage />} />
         {futurePages.filter((page) => !["proyectos", "historias", "contacto", "donaciones", "eventos", "transparencia"].includes(page.path)).map((page) => (
           <Route
             key={page.path}

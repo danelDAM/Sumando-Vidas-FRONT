@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPorEllosPublicData, type PublicProduct } from "../services/publicData";
 import { fallbackCampaigns, fallbackCampaignStops, fallbackEvents, fallbackProducts, fallbackProjects, mergePublicRows } from "../data/publicFallbacks";
-import { createDonationCheckoutSession } from "../services/stripe";
+import { createDonationCheckoutSession } from "../services/payments";
 
 const donationOptions = [10, 25, 50, 100];
 
@@ -17,6 +17,7 @@ type DonationFeedback = {
 
 export function PorEllosProjectPage() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const { data, loading, error } = usePublicQuery("por-ellos", getPorEllosPublicData, null);
   const [activeRaceIndex, setActiveRaceIndex] = useState(0);
   const [selectedRaceCity, setSelectedRaceCity] = useState("");
@@ -158,32 +159,34 @@ export function PorEllosProjectPage() {
     if (!Number.isFinite(parsedAmount) || parsedAmount <= 0) {
       setDonationFeedback({
         type: "error",
-        message: "Introduce una cantidad válida para continuar.",
+        message: t("payments.amountInvalid"),
       });
+      return;
+    }
+
+    if (!data?.campaign.id || !activeRace?.stop.id) {
+      setDonationFeedback({ type: "error", message: t("payments.campaignUnavailable") });
       return;
     }
 
     setIsSubmittingDonation(true);
     setDonationFeedback({
       type: "info",
-      message: "Estamos preparando tu donación para Stripe…",
+      message: t("payments.preparing"),
     });
 
     try {
-      const checkoutUrl = await createDonationCheckoutSession(
-        parsedAmount,
-          selectedStoreItem?.title || project.title,
-        activeRace.city,
-      );
-
-      setDonationFeedback({
-        type: "success",
-        message: "¡Gracias! Te estamos redirigiendo a la pasarela segura de pago…",
+      const payment = await createDonationCheckoutSession({
+        campaignId: data.campaign.id,
+        campaignStopId: activeRace.stop.id,
+        productId: selectedStoreItem?.id,
+        amount: selectedStoreItem ? undefined : parsedAmount,
+        currency: campaign.currency,
       });
-      window.location.assign(checkoutUrl);
+      navigate(`/donaciones/estado?donation_id=${encodeURIComponent(payment.donationId)}`);
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "No se pudo iniciar la donación. Inténtalo otra vez.";
+        error instanceof Error ? error.message : t("payments.startFailed");
 
       setDonationFeedback({ type: "error", message });
       setIsSubmittingDonation(false);
@@ -493,11 +496,13 @@ export function PorEllosProjectPage() {
                 type="button"
                 className="button button-primary"
                 onClick={handleDonationSubmit}
-                disabled={isSubmittingDonation}
+                disabled={isSubmittingDonation || !import.meta.env.DEV}
               >
-                {isSubmittingDonation
-                  ? "Procesando…"
-                  : `Confirmar ${Number(donationAmount || 0).toLocaleString("es-ES")} €`}
+                {!import.meta.env.DEV
+                  ? t("payments.developmentOnly")
+                  : isSubmittingDonation
+                    ? t("payments.preparing")
+                    : `Confirmar ${Number(donationAmount || 0).toLocaleString("es-ES")} €`}
               </button>
             </div>
           </div>

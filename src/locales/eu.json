@@ -211,6 +211,37 @@
       "text": "Enpresak eta pertsonak hilabetero lehiatzen dira, laguntza sailkapen solidarioaren buru izateko eta haur minbiziaren aurkako borrokan marka uzteko."
     }
   },
+  "payments": {
+    "amountInvalid": "Sartu zenbateko baliodun bat jarraitzeko.",
+    "subscriptionUnavailable": "Dohaintza errepikakorrak oraindik ez daude erabilgarri.",
+    "fakeModeLabel": "FakeMoney simulazioa, benetako kobrantzarik gabe",
+    "developmentOnly": "Garapenean bakarrik erabilgarri",
+    "testNotice": "Garapeneko simulazioa da: ez da benetako kobrantzarik egiten.",
+    "preparing": "Dohaintza prestatzen…",
+    "campaignUnavailable": "Ezin izan dira kanpaina eta geldialdia egiaztatu. Saiatu berriro argitaratuta daudenean.",
+    "startFailed": "Ezin izan da dohaintza hasi. Saiatu berriro.",
+    "statusTitle": "Dohaintzaren egoera",
+    "checking": "Zerbitzariarekin egoera egiaztatzen…",
+    "missingId": "Dohaintzaren identifikatzailea falta da.",
+    "statusFailed": "Ezin izan da dohaintzaren egoera kontsultatu.",
+    "unavailable": "Ezin izan da dohaintza egiaztatu",
+    "pendingNotice": "Dohaintza berrespenaren zain dago.",
+    "paidNotice": "Zerbitzariak ekarpena berretsi du.",
+    "cityLeaderboardTitle": "Hirien sailkapena eguneratuta",
+    "backCampaign": "Kanpainara itzuli",
+    "backHome": "Hasierara joan",
+    "status": {
+      "pending": "Dohaintza zain",
+      "paid": "Dohaintza berretsita",
+      "cancelled": "Dohaintza bertan behera utzita",
+      "failed": "Ezin izan da dohaintza osatu"
+    },
+    "simulate": {
+      "approved": "Onarpena simulatu",
+      "cancelled": "Ezeztapena simulatu",
+      "failed": "Errorea simulatu"
+    }
+  },
   "porEllos": {
     "stopStatus": {
       "planned": "Prestatzen",

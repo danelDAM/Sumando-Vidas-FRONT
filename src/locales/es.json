@@ -211,6 +211,37 @@
       "text": "Empresas y personas compiten cada mes para liderar una clasificación solidaria y dejar su huella en la lucha contra el cáncer infantil."
     }
   },
+  "payments": {
+    "amountInvalid": "Introduce una cantidad válida para continuar.",
+    "subscriptionUnavailable": "Las donaciones recurrentes aún no están disponibles.",
+    "fakeModeLabel": "Simulación FakeMoney, sin cobro real",
+    "developmentOnly": "Disponible solo en desarrollo",
+    "testNotice": "Esta es una simulación de desarrollo: no se realiza ningún cobro real.",
+    "preparing": "Preparando donación…",
+    "campaignUnavailable": "No se han podido verificar la campaña y la parada. Inténtalo de nuevo cuando estén publicadas.",
+    "startFailed": "No se pudo iniciar la donación. Inténtalo de nuevo.",
+    "statusTitle": "Estado de la donación",
+    "checking": "Comprobando el estado con el servidor…",
+    "missingId": "Falta el identificador de la donación.",
+    "statusFailed": "No se pudo consultar el estado de la donación.",
+    "unavailable": "No se pudo verificar la donación",
+    "pendingNotice": "La donación sigue pendiente de confirmación.",
+    "paidNotice": "El servidor ha confirmado la aportación.",
+    "cityLeaderboardTitle": "Clasificación actualizada por ciudad",
+    "backCampaign": "Volver a la campaña",
+    "backHome": "Ir al inicio",
+    "status": {
+      "pending": "Donación pendiente",
+      "paid": "Donación confirmada",
+      "cancelled": "Donación cancelada",
+      "failed": "No se pudo completar la donación"
+    },
+    "simulate": {
+      "approved": "Simular aprobación",
+      "cancelled": "Simular cancelación",
+      "failed": "Simular fallo"
+    }
+  },
   "porEllos": {
     "stopStatus": {
       "planned": "En preparación",

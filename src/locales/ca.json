@@ -211,6 +211,37 @@
       "text": "Empreses i persones competeixen cada mes per liderar una classificació solidària i deixar la seva empremta a la lluita contra el càncer infantil."
     }
   },
+  "payments": {
+    "amountInvalid": "Introdueix una quantitat vàlida per continuar.",
+    "subscriptionUnavailable": "Les donacions recurrents encara no estan disponibles.",
+    "fakeModeLabel": "Simulació FakeMoney, sense cobrament real",
+    "developmentOnly": "Disponible només en desenvolupament",
+    "testNotice": "Aquesta és una simulació de desenvolupament: no es fa cap cobrament real.",
+    "preparing": "Preparant la donació…",
+    "campaignUnavailable": "No s'han pogut verificar la campanya i la parada. Torna-ho a provar quan estiguin publicades.",
+    "startFailed": "No s'ha pogut iniciar la donació. Torna-ho a provar.",
+    "statusTitle": "Estat de la donació",
+    "checking": "S'està comprovant l'estat amb el servidor…",
+    "missingId": "Falta l'identificador de la donació.",
+    "statusFailed": "No s'ha pogut consultar l'estat de la donació.",
+    "unavailable": "No s'ha pogut verificar la donació",
+    "pendingNotice": "La donació continua pendent de confirmació.",
+    "paidNotice": "El servidor ha confirmat l'aportació.",
+    "cityLeaderboardTitle": "Classificació actualitzada per ciutat",
+    "backCampaign": "Tornar a la campanya",
+    "backHome": "Anar a l'inici",
+    "status": {
+      "pending": "Donació pendent",
+      "paid": "Donació confirmada",
+      "cancelled": "Donació cancel·lada",
+      "failed": "No s'ha pogut completar la donació"
+    },
+    "simulate": {
+      "approved": "Simular aprovació",
+      "cancelled": "Simular cancel·lació",
+      "failed": "Simular error"
+    }
+  },
   "porEllos": {
     "stopStatus": {
       "planned": "En preparació",
