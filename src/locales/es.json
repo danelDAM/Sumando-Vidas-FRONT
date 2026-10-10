@@ -213,6 +213,11 @@
   },
   "payments": {
     "amountInvalid": "Introduce una cantidad válida para continuar.",
+    "fixedAmount": "Importe fijo",
+    "anonymousDonation": "Hacer la donación anónima",
+    "nameForLeaderboard": "Nombre para aparecer en el leaderboard",
+    "namePlaceholder": "Escribe tu nombre",
+    "nameRequired": "Si la donación no es anónima, escribe un nombre para aparecer en el leaderboard.",
     "subscriptionUnavailable": "Las donaciones recurrentes aún no están disponibles.",
     "fakeModeLabel": "Simulación FakeMoney, sin cobro real",
     "developmentOnly": "Disponible solo en desarrollo",
@@ -265,6 +270,20 @@
       "supportCity": "Apoyar una ciudad",
       "pendingAmount": "Pendiente"
     }
+  },
+  "aboutPage": {
+    "title": "Las personas detrás de Sumando Vidas",
+    "origin": "Los comienzos",
+    "dailyWork": "Día a día",
+    "community": "Comunidad",
+    "founders": "Fundadores",
+    "founderRole": "Fundador",
+    "people": "Personas",
+    "team": "Equipo",
+    "teamDescription": "Espacio reservado para presentar a quienes forman parte del equipo.",
+    "collaborators": "Personas colaboradoras",
+    "collaboratorsDescription": "Un espacio para reconocer a quienes colaboran con la asociación.",
+    "profilesComing": "Los perfiles de esta sección se incorporarán próximamente."
   },
   "storiesPage": {
     "eyebrow": "Historias",

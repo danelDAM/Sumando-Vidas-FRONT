@@ -213,6 +213,11 @@
   },
   "payments": {
     "amountInvalid": "Introdueix una quantitat vàlida per continuar.",
+    "fixedAmount": "Import fix",
+    "anonymousDonation": "Fer la donació anònima",
+    "nameForLeaderboard": "Nom per aparèixer al leaderboard",
+    "namePlaceholder": "Escriu el teu nom",
+    "nameRequired": "Si la donació no és anònima, escriu un nom perquè aparegui al leaderboard.",
     "subscriptionUnavailable": "Les donacions recurrents encara no estan disponibles.",
     "fakeModeLabel": "Simulació FakeMoney, sense cobrament real",
     "developmentOnly": "Disponible només en desenvolupament",
@@ -265,6 +270,20 @@
       "supportCity": "Donar suport a una ciutat",
       "pendingAmount": "Pendent"
     }
+  },
+  "aboutPage": {
+    "title": "Les persones darrere de Sumando Vidas",
+    "origin": "Els inicis",
+    "dailyWork": "El dia a dia",
+    "community": "Comunitat",
+    "founders": "Fundadors",
+    "founderRole": "Fundador",
+    "people": "Persones",
+    "team": "Equip",
+    "teamDescription": "Espai reservat per presentar les persones que formen part de l'equip.",
+    "collaborators": "Persones col·laboradores",
+    "collaboratorsDescription": "Un espai per reconèixer les persones que col·laboren amb l'associació.",
+    "profilesComing": "Els perfils d'aquesta secció s'hi incorporaran pròximament."
   },
   "storiesPage": {
     "eyebrow": "Històries",

@@ -139,27 +139,37 @@
   z-index: 1000;
   display: grid;
   place-items: center;
-  background: rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(3px);
+  background: rgba(15, 23, 42, 0.58);
+  backdrop-filter: blur(4px);
   padding: 24px;
 }
 
 .donation-modal {
   position: relative;
-  width: min(100%, 460px);
+  width: min(100%, 500px);
   display: grid;
   gap: 18px;
-  border: 1px solid rgba(31, 41, 51, 0.08);
-  border-radius: 18px;
-  background: #ffffff;
-  padding: clamp(24px, 4vw, 34px);
-  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: clamp(22px, 3vw, 32px);
+  box-shadow: 0 32px 90px rgba(15, 23, 42, 0.28);
+}
+
+.donation-modal .card-meta {
+  margin: 0;
+  color: #4f46e5;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .donation-modal h3 {
   margin: 0;
-  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
   line-height: 1.1;
+  color: #111827;
 }
 
 .donation-close-button {
@@ -168,12 +178,42 @@
   right: 16px;
   width: 38px;
   height: 38px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   border-radius: 999px;
-  background: #ffffff;
-  color: #111827;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
   font-size: 1.5rem;
   cursor: pointer;
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.donation-close-button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+}
+
+.donation-fixed-amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+  padding: 16px 18px;
+}
+
+.donation-fixed-amount span {
+  color: #3730a3;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.donation-fixed-amount strong {
+  font-size: 1.5rem;
+  color: #111827;
 }
 
 .donation-choice-list {
@@ -183,8 +223,8 @@
 }
 
 .donation-choice-list button {
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
+  border: 1px solid #dbe3f0;
+  border-radius: 12px;
   background: #f8fafc;
   color: #1f2933;
   padding: 12px 8px;
@@ -193,35 +233,44 @@
   transition:
     border-color var(--motion-fast),
     background var(--motion-fast),
+    box-shadow var(--motion-fast),
     transform var(--motion-medium);
 }
 
 .donation-choice-list button:hover,
 .donation-choice-list button.is-selected {
-  border-color: #1f2933;
-  background: #1f2933;
+  border-color: #312e81;
+  background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
   color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(67, 56, 202, 0.18);
 }
 
-.donation-custom-amount {
+.donation-custom-amount,
+.donation-city-field label,
+.donation-anonymous-toggle span,
+.donation-name-field {
   font-weight: 700;
   color: #1f2933;
 }
 
-.donation-modal input {
+.donation-modal input,
+.donation-city-field select {
   width: 100%;
   border: 1px solid #d1d5db;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 0.9rem 1rem;
   font: inherit;
   color: #111827;
   background: #ffffff;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
-.donation-modal input:focus {
-  outline: 2px solid rgba(31, 41, 51, 0.15);
-  border-color: #1f2933;
+.donation-modal input:focus,
+.donation-city-field select:focus {
+  outline: none;
+  border-color: #4338ca;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
 }
 
 .donation-city-field {
@@ -229,31 +278,71 @@
   gap: 8px;
 }
 
-.donation-city-field label {
-  font-weight: 700;
+.donation-anonymous-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.donation-anonymous-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #4338ca;
+  cursor: pointer;
+}
+
+.donation-type-group {
+  display: grid;
+  gap: 10px;
+}
+
+.donation-type-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.donation-type-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.donation-type-options button {
+  border: 1px solid #dbe3f0;
+  border-radius: 12px;
+  background: #f8fafc;
   color: #1f2933;
+  padding: 12px 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--motion-fast);
 }
 
-.donation-city-field select {
-  width: 100%;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  padding: 0.9rem 1rem;
-  background: #ffffff;
-  color: #111827;
-  font: inherit;
+.donation-type-options button.is-selected {
+  border-color: #4338ca;
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+  color: #312e81;
+  box-shadow: inset 0 0 0 1px rgba(67, 56, 202, 0.08);
 }
 
-.donation-city-field select:focus {
-  outline: 2px solid rgba(31, 41, 51, 0.15);
-  border-color: #1f2933;
+.donation-name-field {
+  display: block;
+  margin-bottom: 8px;
 }
 
 .donation-modal-actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .donation-feedback {
@@ -711,16 +800,24 @@
 .store-item {
   display: grid;
   gap: 10px;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
   padding: 0;
   overflow: hidden;
-  background: #f9fafb;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.04);
+  transition: transform var(--motion-medium), box-shadow var(--motion-medium), border-color var(--motion-fast);
+}
+
+.store-item:hover {
+  transform: translateY(-4px);
+  border-color: #c7d2fe;
+  box-shadow: 0 18px 28px rgba(79, 70, 229, 0.08);
 }
 
 .store-item-image {
   height: 180px;
-  background: #eef2ff;
+  background: linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%);
 }
 
 .store-item-image img {
@@ -747,12 +844,14 @@
 
 .store-item h4 {
   margin-bottom: 0;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
+  color: #111827;
 }
 
 .store-item p {
   margin-bottom: 0;
   color: #4b5563;
+  line-height: 1.5;
 }
 
 .store-tag {

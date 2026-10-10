@@ -19,6 +19,12 @@ export type DonationPaymentInput = {
   campaignStopId?: string;
   productId?: string;
   participantId?: string;
+  participantType?: "person" | "company";
+  participant_type?: "person" | "company";
+  isAnonymous?: boolean;
+  donorName?: string;
+  donor_name?: string;
+  is_anonymous?: boolean;
 };
 
 type ApiError = { error?: string };
@@ -45,13 +51,23 @@ export async function createDonationCheckoutSession(
     retryKey = { fingerprint, key: crypto.randomUUID() };
   }
 
+  const payload = {
+    ...payment,
+    participantType: payment.participantType ?? payment.participant_type ?? "person",
+    participant_type: payment.participant_type ?? payment.participantType ?? "person",
+    isAnonymous: payment.isAnonymous ?? true,
+    is_anonymous: payment.is_anonymous ?? payment.isAnonymous ?? true,
+    donorName: payment.donorName?.trim() || payment.donor_name?.trim() || undefined,
+    donor_name: payment.donor_name?.trim() || payment.donorName?.trim() || undefined,
+  };
+
   const response = await fetch(`${API_BASE_URL}/api/payments/create-checkout-session`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Idempotency-Key": retryKey.key,
     },
-    body: JSON.stringify(payment),
+    body: JSON.stringify(payload),
   });
   const result = await parseResponse<DonationPayment>(response);
   retryKey = null;

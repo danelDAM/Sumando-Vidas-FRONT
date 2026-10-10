@@ -14,6 +14,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { DonationsPage } from "./pages/DonationsPage";
 import { EventsPage } from "./pages/EventsPage";
 import { TransparencyPage } from "./pages/TransparencyPage";
+import { AboutPage } from "./pages/AboutPage";
 
 export default function App() {
   const { t } = useTranslation();
@@ -23,6 +24,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
+        <Route path="sobre-nosotros" element={<AboutPage />} />
         <Route path="proyectos" element={<ProjectsPage />} />
         <Route path="proyectos/por-ellos" element={<PorEllosProjectPage />} />
         <Route path="proyectos/heroes-que-suman" element={<HeroesQueSumanPage />} />
@@ -32,7 +34,7 @@ export default function App() {
         <Route path="eventos" element={<EventsPage />} />
         <Route path="transparencia" element={<TransparencyPage />} />
         <Route path="donaciones/estado" element={<DonationStatusPage />} />
-        {futurePages.filter((page) => !["proyectos", "historias", "contacto", "donaciones", "eventos", "transparencia"].includes(page.path)).map((page) => (
+        {futurePages.filter((page) => !["sobre-nosotros", "proyectos", "historias", "contacto", "donaciones", "eventos", "transparencia"].includes(page.path)).map((page) => (
           <Route
             key={page.path}
             path={page.path}

@@ -37,7 +37,8 @@ function formatAmount(amount: number) {
 }
 
 export function HeroesQueSumanPage() {
-  const { data, loading, error } = usePublicQuery("heroes-leaderboards", getPublicHeroesData, null);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const { data, loading, error } = usePublicQuery(`heroes-leaderboards-${refreshKey}`, getPublicHeroesData, null);
   const [leaderboardType, setLeaderboardType] = useState<LeaderboardType>("companies");
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(getNextMonthStart()));
   const monthlyEntries = data?.monthly ?? [];
@@ -51,7 +52,19 @@ export function HeroesQueSumanPage() {
     const countdownTarget = getNextMonthStart();
     const timer = window.setInterval(() => setTimeLeft(getTimeLeft(countdownTarget)), 1000);
 
-    return () => window.clearInterval(timer);
+    const refreshData = () => setRefreshKey((current) => current + 1);
+    window.addEventListener("focus", refreshData);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        refreshData();
+      }
+    });
+
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("focus", refreshData);
+      document.removeEventListener("visibilitychange", refreshData);
+    };
   }, []);
 
   const countdown = useMemo(

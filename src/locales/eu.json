@@ -213,6 +213,11 @@
   },
   "payments": {
     "amountInvalid": "Sartu zenbateko baliodun bat jarraitzeko.",
+    "fixedAmount": "Zenbateko finkoa",
+    "anonymousDonation": "Dohaintza anonimoa egitea",
+    "nameForLeaderboard": "Leaderboard-en agertzeko izena",
+    "namePlaceholder": "Idatzi zure izena",
+    "nameRequired": "Dohaintza ez bada anonimoa, idatzi izen bat leaderboard-en agertzeko.",
     "subscriptionUnavailable": "Dohaintza errepikakorrak oraindik ez daude erabilgarri.",
     "fakeModeLabel": "FakeMoney simulazioa, benetako kobrantzarik gabe",
     "developmentOnly": "Garapenean bakarrik erabilgarri",
@@ -265,6 +270,20 @@
       "supportCity": "Hiri bati lagundu",
       "pendingAmount": "Zain"
     }
+  },
+  "aboutPage": {
+    "title": "Sumando Vidasen atzean dauden pertsonak",
+    "origin": "Hasierak",
+    "dailyWork": "Egunerokoa",
+    "community": "Komunitatea",
+    "founders": "Sortzaileak",
+    "founderRole": "Sortzailea",
+    "people": "Pertsonak",
+    "team": "Taldea",
+    "teamDescription": "Taldea osatzen duten pertsonak aurkezteko gunea.",
+    "collaborators": "Kolaboratzaileak",
+    "collaboratorsDescription": "Elkartearekin lankidetzan ari diren pertsonak aitortzeko gunea.",
+    "profilesComing": "Atal honetako profilak laster gehituko dira."
   },
   "storiesPage": {
     "eyebrow": "Istorioak",

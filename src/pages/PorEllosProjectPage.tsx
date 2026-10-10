@@ -25,6 +25,9 @@ export function PorEllosProjectPage() {
   const [donationAmount, setDonationAmount] = useState("25");
   const [isCustomAmount, setIsCustomAmount] = useState(false);
   const [selectedStoreItem, setSelectedStoreItem] = useState<PublicProduct | null>(null);
+  const [isAnonymousDonation, setIsAnonymousDonation] = useState(true);
+  const [donorType, setDonorType] = useState<"person" | "company">("person");
+  const [donorName, setDonorName] = useState("");
   const [isSubmittingDonation, setIsSubmittingDonation] = useState(false);
   const [donationFeedback, setDonationFeedback] = useState<DonationFeedback | null>(null);
 
@@ -133,6 +136,9 @@ export function PorEllosProjectPage() {
     setDonationFeedback(null);
     setSelectedStoreItem(null);
     setIsCustomAmount(false);
+    setIsAnonymousDonation(true);
+    setDonorType("person");
+    setDonorName("");
     if (amount) {
       setDonationAmount(String(amount));
     }
@@ -144,6 +150,9 @@ export function PorEllosProjectPage() {
     setSelectedStoreItem(item);
     setIsCustomAmount(false);
     setDonationAmount(String(item.price_amount));
+    setIsAnonymousDonation(true);
+    setDonorType("person");
+    setDonorName("");
     setIsDonationModalOpen(true);
   };
 
@@ -156,10 +165,18 @@ export function PorEllosProjectPage() {
   const handleDonationSubmit = async () => {
     const parsedAmount = Number(donationAmount);
 
-    if (!Number.isFinite(parsedAmount) || parsedAmount <= 0) {
+    if (!selectedStoreItem && (!Number.isFinite(parsedAmount) || parsedAmount <= 0)) {
       setDonationFeedback({
         type: "error",
         message: t("payments.amountInvalid"),
+      });
+      return;
+    }
+
+    if (!isAnonymousDonation && donorName.trim().length < 2) {
+      setDonationFeedback({
+        type: "error",
+        message: t("payments.nameRequired"),
       });
       return;
     }
@@ -182,6 +199,12 @@ export function PorEllosProjectPage() {
         productId: selectedStoreItem?.id,
         amount: selectedStoreItem ? undefined : parsedAmount,
         currency: campaign.currency,
+        participantType: donorType,
+        participant_type: donorType,
+        isAnonymous: isAnonymousDonation,
+        donorName: donorName.trim(),
+        donor_name: donorName.trim(),
+        is_anonymous: isAnonymousDonation,
       });
       navigate(`/donaciones/estado?donation_id=${encodeURIComponent(payment.donationId)}`);
     } catch (error) {
@@ -435,33 +458,42 @@ export function PorEllosProjectPage() {
               </div>
             )}
 
-            <div className="donation-choice-list" aria-label="Opciones de donación">
-              {donationOptions.map((amount) => (
+            {selectedStoreItem ? (
+              <div className="donation-fixed-amount">
+                <span>{t("payments.fixedAmount")}</span>
+                <strong>
+                  {selectedStoreItem.price_amount.toLocaleString("es-ES")} {selectedStoreItem.currency}
+                </strong>
+              </div>
+            ) : (
+              <div className="donation-choice-list" aria-label="Opciones de donación">
+                {donationOptions.map((amount) => (
+                  <button
+                    key={amount}
+                    type="button"
+                    className={Number(donationAmount) === amount ? "is-selected" : ""}
+                    onClick={() => {
+                      setDonationAmount(String(amount));
+                      setIsCustomAmount(false);
+                    }}
+                  >
+                    {amount} €
+                  </button>
+                ))}
                 <button
-                  key={amount}
                   type="button"
-                  className={Number(donationAmount) === amount ? "is-selected" : ""}
+                  className={isCustomAmount ? "is-selected" : ""}
                   onClick={() => {
-                    setDonationAmount(String(amount));
-                    setIsCustomAmount(false);
+                    setDonationAmount("");
+                    setIsCustomAmount(true);
                   }}
                 >
-                  {amount} €
+                  Otra cantidad
                 </button>
-              ))}
-              <button
-                type="button"
-                className={isCustomAmount ? "is-selected" : ""}
-                onClick={() => {
-                  setDonationAmount("");
-                  setIsCustomAmount(true);
-                }}
-              >
-                Otra cantidad
-              </button>
-            </div>
+              </div>
+            )}
 
-            {isCustomAmount && (
+            {!selectedStoreItem && isCustomAmount && (
               <>
                 <label className="donation-custom-amount" htmlFor="custom-donation-amount">
                   Cantidad personalizada
@@ -473,6 +505,54 @@ export function PorEllosProjectPage() {
                   step="1"
                   value={donationAmount}
                   onChange={(event) => setDonationAmount(event.target.value)}
+                />
+              </>
+            )}
+
+            <label className="donation-anonymous-toggle" htmlFor="donation-anonymous">
+              <input
+                id="donation-anonymous"
+                type="checkbox"
+                checked={isAnonymousDonation}
+                onChange={(event) => setIsAnonymousDonation(event.target.checked)}
+              />
+              <span>{t("payments.anonymousDonation")}</span>
+            </label>
+
+            {!isAnonymousDonation && (
+              <div className="donation-type-group" aria-label="Tipo de donante">
+                <span className="donation-type-label">¿Eres empresa o persona?</span>
+                <div className="donation-type-options">
+                  <button
+                    type="button"
+                    className={donorType === "person" ? "is-selected" : ""}
+                    onClick={() => setDonorType("person")}
+                  >
+                    Persona
+                  </button>
+                  <button
+                    type="button"
+                    className={donorType === "company" ? "is-selected" : ""}
+                    onClick={() => setDonorType("company")}
+                  >
+                    Empresa
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {!isAnonymousDonation && (
+              <>
+                <label className="donation-name-field" htmlFor="donor-name">
+                  {t("payments.nameForLeaderboard")}
+                </label>
+                <input
+                  id="donor-name"
+                  type="text"
+                  value={donorName}
+                  onChange={(event) => setDonorName(event.target.value)}
+                  placeholder={t("payments.namePlaceholder")}
+                  maxLength={80}
                 />
               </>
             )}
