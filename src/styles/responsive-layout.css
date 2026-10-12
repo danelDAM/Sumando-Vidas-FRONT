@@ -52,7 +52,6 @@
   }
 
   .project-feature-card,
-  .por-ellos-hero-grid,
   .race-experience {
     grid-template-columns: 1fr;
   }

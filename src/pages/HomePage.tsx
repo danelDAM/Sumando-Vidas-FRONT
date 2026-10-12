@@ -91,7 +91,7 @@ export function HomePage() {
           loop
           playsInline
           preload="auto"
-          poster="/images/niñaCancerPaginaInicio.png"
+          poster="/images/niñaCancerPaginaInicio.webp"
           aria-hidden="true"
           src="/videos/hero-background.mp4"
         />

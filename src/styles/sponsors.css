@@ -12,19 +12,15 @@
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    transparent 22%,
-    #000 32%,
-    #000 38%,
-    transparent 82%,
+    #000 18%,
+    #000 82%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    transparent 22%,
-    #000 32%,
-    #000 38%,
-    transparent 82%,
+    #000 18%,
+    #000 82%,
     transparent 100%
   );
 }
@@ -35,6 +31,11 @@
   overflow: hidden;
   animation: marquee var(--marquee-duration, 20s) linear infinite;
   will-change: transform;
+}
+
+.sponsor-marquee-viewport:hover .sponsor-marquee,
+.sponsor-marquee-viewport:focus-within .sponsor-marquee {
+  animation-play-state: paused;
 }
 
 .sponsor-marquee-group {
@@ -64,10 +65,6 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-}
-
-.sponsor-slide img.sponsor-logo-togga {
-  filter: brightness(0) opacity(0.55);
 }
 
 @keyframes marquee {
