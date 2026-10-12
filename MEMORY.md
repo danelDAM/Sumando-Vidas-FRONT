@@ -4,9 +4,10 @@ Project state snapshot for Por Ellos web + back. Update when it changes. Last re
 
 ## Git state
 
-- Web: on `develop`; local `develop` is 2 commits ahead of `origin/develop` (`d5920b4`, `d6a8213`), not pushed.
-- Web: `AGENTS.md`, `README.md` modified and `CLAUDE.md`, `MEMORY.md` new, all uncommitted. Remote `origin` → `github.com/danelDAM/Sumando-Vidas-FRONT`.
-- Back: on `develop`, in sync with `back/develop` (`6d8e72f`), with **uncommitted** work in `src/services/paymentService.js`, `src/services/paymentRepository.js`, `test/payment.test.js` (public participant flow, see below) plus doc updates and its own `CLAUDE.md`/`MEMORY.md`. Backend-only details: `../Por ellos back/MEMORY.md`. `npm test` 28/28 on 2026-10-11.
+- 2026-10-12: all work pushed to feature branches (no PRs opened; `gh` is not installed):
+  - Web `feature/redesign-3d-optimizations` on `origin` (github.com/danelDAM/Sumando-Vidas-FRONT), based on local `develop` (includes its 2 unpushed commits `d5920b4`, `d6a8213`).
+  - Back `feature/public-donor-participants` on `back` (github.com/danelDAM/Sumando-Vidas-BACK); `npm test` 28/28.
+- Next: PRs into `develop`, then `develop` → `main`. Production still needs migrations `20261012000000_webp_image_urls.sql` and `20261012010000_reorder_por_ellos_stops.sql`.
 - CI: web runs `npm run build`, back runs `npm test`, on push/PR to `develop` and `main`. Branch protection not configured (needs admin).
 
 ## Environments
