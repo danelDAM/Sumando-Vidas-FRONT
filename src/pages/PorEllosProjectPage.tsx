@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { RaceScrollStory } from "../components/ui/RaceScrollStory";
@@ -9,6 +9,8 @@ import { getPorEllosPublicData, type PublicProduct } from "../services/publicDat
 import { fallbackCampaigns, fallbackCampaignStops, fallbackEvents, fallbackProducts, fallbackProjects, mergePublicRows } from "../data/publicFallbacks";
 import { createDonationCheckoutSession } from "../services/payments";
 import { CityPodium3D } from "../components/ui/CityPodium3D";
+import { DonorIdentityFields } from "../components/ui/DonorIdentityFields";
+import { localizeCampaign, localizeEvent, localizeProduct, localizeProject, localizeStop } from "../data/publicContent";
 
 const donationOptions = [10, 25, 50, 100];
 
@@ -33,19 +35,19 @@ export function PorEllosProjectPage() {
   const [isSubmittingDonation, setIsSubmittingDonation] = useState(false);
   const [donationFeedback, setDonationFeedback] = useState<DonationFeedback | null>(null);
 
-  const project = data?.project ?? fallbackProjects[0];
-  const campaign = data?.campaign ?? fallbackCampaigns[0];
-  const stops = mergePublicRows(data?.stops, fallbackCampaignStops, (stop) => String(stop.stop_number)).sort(
-    (first, second) => first.stop_number - second.stop_number,
-  );
-  const events = mergePublicRows(data?.events, fallbackEvents, (event) => event.slug);
-  const products = mergePublicRows(data?.products, fallbackProducts, (product) => product.slug);
+  const project = localizeProject(t, data?.project ?? fallbackProjects[0]);
+  const campaign = localizeCampaign(t, data?.campaign ?? fallbackCampaigns[0]);
+  const stops = mergePublicRows(data?.stops, fallbackCampaignStops, (stop) => String(stop.stop_number))
+    .map((stop) => localizeStop(t, stop))
+    .sort((first, second) => first.stop_number - second.stop_number);
+  const events = mergePublicRows(data?.events, fallbackEvents, (event) => event.slug).map((event) => localizeEvent(t, event));
+  const products = mergePublicRows(data?.products, fallbackProducts, (product) => product.slug).map((product) => localizeProduct(t, product));
   const cityTotals = new Map((data?.cityLeaderboard ?? []).map((entry) => [entry.stop_number, entry]));
   const eventsById = new Map(events.map((event) => [event.id, event]));
   const races = stops.map((stop) => {
     const event = stop.event_id ? eventsById.get(stop.event_id) : undefined;
     const date = event?.starts_on
-      ? new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "short", year: "numeric" }).format(new Date(`${event.starts_on}T00:00:00`))
+      ? new Intl.DateTimeFormat(i18n.resolvedLanguage || i18n.language || "es", { day: "numeric", month: "short", year: "numeric" }).format(new Date(`${event.starts_on}T00:00:00`))
       : stop.label ?? `Parada ${stop.stop_number}`;
     const distance = stop.distance_km ?? event?.distance_km;
     const statusLabels: Record<string, string> = {
@@ -443,9 +445,9 @@ export function PorEllosProjectPage() {
                 </div>
               </div>
             )}
-            <Link className="button button-primary leaderboard-cta" to="/donaciones">
+            <button className="button button-primary leaderboard-cta" type="button" onClick={() => openDonationModal()}>
               {t("porEllos.cityLeaderboard.supportCity")}
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -475,26 +477,26 @@ export function PorEllosProjectPage() {
               {selectedStoreItem ? `Apoya ${selectedStoreItem.title}` : "¿Cuánto quieres donar?"}
             </h3>
 
-            {selectedStoreItem && (
-              <div className="donation-city-field">
-                <label htmlFor="donation-city">¿A qué ciudad quieres apoyar?</label>
-                <select
-                  id="donation-city"
-                  value={selectedRaceCity || activeRace.city}
-                  onChange={(event) => {
-                    const city = event.target.value;
-                    setSelectedRaceCity(city);
-                    setActiveRaceIndex(races.findIndex((race) => race.city === city));
-                  }}
-                >
-                  {races.map((race) => (
-                      <option key={race.stop.id} value={race.city}>
-                      {race.city}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
+            <div className="donation-city-field">
+              <label htmlFor="donation-stop">{t("payments.chooseStop")}</label>
+              <select
+                id="donation-stop"
+                value={activeRace.stop.id}
+                onChange={(event) => {
+                  const index = races.findIndex((race) => race.stop.id === event.target.value);
+                  if (index >= 0) {
+                    setActiveRaceIndex(index);
+                    setSelectedRaceCity(races[index].city);
+                  }
+                }}
+              >
+                {races.map((race) => (
+                  <option key={race.stop.id} value={race.stop.id}>
+                    {race.stop.stop_number}. {race.city}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             {selectedStoreItem ? (
               <div className="donation-fixed-amount">
@@ -547,53 +549,14 @@ export function PorEllosProjectPage() {
               </>
             )}
 
-            <label className="donation-anonymous-toggle" htmlFor="donation-anonymous">
-              <input
-                id="donation-anonymous"
-                type="checkbox"
-                checked={isAnonymousDonation}
-                onChange={(event) => setIsAnonymousDonation(event.target.checked)}
-              />
-              <span>{t("payments.anonymousDonation")}</span>
-            </label>
-
-            {!isAnonymousDonation && (
-              <div className="donation-type-group" aria-label="Tipo de donante">
-                <span className="donation-type-label">¿Eres empresa o persona?</span>
-                <div className="donation-type-options">
-                  <button
-                    type="button"
-                    className={donorType === "person" ? "is-selected" : ""}
-                    onClick={() => setDonorType("person")}
-                  >
-                    Persona
-                  </button>
-                  <button
-                    type="button"
-                    className={donorType === "company" ? "is-selected" : ""}
-                    onClick={() => setDonorType("company")}
-                  >
-                    Empresa
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {!isAnonymousDonation && (
-              <>
-                <label className="donation-name-field" htmlFor="donor-name">
-                  {t("payments.nameForLeaderboard")}
-                </label>
-                <input
-                  id="donor-name"
-                  type="text"
-                  value={donorName}
-                  onChange={(event) => setDonorName(event.target.value)}
-                  placeholder={t("payments.namePlaceholder")}
-                  maxLength={80}
-                />
-              </>
-            )}
+            <DonorIdentityFields
+              isAnonymous={isAnonymousDonation}
+              onAnonymousChange={setIsAnonymousDonation}
+              donorType={donorType}
+              onDonorTypeChange={setDonorType}
+              donorName={donorName}
+              onDonorNameChange={setDonorName}
+            />
 
             {donationFeedback && (
               <div className={`donation-feedback donation-feedback--${donationFeedback.type}`}>

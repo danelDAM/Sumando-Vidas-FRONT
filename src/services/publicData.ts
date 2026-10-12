@@ -150,17 +150,38 @@ export async function getPublicHomeData(locale: string) {
 
 export async function getPublicProjects() {
   const client = getSupabaseClient();
-  const [projectsResult, campaignsResult] = await Promise.all([
+  const [projectsResult, campaignsResult, monthlyResult] = await Promise.all([
     client.from("projects").select("id, slug, title, summary, description, status").eq("status", "published").order("title"),
     client.from("campaigns").select("id, project_id, slug, title, description, goal_amount, currency, status").eq("status", "active"),
+    client.from("monthly_leaderboard").select("participant_id, display_name, participant_type, amount").eq("month", getCurrentLeaderboardMonth()).order("amount", { ascending: false }),
   ]);
 
   throwOnError(projectsResult.error);
   throwOnError(campaignsResult.error);
+  throwOnError(monthlyResult.error);
+
+  const projects = (projectsResult.data ?? []) as PublicProject[];
+  const campaigns = (campaignsResult.data ?? []) as PublicCampaign[];
+  const monthly = (monthlyResult.data ?? []) as PublicLeaderboardEntry[];
+  const campaignIds = campaigns.map((campaign) => campaign.id);
+  if (campaignIds.length === 0) {
+    return { projects, campaigns, monthly, stops: [], cityLeaderboard: [] };
+  }
+
+  const [stopsResult, cityLeaderboardResult] = await Promise.all([
+    client.from("campaign_stops").select("id, campaign_id, event_id, stop_number, city, title, label, distance_km, description, status").in("campaign_id", campaignIds).eq("is_published", true).order("stop_number"),
+    client.from("public_city_leaderboard").select("campaign_stop_id, campaign_id, stop_number, city, title, currency, amount").in("campaign_id", campaignIds),
+  ]);
+
+  throwOnError(stopsResult.error);
+  throwOnError(cityLeaderboardResult.error);
 
   return {
-    projects: (projectsResult.data ?? []) as PublicProject[],
-    campaigns: (campaignsResult.data ?? []) as PublicCampaign[],
+    projects,
+    campaigns,
+    monthly,
+    stops: (stopsResult.data ?? []) as (PublicCampaignStop & { campaign_id: string })[],
+    cityLeaderboard: (cityLeaderboardResult.data ?? []) as PublicCityLeaderboardEntry[],
   };
 }
 
@@ -232,8 +253,8 @@ export async function getPublicStories(locale: string) {
   return (fallbackResult.data ?? []) as PublicStory[];
 }
 
-export async function getPublicHeroesData() {
-  const client = getSupabaseClient();
+// First day of the current month in Madrid, the key used by monthly_leaderboard.
+function getCurrentLeaderboardMonth() {
   const dateParts = new Intl.DateTimeFormat("en-US", {
     timeZone: "Europe/Madrid",
     year: "numeric",
@@ -241,7 +262,12 @@ export async function getPublicHeroesData() {
   }).formatToParts(new Date());
   const year = dateParts.find((part) => part.type === "year")?.value;
   const month = dateParts.find((part) => part.type === "month")?.value;
-  const currentMonth = `${year}-${month}-01`;
+  return `${year}-${month}-01`;
+}
+
+export async function getPublicHeroesData() {
+  const client = getSupabaseClient();
+  const currentMonth = getCurrentLeaderboardMonth();
 
   const [projectResult, monthlyResult, historicResult] = await Promise.all([
     client.from("projects").select("id, slug, title, summary, description, status").eq("slug", "heroes-que-suman").eq("status", "published").maybeSingle(),

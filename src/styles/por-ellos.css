@@ -83,6 +83,9 @@
   border-color: #f5d676;
   background: #f5d676;
   color: #1f2933;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .race-story-ghost {
@@ -1266,6 +1269,8 @@
 .donation-modal {
   position: relative;
   width: min(100%, 500px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
   display: grid;
   gap: 18px;
   border: 1px solid rgba(15, 23, 42, 0.08);
@@ -1375,6 +1380,7 @@
 }
 
 .donation-modal input,
+.donor-identity input,
 .donation-city-field select {
   width: 100%;
   border: 1px solid #d1d5db;
@@ -1387,6 +1393,7 @@
 }
 
 .donation-modal input:focus,
+.donor-identity input:focus,
 .donation-city-field select:focus {
   outline: none;
   border-color: #1f2933;
@@ -1396,6 +1403,15 @@
 .donation-city-field {
   display: grid;
   gap: 8px;
+}
+
+.donor-identity {
+  display: grid;
+  gap: 14px;
+}
+
+.donor-identity .donation-name-field {
+  margin-bottom: -6px;
 }
 
 .donation-anonymous-toggle {
@@ -2003,6 +2019,9 @@
   display: flex;
   width: fit-content;
   margin: 30px auto 0;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 /* Por Ellos: city leaderboard on mobile */

@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { cityCoordinates, normalizeCity, spainOutline } from "../../data/spainMap";
 import { useCountUp } from "../../hooks/useCountUp";
 import { useScrollProgress } from "../../hooks/useScrollProgress";
@@ -57,7 +56,7 @@ type RaceScrollStoryProps = {
   raisedAmount: number | null;
   currency: string;
   quickAmounts: number[];
-  onQuickDonate: (amount: number) => void;
+  onQuickDonate: (amount?: number) => void;
   ctaHref: string;
 };
 
@@ -111,7 +110,7 @@ export function RaceScrollStory({
   // The camera dives into the board during the intro and pans while the runner moves.
   const boardStyle = {
     "--board-tilt": `${lerp(28, 56, introProgress).toFixed(2)}deg`,
-    "--board-spin": `${lerp(-14, 10, routeProgress).toFixed(2)}deg`,
+    "--board-spin": `${lerp(-4, 20, routeProgress).toFixed(2)}deg`,
     "--board-scale": lerp(0.9, 1, introProgress).toFixed(3),
   } as CSSProperties;
 
@@ -175,9 +174,9 @@ export function RaceScrollStory({
                 <h1 id="race-story-title">{title}</h1>
                 {description && <p>{description}</p>}
                 <div className="action-row">
-                  <Link className="button race-story-cta" to="/donaciones">
+                  <button className="button race-story-cta" type="button" onClick={() => onQuickDonate()}>
                     {t("common.donateNow")}
-                  </Link>
+                  </button>
                   <a className="button race-story-ghost" href="#recorrido">
                     {t("porEllos.story.viewRoute")}
                   </a>

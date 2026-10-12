@@ -3,14 +3,16 @@ import { useTranslation } from "react-i18next";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
-import { getPublicProjects } from "../services/publicData";
-import { fallbackCampaigns, fallbackProjects, mergePublicRows } from "../data/publicFallbacks";
+import { getPublicProjects, type PublicCampaignStop } from "../services/publicData";
+import { fallbackCampaigns, fallbackCampaignStops, fallbackProjects, mergePublicRows } from "../data/publicFallbacks";
+import { localizeCampaign, localizeProject } from "../data/publicContent";
+import { HeroesProgress, ProjectProgress } from "../components/ui/ProjectProgress";
 
 export function ProjectsPage() {
   const { t } = useTranslation();
   const { data, loading, error } = usePublicQuery("projects", getPublicProjects, null);
-  const projects = mergePublicRows(data?.projects, fallbackProjects, (project) => project.slug);
-  const campaigns = mergePublicRows(data?.campaigns, fallbackCampaigns, (campaign) => campaign.slug);
+  const projects = mergePublicRows(data?.projects, fallbackProjects, (project) => project.slug).map((project) => localizeProject(t, project));
+  const campaigns = mergePublicRows(data?.campaigns, fallbackCampaigns, (campaign) => campaign.slug).map((campaign) => localizeCampaign(t, campaign));
 
   return (
     <>
@@ -27,13 +29,16 @@ export function ProjectsPage() {
           {(loading || error) && <PublicDataStatus loading={loading} error={error ? "No se pudieron actualizar los proyectos; mostramos la información disponible." : null} empty={false} />}
           {projects.map((project) => {
             const campaign = campaigns.find((item) => item.project_id === project.id || item.slug === project.slug);
-            const campaignGoal = campaign?.goal_amount == null
-              ? null
-              : new Intl.NumberFormat("es-ES", {
-                  style: "currency",
-                  currency: campaign.currency,
-                  maximumFractionDigits: 0,
-                }).format(campaign.goal_amount);
+            const campaignStops = mergePublicRows<PublicCampaignStop>(
+              data?.stops.filter((stop) => stop.campaign_id === campaign?.id),
+              campaign?.slug === "por-ellos" ? fallbackCampaignStops : [],
+              (stop) => String(stop.stop_number),
+            ).sort((first, second) => first.stop_number - second.stop_number);
+            const raisedAmount = data
+              ? data.cityLeaderboard
+                  .filter((entry) => entry.campaign_id === campaign?.id)
+                  .reduce((total, entry) => total + Number(entry.amount), 0)
+              : null;
 
             return (
               <article className="project-feature-card" key={project.id}>
@@ -50,13 +55,21 @@ export function ProjectsPage() {
                     </Link>
                   </div>
                 </div>
-                {campaignGoal && (
-                  <div className="project-mini-stats" aria-label={`Objetivo de ${campaign?.title}`}>
-                    <article>
-                      <strong>{campaignGoal}</strong>
-                      <span>{t("projects.page.stats.goal")}</span>
-                    </article>
-                  </div>
+                {campaign?.goal_amount != null ? (
+                  <ProjectProgress
+                    label={campaign.title}
+                    goalAmount={campaign.goal_amount}
+                    raisedAmount={raisedAmount}
+                    currency={campaign.currency}
+                    stops={campaignStops}
+                  />
+                ) : project.slug === "heroes-que-suman" && (
+                  <HeroesProgress
+                    label={project.title}
+                    monthTotal={data ? data.monthly.reduce((total, entry) => total + Number(entry.amount), 0) : null}
+                    currency="EUR"
+                    leaderName={data?.monthly[0]?.display_name ?? null}
+                  />
                 )}
               </article>
             );

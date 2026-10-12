@@ -29,7 +29,12 @@ export function StoriesPage() {
       image_alt: t(`home.storyCards.${storyKey}.imageAlt`),
     };
   });
-  const stories = mergePublicRows(data, localizedFallbackStories, (story) => story.slug);
+  const stories = mergePublicRows(
+    // Stories without a row in this language come back in Spanish; the translated fallback text wins then.
+    data?.filter((story) => story.locale === locale || !localizedFallbackStories.some((fallback) => fallback.slug === story.slug)),
+    localizedFallbackStories,
+    (story) => story.slug,
+  );
   const [featuredStory, ...moreStories] = stories;
 
   return (

@@ -7,6 +7,7 @@ import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicHomeData } from "../services/publicData";
 import { fallbackEvents, fallbackProjects, fallbackStories, mergePublicRows } from "../data/publicFallbacks";
+import { localizeEvent, localizeProject } from "../data/publicContent";
 
 function formatEventDate(date: string | null, locale: string, fallback: string) {
   if (!date) {
@@ -31,7 +32,7 @@ export function HomePage() {
   const { t, i18n } = useTranslation();
   const locale = (i18n.resolvedLanguage || i18n.language || "es").split("-")[0];
   const { data, loading, error } = usePublicQuery(`home:${locale}`, getPublicHomeData, locale);
-  const projects = mergePublicRows(data?.projects, fallbackProjects, (project) => project.slug);
+  const projects = mergePublicRows(data?.projects, fallbackProjects, (project) => project.slug).map((project) => localizeProject(t, project));
   const localizedFallbackStories = fallbackStories.map((story) => {
     const storyKey = story.slug === "historia-de-felipe"
       ? "felipe"
@@ -46,8 +47,12 @@ export function HomePage() {
       image_alt: t(`home.storyCards.${storyKey}.imageAlt`),
     };
   });
-  const stories = mergePublicRows(data?.stories, localizedFallbackStories, (story) => story.slug);
-  const events = mergePublicRows(data?.events, fallbackEvents, (event) => event.slug);
+  const stories = mergePublicRows(
+    data?.stories.filter((story) => story.locale === locale || !localizedFallbackStories.some((fallback) => fallback.slug === story.slug)),
+    localizedFallbackStories,
+    (story) => story.slug,
+  );
+  const events = mergePublicRows(data?.events, fallbackEvents, (event) => event.slug).map((event) => localizeEvent(t, event));
   const metrics = (data?.metrics ?? []).filter(
     (metric, index, allMetrics) => allMetrics.findIndex((item) => item.metric_key === metric.metric_key) === index,
   );

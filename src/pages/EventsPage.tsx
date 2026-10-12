@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicEvents } from "../services/publicData";
 import { fallbackEvents, mergePublicRows } from "../data/publicFallbacks";
+import { localizeEvent } from "../data/publicContent";
 
 function getTimelineDateParts(date: string | null, fallback: string) {
   if (!date) {
@@ -23,8 +25,9 @@ function getTimelineDateParts(date: string | null, fallback: string) {
 }
 
 export function EventsPage() {
+  const { t } = useTranslation();
   const { data, loading, error } = usePublicQuery("events", getPublicEvents, null);
-  const events = mergePublicRows(data, fallbackEvents, (event) => event.slug);
+  const events = mergePublicRows(data, fallbackEvents, (event) => event.slug).map((event) => localizeEvent(t, event));
   const confirmedEvents = events.filter((event) => event.schedule_status === "confirmed");
   const eventsToConfirm = events.filter((event) => event.schedule_status === "pending");
 

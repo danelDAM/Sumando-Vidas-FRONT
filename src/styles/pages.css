@@ -311,11 +311,40 @@
     margin var(--motion-medium);
 }
 
-.about-member:hover .about-member-copy p,
-.about-member:focus-visible .about-member-copy p {
-  max-height: 8em;
+.about-member.has-bio {
+  cursor: pointer;
+}
+
+.about-member-toggle {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f2933;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform var(--motion-medium);
+}
+
+.about-member.is-open .about-member-toggle {
+  transform: rotate(45deg);
+}
+
+.about-member.is-open::before {
+  background: linear-gradient(180deg, rgba(20, 28, 36, 0.15) 10%, rgba(20, 28, 36, 0.94) 60%);
+}
+
+.about-member.is-open .about-member-copy p {
+  max-height: 16em;
   margin-top: 10px;
   opacity: 1;
+  -webkit-line-clamp: unset;
 }
 
 .about-member-empty {
@@ -443,12 +472,6 @@
 @media (hover: none) {
   .about-member img {
     filter: none;
-  }
-
-  .about-member-copy p {
-    max-height: 8em;
-    margin-top: 10px;
-    opacity: 1;
   }
 }
 
@@ -1619,26 +1642,124 @@
 }
 
 /* 15. Project summaries */
-.project-mini-stats {
+.project-progress {
+  align-self: center;
   display: grid;
-  gap: 14px;
+  gap: 10px;
+  border-left: 3px solid #c7a858;
+  padding: 4px 0 4px clamp(18px, 3vw, 28px);
 }
 
-.project-mini-stats article {
-  display: grid;
-  gap: 4px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 18px;
-  background: #ffffff;
+.project-progress-figures {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
 }
 
-.project-mini-stats strong {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+.project-progress-figures strong {
+  color: #1f2933;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-variant-numeric: tabular-nums;
   line-height: 1;
 }
 
-.project-mini-stats span {
-  color: #4b5563;
+.project-progress-figures span,
+.project-progress-note {
+  color: #52606d;
+  font-size: 0.85rem;
+}
+
+.project-progress-note {
+  margin: 0;
+}
+
+.project-progress-track {
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: #e2e8e4;
+}
+
+.project-progress-track span {
+  display: block;
+  min-width: 8px;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #88671c, #c7a858);
+}
+
+.project-progress-route {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-progress-route::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  border-top: 1px solid #d5dcd7;
+}
+
+.project-progress-route li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.project-progress-route li:first-child {
+  justify-items: start;
+}
+
+.project-progress-route li:last-child {
+  justify-items: end;
+}
+
+.project-progress-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #9aa5b1;
+}
+
+.project-progress-route li.is-done .project-progress-dot,
+.project-progress-route li.is-current .project-progress-dot {
+  background: #c7a858;
+}
+
+.project-progress-route li.is-current .project-progress-dot {
+  box-shadow: 0 0 0 3px rgba(199, 168, 88, 0.3);
+}
+
+.project-progress-city {
+  max-width: 100%;
+  overflow: hidden;
+  color: #52606d;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-progress-leader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 8px 0 0;
+  color: #52606d;
+  font-size: 0.85rem;
+}
+
+.project-progress-leader strong {
+  color: #1f2933;
 }
 

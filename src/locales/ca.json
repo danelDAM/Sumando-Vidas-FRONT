@@ -141,7 +141,8 @@
       "title": "Iniciatives per sumar suport real",
       "description": "Projectes publicats i campanyes actives de Sumando Vidas.",
       "stats": {
-        "goal": "Objectiu de campanya"
+        "ofGoal": "de {{goal}}",
+        "percent": "{{percent}} % de l’objectiu"
       },
       "moreProjects": {
         "eyebrow": "Més projectes",
@@ -167,6 +168,10 @@
     "anonymousDonation": "Fer la donació anònima",
     "nameForLeaderboard": "Nom per aparèixer al leaderboard",
     "namePlaceholder": "Escriu el teu nom",
+    "chooseStop": "Quina parada vols donar suport?",
+    "donorTypeQuestion": "Ets empresa o persona?",
+    "donorPerson": "Persona",
+    "donorCompany": "Empresa",
     "nameRequired": "Si la donació no és anònima, escriu un nom perquè aparegui al leaderboard.",
     "subscriptionUnavailable": "Les donacions recurrents encara no estan disponibles.",
     "fakeModeLabel": "Simulació FakeMoney, sense cobrament real",
@@ -243,6 +248,8 @@
     "community": "Comunitat",
     "founders": "Fundadors",
     "founderRole": "Fundador",
+    "ctoRole": "CTO",
+    "danelBio": "Lidera el desenvolupament de nous projectes i iniciatives, impulsant la innovació tecnològica, les plataformes digitals i les estratègies de creixement de l'associació per maximitzar-ne l'impacte social.",
     "team": "Equip",
     "teamDescription": "Espai reservat per presentar les persones que formen part de l'equip.",
     "collaborators": "Persones col·laboradores",
@@ -292,5 +299,120 @@
     "companies": "Empreses",
     "people": "Persones",
     "leader": "Líder del mes"
+  },
+  "content": {
+    "projects": {
+      "por-ellos": {
+        "summary": "Una campanya esportiva i solidària per recaptar el màxim de diners possible en suport d'infants i famílies afectats pel càncer infantil.",
+        "description": "Felipe, fundador de Sumando Vidas i supervivent d'un càncer infantil, correrà amb un equip de l'associació les cinc grans mitges maratons d'Espanya. Cada cursa serà una oportunitat per donar visibilitat a la causa, sumar donacions i construir comunitat al voltant de les famílies."
+      },
+      "heroes-que-suman": {
+        "summary": "Un repte mensual perquè empreses i persones converteixin el seu suport contra el càncer infantil en una classificació que inspira a continuar sumant."
+      }
+    },
+    "campaigns": {
+      "por-ellos": {
+        "title": "Campanya Por Ellos",
+        "description": "Recaptació solidària vinculada al repte de les cinc mitges maratons."
+      },
+      "heroes-que-suman": {
+        "title": "Repte mensual Héroes que suman",
+        "description": "Classificació mensual d'aportacions de persones i empreses."
+      }
+    },
+    "events": {
+      "media-maraton-valencia": {
+        "description": "La gran cita valenciana del running popular, amb sortida i arribada en una ciutat bolcada amb l'esport."
+      },
+      "media-maraton-donosti": {
+        "title": "Mitja Marató de Donosti",
+        "description": "Una parada a Sant Sebastià per portar el repte Por Ellos a la comunitat runner del nord."
+      },
+      "media-maraton-sevilla": {
+        "title": "Mitja Marató de Sevilla",
+        "description": "Una cursa urbana a Sevilla que suma visibilitat, corredors i solidaritat al projecte."
+      },
+      "media-maraton-barcelona": {
+        "title": "Mitja Marató de Barcelona",
+        "description": "Barcelona s'incorpora al recorregut com una nova oportunitat per córrer per les famílies."
+      },
+      "media-maraton-malaga": {
+        "description": "La ciutat que va veure néixer el repte acollirà una de les seves parades més especials."
+      },
+      "movistar-madrid-medio-maraton": {
+        "description": "La gran festa de l'atletisme popular a Madrid serà una altra parada clau del recorregut solidari."
+      }
+    },
+    "stops": {
+      "malaga": {
+        "title": "Mitja Marató de Málaga"
+      },
+      "donosti": {
+        "title": "Mitja Marató de Donosti"
+      },
+      "madrid": {
+        "title": "Mitja Marató de Madrid"
+      },
+      "valencia": {
+        "title": "Mitja Marató de Valencia"
+      },
+      "barcelona": {
+        "title": "Mitja Marató de Barcelona"
+      }
+    },
+    "stopPositions": {
+      "1": {
+        "label": "Parada 1",
+        "description": "Inici del repte i primera crida a sumar donacions al projecte."
+      },
+      "2": {
+        "label": "Parada 2",
+        "description": "Segona parada per connectar esport, història personal i suport a les famílies."
+      },
+      "3": {
+        "label": "Parada 3",
+        "description": "Una cursa clau per mobilitzar empreses, corredors i donants."
+      },
+      "4": {
+        "label": "Parada 4",
+        "description": "Una nova oportunitat per ampliar l'abast del projecte i sumar suports."
+      },
+      "5": {
+        "label": "Meta final",
+        "description": "L'última parada del recorregut, pensada com a gran cloenda de la campanya."
+      }
+    },
+    "products": {
+      "dorsal-solidario": {
+        "title": "Dorsal solidari",
+        "description": "El teu dorsal simbòlic per donar suport a la campanya a la parada escollida.",
+        "category": "Corredor"
+      },
+      "pack-apoyo-familiar": {
+        "title": "Pack suport familiar",
+        "description": "Un petit suport simbòlic per reforçar la visibilitat del projecte.",
+        "category": "Famílies"
+      },
+      "medalla-comunidad": {
+        "title": "Medalla de la comunitat",
+        "description": "Medalla per celebrar la solidaritat i la força de la comunitat.",
+        "category": "Record"
+      },
+      "taza-solidaria": {
+        "title": "Tassa solidària",
+        "description": "Un detall senzill per portar la causa a cada esmorzar o reunió.",
+        "category": "Regal"
+      },
+      "kit-caminata-solidaria": {
+        "title": "Kit caminada solidària",
+        "description": "Inclou materials simbòlics per córrer, animar i compartir la campanya.",
+        "category": "Repte"
+      },
+      "pack-meta-solidaria": {
+        "title": "Pack meta solidària",
+        "description": "Un record per celebrar l'última etapa del repte Por Ellos.",
+        "category": "Cloenda"
+      }
+    }
   }
 }

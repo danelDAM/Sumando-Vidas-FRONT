@@ -141,7 +141,8 @@
       "title": "Laguntza errealerako ekimenak",
       "description": "Sumando Vidasen argitaratutako proiektuak eta kanpaina aktiboak.",
       "stats": {
-        "goal": "Kanpainaren helburua"
+        "ofGoal": "Helburua: {{goal}}",
+        "percent": "Helburuaren % {{percent}}"
       },
       "moreProjects": {
         "eyebrow": "Proiektu gehiago",
@@ -167,6 +168,10 @@
     "anonymousDonation": "Dohaintza anonimoa egitea",
     "nameForLeaderboard": "Leaderboard-en agertzeko izena",
     "namePlaceholder": "Idatzi zure izena",
+    "chooseStop": "Zein geldialdi lagundu nahi duzu?",
+    "donorTypeQuestion": "Enpresa ala pertsona zara?",
+    "donorPerson": "Pertsona",
+    "donorCompany": "Enpresa",
     "nameRequired": "Dohaintza ez bada anonimoa, idatzi izen bat leaderboard-en agertzeko.",
     "subscriptionUnavailable": "Dohaintza errepikakorrak oraindik ez daude erabilgarri.",
     "fakeModeLabel": "FakeMoney simulazioa, benetako kobrantzarik gabe",
@@ -243,6 +248,8 @@
     "community": "Komunitatea",
     "founders": "Sortzaileak",
     "founderRole": "Sortzailea",
+    "ctoRole": "CTO",
+    "danelBio": "Proiektu eta ekimen berrien garapena gidatzen du, berrikuntza teknologikoa, plataforma digitalak eta elkartearen hazkunde-estrategiak bultzatuz, haren eragin soziala ahalik eta handiena izan dadin.",
     "team": "Taldea",
     "teamDescription": "Taldea osatzen duten pertsonak aurkezteko gunea.",
     "collaborators": "Kolaboratzaileak",
@@ -292,5 +299,120 @@
     "companies": "Enpresak",
     "people": "Pertsonak",
     "leader": "Hileko liderra"
+  },
+  "content": {
+    "projects": {
+      "por-ellos": {
+        "summary": "Kirol- eta elkartasun-kanpaina bat, ahalik eta diru gehien biltzeko minbizi infantilak eragindako haur eta familiei laguntzeko.",
+        "description": "Felipek, Sumando Vidaseko sortzaileak eta txikitan minbizia gainditu zuenak, elkarteko talde batekin batera Espainiako bost maratoi erdi handiak korrituko ditu. Lasterketa bakoitza aukera bat izango da kausa ikusarazteko, dohaintzak batzeko eta familien inguruan komunitatea eraikitzeko."
+      },
+      "heroes-que-suman": {
+        "summary": "Hileko erronka bat, enpresek eta pertsonek minbizi infantilaren aurkako laguntza batzen jarraitzeko inspirazioa ematen duen sailkapen bihur dezaten."
+      }
+    },
+    "campaigns": {
+      "por-ellos": {
+        "title": "Por Ellos kanpaina",
+        "description": "Bost maratoi erdien erronkari lotutako elkartasun-bilketa."
+      },
+      "heroes-que-suman": {
+        "title": "Héroes que suman hileko erronka",
+        "description": "Pertsonen eta enpresen ekarpenen hileko sailkapena."
+      }
+    },
+    "events": {
+      "media-maraton-valencia": {
+        "description": "Herri-korrikaren Valentziako hitzordu handia, kirolarekin erabat konprometitutako hiri batean irteera eta helmuga dituena."
+      },
+      "media-maraton-donosti": {
+        "title": "Donostiako Maratoi Erdia",
+        "description": "Geldialdi bat Donostian, Por Ellos erronka iparraldeko korrikalari-komunitatera eramateko."
+      },
+      "media-maraton-sevilla": {
+        "title": "Sevillako Maratoi Erdia",
+        "description": "Sevillako hiri-lasterketa bat, proiektuari ikusgarritasuna, korrikalariak eta elkartasuna gehitzen dizkiona."
+      },
+      "media-maraton-barcelona": {
+        "title": "Bartzelonako Maratoi Erdia",
+        "description": "Bartzelona ibilbidera batu da, familien alde korrika egiteko aukera berri gisa."
+      },
+      "media-maraton-malaga": {
+        "description": "Erronka jaio zen hiriak bere geldialdirik berezienetako bat hartuko du."
+      },
+      "movistar-madrid-medio-maraton": {
+        "description": "Madrilgo herri-atletismoaren jai handia elkartasun-ibilbideko beste geldialdi garrantzitsu bat izango da."
+      }
+    },
+    "stops": {
+      "malaga": {
+        "title": "Málagako Maratoi Erdia"
+      },
+      "donosti": {
+        "title": "Donostiako Maratoi Erdia"
+      },
+      "madrid": {
+        "title": "Madrilgo Maratoi Erdia"
+      },
+      "valencia": {
+        "title": "Valentziako Maratoi Erdia"
+      },
+      "barcelona": {
+        "title": "Bartzelonako Maratoi Erdia"
+      }
+    },
+    "stopPositions": {
+      "1": {
+        "label": "1. geldialdia",
+        "description": "Erronkaren hasiera eta proiektuari dohaintzak batzeko lehen deia."
+      },
+      "2": {
+        "label": "2. geldialdia",
+        "description": "Bigarren geldialdia, kirola, istorio pertsonala eta familientzako laguntza lotzeko."
+      },
+      "3": {
+        "label": "3. geldialdia",
+        "description": "Enpresak, korrikalariak eta emaileak mobilizatzeko funtsezko lasterketa."
+      },
+      "4": {
+        "label": "4. geldialdia",
+        "description": "Proiektuaren irismena zabaltzeko eta babesak batzeko aukera berri bat."
+      },
+      "5": {
+        "label": "Azken helmuga",
+        "description": "Ibilbideko azken geldialdia, kanpainaren itxiera handi gisa pentsatua."
+      }
+    },
+    "products": {
+      "dorsal-solidario": {
+        "title": "Elkartasun-dortsala",
+        "description": "Zure dortsal sinbolikoa, aukeratutako geldialdian kanpaina babesteko.",
+        "category": "Korrikalaria"
+      },
+      "pack-apoyo-familiar": {
+        "title": "Familia-laguntza pack-a",
+        "description": "Laguntza sinboliko txiki bat, proiektuaren ikusgarritasuna indartzeko.",
+        "category": "Familiak"
+      },
+      "medalla-comunidad": {
+        "title": "Komunitatearen domina",
+        "description": "Elkartasuna eta komunitatearen indarra ospatzeko domina.",
+        "category": "Oroigarria"
+      },
+      "taza-solidaria": {
+        "title": "Elkartasun-katilua",
+        "description": "Xehetasun xume bat, kausa gosari eta bilera bakoitzera eramateko.",
+        "category": "Opari"
+      },
+      "kit-caminata-solidaria": {
+        "title": "Elkartasun-ibilaldiko kita",
+        "description": "Korrika egiteko, animatzeko eta kanpaina partekatzeko material sinbolikoak ditu.",
+        "category": "Erronka"
+      },
+      "pack-meta-solidaria": {
+        "title": "Elkartasun-helmugako pack-a",
+        "description": "Por Ellos erronkaren azken etapa ospatzeko oroigarria.",
+        "category": "Itxiera"
+      }
+    }
   }
 }
