@@ -149,7 +149,7 @@ export function ContactPage() {
               <p>
                 Al escribirnos aceptas que usemos tus datos únicamente para responder a tu consulta.
               </p>
-              <button className="button button-primary" type="submit" disabled={isSubmitting}>
+              <button className="button button-primary" type="submit" disabled={isSubmitting} aria-busy={isSubmitting}>
                 {isSubmitting ? "Enviando mensaje…" : "Enviar mensaje"}
               </button>
             </div>

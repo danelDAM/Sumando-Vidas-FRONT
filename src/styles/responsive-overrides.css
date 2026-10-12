@@ -28,15 +28,10 @@
     grid-template-columns: 1fr;
   }
 
-  .media-placeholder {
-    min-height: 240px;
-  }
-
   .footer-bottom {
     flex-direction: column;
   }
 
-  .donation-chips,
   .race-facts {
     grid-template-columns: 1fr 1fr;
   }
@@ -56,7 +51,6 @@
     grid-template-columns: 1fr;
   }
 
-  .heroes-project-hero-grid,
   .heroes-monthly-board {
     grid-template-columns: 1fr;
   }
@@ -113,14 +107,12 @@
     text-align: left;
   }
 
-  .contact-form-footer,
-  .contact-next-step-inner {
+  .contact-form-footer {
     align-items: stretch;
     flex-direction: column;
   }
 
-  .contact-form-footer .button,
-  .contact-next-step-inner .button {
+  .contact-form-footer .button {
     width: 100%;
   }
 
@@ -197,27 +189,29 @@
 
   .main-nav.is-open {
     display: flex;
+    animation: menu-enter var(--motion-medium) both;
   }
 
   .main-nav a {
-    padding: 12px 4px;
+    border-radius: 10px;
+    padding: 12px 14px;
   }
 
   .hero-section {
-    min-height: min(680px, calc(100vh - 64px));
+    min-height: min(720px, 100vh);
+    min-height: min(720px, 100svh);
+    padding-top: calc(clamp(56px, 8vw, 104px) + 64px);
   }
 
   .hero-copy h1 {
     font-size: clamp(2.15rem, 11vw, 3.6rem);
   }
 
-  .hero-copy .action-row,
-  .por-ellos-copy .action-row {
+  .hero-copy .action-row {
     flex-direction: column;
   }
 
-  .hero-copy .button,
-  .por-ellos-copy .button {
+  .hero-copy .button {
     width: 100%;
   }
 
@@ -246,5 +240,63 @@
   .store-stop-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+/* 27. Touch devices: avoid hover lifts that stick after a tap */
+@media (hover: none) {
+  .button:hover,
+  .card-interactive:hover,
+  .metric:hover,
+  .reveal-group.is-visible .card-interactive:hover,
+  .reveal-group.is-visible .metric:hover,
+  .story-image-placeholder:hover,
+  .store-item:hover,
+  .race-story-chips button:hover,
+  .leaderboard-row:hover,
+  .brand-link:hover {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .button:hover::after {
+    transform: translateX(-120%);
+  }
+}
+
+/* 28. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal],
+  .reveal-group .section-header,
+  .reveal-group .content-stack,
+  .reveal-group .card,
+  .reveal-group .metric,
+  .reveal-group .final-cta-content,
+  .reveal-group .about-founder,
+  .reveal-group .about-member-grid {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sponsor-marquee,
+  .gold-ribbon-mark {
+    animation: none;
+  }
+
+  .hero-section {
+    background: #d8dde1 url("/images/niñaCancerPaginaInicio.webp") center / cover no-repeat;
+  }
+
+  .hero-background-video {
+    display: none;
   }
 }

@@ -179,7 +179,7 @@ export function DonationsPage() {
               <strong>{formattedAmount} €{mode === "subscription" ? ` / ${frequency === "month" ? "mes" : "año"}` : ""}</strong>
             </div>
 
-            <button className="button button-primary donation-submit" type="button" onClick={handleSubmit} disabled={isSubmitting || !import.meta.env.DEV}>
+            <button className="button button-primary donation-submit" type="button" onClick={handleSubmit} disabled={isSubmitting || !import.meta.env.DEV} aria-busy={isSubmitting}>
               {!import.meta.env.DEV
                 ? t("payments.developmentOnly")
                 : isSubmitting

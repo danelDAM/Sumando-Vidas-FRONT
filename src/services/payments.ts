@@ -20,11 +20,8 @@ export type DonationPaymentInput = {
   productId?: string;
   participantId?: string;
   participantType?: "person" | "company";
-  participant_type?: "person" | "company";
   isAnonymous?: boolean;
   donorName?: string;
-  donor_name?: string;
-  is_anonymous?: boolean;
 };
 
 type ApiError = { error?: string };
@@ -51,14 +48,18 @@ export async function createDonationCheckoutSession(
     retryKey = { fingerprint, key: crypto.randomUUID() };
   }
 
+  // The backend accepts camelCase and snake_case participant fields; both are sent with the same values.
+  const participantType = payment.participantType ?? "person";
+  const isAnonymous = payment.isAnonymous ?? true;
+  const donorName = payment.donorName?.trim() || undefined;
   const payload = {
     ...payment,
-    participantType: payment.participantType ?? payment.participant_type ?? "person",
-    participant_type: payment.participant_type ?? payment.participantType ?? "person",
-    isAnonymous: payment.isAnonymous ?? true,
-    is_anonymous: payment.is_anonymous ?? payment.isAnonymous ?? true,
-    donorName: payment.donorName?.trim() || payment.donor_name?.trim() || undefined,
-    donor_name: payment.donor_name?.trim() || payment.donorName?.trim() || undefined,
+    participantType,
+    participant_type: participantType,
+    isAnonymous,
+    is_anonymous: isAnonymous,
+    donorName,
+    donor_name: donorName,
   };
 
   const response = await fetch(`${API_BASE_URL}/api/payments/create-checkout-session`, {

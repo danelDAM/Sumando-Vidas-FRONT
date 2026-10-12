@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { mainNavigation } from "../../data/navigation";
 import { Logo } from "../ui/Logo";
 
@@ -8,6 +8,8 @@ export function Header() {
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isHome = useLocation().pathname === "/";
   const languageMenuRef = useRef<HTMLDivElement | null>(null);
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -16,6 +18,18 @@ export function Header() {
     { code: "eu", label: "EU", name: "Euskera" },
     { code: "ca", label: "CA", name: "Català" },
   ];
+  const currentLanguage = i18n.resolvedLanguage || i18n.language || "es";
+
+  useEffect(() => {
+    if (!isHome) {
+      return undefined;
+    }
+
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
 
   useEffect(() => {
     if (!isLanguageMenuOpen) {
@@ -28,12 +42,24 @@ export function Header() {
       }
     };
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsLanguageMenuOpen(false);
+      }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isLanguageMenuOpen]);
 
   return (
-    <header className="site-header">
+    <header
+      className={`site-header ${isHome ? "site-header--over-hero" : ""} ${isHome && !isScrolled && !isMenuOpen ? "is-transparent" : ""}`}
+    >
       <a className="skip-link" href="#contenido-principal">
         {t("common.skipContent")}
       </a>
@@ -72,7 +98,7 @@ export function Header() {
               aria-haspopup="menu"
               onClick={() => setIsLanguageMenuOpen((open) => !open)}
             >
-              <span>{languageOptions.find((option) => option.code === (i18n.resolvedLanguage || i18n.language || "es"))?.label ?? "ES"}</span>
+              <span>{languageOptions.find((option) => option.code === currentLanguage)?.label ?? "ES"}</span>
               <span className={`language-chevron ${isLanguageMenuOpen ? "is-open" : ""}`} aria-hidden="true">
                 ▾
               </span>
@@ -83,9 +109,9 @@ export function Header() {
                   <button
                     key={option.code}
                     type="button"
-                    className={`language-option ${option.code === (i18n.resolvedLanguage || i18n.language || "es") ? "is-selected" : ""}`}
+                    className={`language-option ${option.code === currentLanguage ? "is-selected" : ""}`}
                     role="menuitemradio"
-                    aria-checked={option.code === (i18n.resolvedLanguage || i18n.language || "es")}
+                    aria-checked={option.code === currentLanguage}
                     onClick={() => {
                       i18n.changeLanguage(option.code);
                       setIsLanguageMenuOpen(false);

@@ -8,14 +8,7 @@
     "openMenu": "Menua ireki",
     "closeMenu": "Menua itxi",
     "readMore": "Gehiago irakurri",
-    "seeMore": "Ikusi gehiago",
-    "supportCause": "Kausa eutsi",
-    "readStory": "Istorioa irakurri",
-    "viewRanking": "Ranking-a ikusi",
-    "readHistory": "Gure historia ezagutu",
-    "months": "hilabeteak",
-    "distance": "km",
-    "country": "Espainia"
+    "readStory": "Istorioa irakurri"
   },
   "nav": {
     "about": "Nor gara",
@@ -71,11 +64,7 @@
     "impact": {
       "eyebrow": "Eragina",
       "title": "Eraginaren adierazleak",
-      "description": "Elkarteak argitaratutako datuak, erreferentzia-datarekin.",
-      "families": "Lagundutako familiek",
-      "scholarships": "Kudeatutako laguntzak",
-      "volunteers": "Boluntarioak",
-      "events": "Ekitaldi solidarioak"
+      "description": "Elkarteak argitaratutako datuak, erreferentzia-datarekin."
     },
     "collaborate": {
       "eyebrow": "Lana egin",
@@ -101,10 +90,6 @@
       "description": "Ekarpen bakoitzak, ordu bakoitzak eta ekintza bakoitzak laguntza-sare erreal bat eusten laguntzen du."
     },
     "programs": {
-      "porEllos": {
-        "title": "Por Ellos",
-        "description": "Errekurtso handiena biltzeko proiektu solidarioa, Felipe, Sumando Vidas fundatzailea eta haur minbiziaren biktima, elkarteko taldea eta Espainiako bost erriko erdi maratoetan korrika dabil."
-      },
       "familySupport": {
         "title": "Familien laguntza",
         "description": "Familiei laguntza hurbila diagnostikoan, tratamenduan eta berreskuratzean."
@@ -148,26 +133,6 @@
         "title": "Enpresak eta boluntariotza",
         "description": "Lankidetzan parte hartu enpresan edo eman denbora boluntario gisa."
       }
-    },
-    "eventsList": {
-      "valencia": "Valentziako Erdi Maratoia Trinidad Alfonso Zurich",
-      "donosti": "Donostia Erdi Maratoia",
-      "sevilla": "Sevillako Erdi Maratoia",
-      "barcelona": "Bartzelonako Erdi Maratoia",
-      "malaga": "Málagako Erdi Maratoia",
-      "madrid": "Movistar Madril Erdi Maratoia",
-      "locationValencia": "Valentzia",
-      "locationDonosti": "Donostia",
-      "locationSevilla": "Sevilla",
-      "locationBarcelona": "Bartzelona",
-      "locationMalaga": "Málaga",
-      "locationMadrid": "Madril",
-      "dateValencia": "2026ko urriak 25",
-      "dateDonosti": "Data baieztatu gabe",
-      "dateSevilla": "Data baieztatu gabe",
-      "dateBarcelona": "Data baieztatu gabe",
-      "dateMalaga": "2027ko martxoak 7",
-      "dateMadrid": "2027ko apirilak 4"
     }
   },
   "projects": {
@@ -176,12 +141,7 @@
       "title": "Laguntza errealerako ekimenak",
       "description": "Sumando Vidasen argitaratutako proiektuak eta kanpaina aktiboak.",
       "stats": {
-        "marathons": "Erdi maratoiak",
-        "goal": "Kanpainaren helburua",
-        "distance": "Laguntza-bidaia",
-        "monthlyChallenge": "Hilabeteroko erronka",
-        "leaderboards": "Hilabete-mailak",
-        "challenges": "Erronkak urtero"
+        "goal": "Kanpainaren helburua"
       },
       "moreProjects": {
         "eyebrow": "Proiektu gehiago",
@@ -190,12 +150,7 @@
       }
     },
     "featured": {
-      "title": "Por Ellos",
-      "summary": "Kilometro bakoitza haur minbiziaren familiei laguntza errealera bihurtzeko kanpaina.",
-      "description": "Funts guztiak eta lasterketa erronkak laguntza zehatzak eta hurbileko laguntza eusteko bideratuko dira.",
-      "cta": "Gehiago ikusi",
-      "btnDonate": "Egin dohaintza",
-      "ranking": "Ranking-a ikusi"
+      "cta": "Gehiago ikusi"
     },
     "category": {
       "family": "Familien laguntza",
@@ -204,11 +159,6 @@
       "aidDescription": "Bidaietarako, egonaldietarako eta zaintzarako beharrak estaltzeko etorkizuneko ildoa.",
       "wellbeing": "Ongizate emozionala",
       "wellbeingDescription": "Laguntza emozionalerako baliabide eta jarduerentzako prestatutako gunea."
-    },
-    "challenges": {
-      "title": "Héroes que suman",
-      "description": "Enpresak eta pertsonak hilabetero lehiatzen dira, laguntza sailkapen solidarioaren buru izateko eta haur minbiziaren aurkako borrokan marka uzteko.",
-      "text": "Enpresak eta pertsonak hilabetero lehiatzen dira, laguntza sailkapen solidarioaren buru izateko eta haur minbiziaren aurkako borrokan marka uzteko."
     }
   },
   "payments": {
@@ -269,6 +219,21 @@
       "upcomingStops": "Hurrengo geltokiak",
       "supportCity": "Hiri bati lagundu",
       "pendingAmount": "Zain"
+    },
+    "story": {
+      "eyebrow": "Nola funtzionatzen du",
+      "scrollHint": "Irristatu",
+      "step2Title": "{{count}} maratoi erdi, {{count}} hiri",
+      "step2Text": "Lasterketa bakoitza Espainiako ibilbideko geldialdi bat da.",
+      "step3Title": "Kilometro bakoitzak batzen du",
+      "step3Text": "Geldialdi bakoitzean dohaintza egin edo produktu solidario bat eros dezakezu. Bildutako guztia Por Ellos kanpainarako da.",
+      "step4Title": "Zein hirik batuko du gehien?",
+      "step4Text": "Geldialdi bakoitzeko ekarpenak hirien arteko erronka solidarioan lehiatzen dira.",
+      "activeCampaign": "Kanpaina aktiboa",
+      "viewRoute": "Ibilbidea ikusi",
+      "goalLabel": "Bilketa-helburua",
+      "raisedLabel": "Bildua",
+      "quickDonate": "Dohaintza azkarrak"
     }
   },
   "aboutPage": {
@@ -278,12 +243,12 @@
     "community": "Komunitatea",
     "founders": "Sortzaileak",
     "founderRole": "Sortzailea",
-    "people": "Pertsonak",
     "team": "Taldea",
     "teamDescription": "Taldea osatzen duten pertsonak aurkezteko gunea.",
     "collaborators": "Kolaboratzaileak",
     "collaboratorsDescription": "Elkartearekin lankidetzan ari diren pertsonak aitortzeko gunea.",
-    "profilesComing": "Atal honetako profilak laster gehituko dira."
+    "profilesComing": "Atal honetako profilak laster gehituko dira.",
+    "joinTitle": "Gurekin batu nahi duzu?"
   },
   "storiesPage": {
     "eyebrow": "Istorioak",
@@ -299,5 +264,33 @@
     "readHistory": "Istorioa irakurri",
     "summary": "Elkartearen fundatzailea da, haurren minbizia gainditu zuen eta orain Medikuntza amaitzea nahi du, haurren onkologia infantil espezializatzeko eta beste umeei laguntzeko.",
     "longDescription": "12 urte zituela, malagarrari T zelulen linfoma ez-Hodgkin diagnostikatu zioten. UCIan zegoela, lagun batek irudi sakratu bat hurbildu zion, pulsera eta estampa baten bidez, eta hortik aurrera ez du bereizten utzi. Gaixotasunaz gainditu ondoren, Medikuntza ikasi nahi izan zuen, bere baldintza berdineko umeei laguntzeko, eta ikasketak egiten ari zela elkartea sortu zuen."
+  },
+  "heroesStory": {
+    "projectLabel": "Hileko proiektua",
+    "eyebrow": "Nola funtzionatzen du",
+    "scrollHint": "Irristatu",
+    "support": "Nire laguntza batu",
+    "viewRanking": "Sailkapena ikusi",
+    "step1Title": "Erronka bat hilero",
+    "step1Text": "Markagailua hil bakoitzaren hasieran berrabiarazten da, eta sailkapen historikoak lorpen guztiak gordetzen ditu.",
+    "step2Title": "Enpresak eta pertsonak lehian",
+    "step2Text": "Bakoitza bere sailkapenean, baimen publikoa eman dutenekin.",
+    "step3Title": "Ekarpen bakoitzak batzen du",
+    "step3Text": "Parte-hartzaile bakoitzaren ekarpenek bere markagailua hazten dute hilean zehar.",
+    "step4Title": "Nork jantziko du koroa?",
+    "step4Text": "Hilean gehien batzen dutenak podiumera igotzen dira.",
+    "monthTotal": "Hilabete honetan emandakoa",
+    "resetIn": "Markagailua berrabiaraziko da",
+    "units": {
+      "days": "eg",
+      "hours": "o",
+      "minutes": "min",
+      "seconds": "s"
+    },
+    "daysLeft_one": "Egun {{count}} geratzen da",
+    "daysLeft_other": "{{count}} egun geratzen dira",
+    "companies": "Enpresak",
+    "people": "Pertsonak",
+    "leader": "Hileko liderra"
   }
 }

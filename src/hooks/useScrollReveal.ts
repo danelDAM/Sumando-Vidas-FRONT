@@ -7,11 +7,15 @@ export function useScrollReveal() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 
-    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const getPendingElements = (root: ParentNode) =>
+      Array.from(root.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-visible)"));
 
-    if (!("IntersectionObserver" in window)) {
-      elements.forEach((element) => element.classList.add("is-visible"));
-      return;
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const revealAll = () => getPendingElements(document).forEach((element) => element.classList.add("is-visible"));
+      revealAll();
+      const mutationObserver = new MutationObserver(revealAll);
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+      return () => mutationObserver.disconnect();
     }
 
     const observer = new IntersectionObserver(
@@ -26,8 +30,27 @@ export function useScrollReveal() {
       { rootMargin: "0px 0px -12% 0px", threshold: 0.15 },
     );
 
-    elements.forEach((element) => observer.observe(element));
+    getPendingElements(document).forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    // Sections mounted after public data loads also need to be observed.
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!(node instanceof HTMLElement)) {
+            return;
+          }
+          if (node.matches("[data-reveal]:not(.is-visible)")) {
+            observer.observe(node);
+          }
+          getPendingElements(node).forEach((element) => observer.observe(element));
+        });
+      });
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, [location.pathname]);
 }

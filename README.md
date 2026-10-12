@@ -15,7 +15,7 @@ La organización Supabase no tiene branching/preview databases habilitado; DEV y
 
 ## Variables locales
 
-Crea `.env.local` en este repo (está ignorado por Git):
+Copia `.env.example` a `.env.local` en este repo (`.env.local` está ignorado por Git):
 
 ```env
 VITE_SUPABASE_URL=https://lneaejwtcffridriuwpp.supabase.co
@@ -35,4 +35,4 @@ npm run dev
 npm run build
 ```
 
-El frontend usa `http://localhost:4242` si no se define `VITE_API_URL`. GitHub Actions ejecuta `npm run build` en pushes y PRs a `develop`/`main` una vez que los cambios locales de workflow se publiquen. Para la estrategia completa y configuración backend, consulta [la guía de entornos](../../Sumando-Vidas-BACK/docs/ENVIRONMENTS.md).
+El frontend usa `http://localhost:4242` si no se define `VITE_API_URL`. GitHub Actions ejecuta `npm run build` en pushes y PRs a `develop`/`main`. Para la estrategia completa y configuración backend, consulta [la guía de entornos](../Por%20ellos%20back/docs/ENVIRONMENTS.md) del repositorio backend hermano `Por ellos back`.

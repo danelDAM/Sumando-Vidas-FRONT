@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Layout } from "./components/layout/Layout";
@@ -5,16 +6,20 @@ import { legalNavigation, futurePages } from "./data/navigation";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
 import { HomePage } from "./pages/HomePage";
 import { useScrollReveal } from "./hooks/useScrollReveal";
-import { ProjectsPage } from "./pages/ProjectsPage";
-import { PorEllosProjectPage } from "./pages/PorEllosProjectPage";
-import { StoriesPage } from "./pages/StoriesPage";
-import { DonationStatusPage } from "./pages/DonationStatusPage";
-import { HeroesQueSumanPage } from "./pages/HeroesQueSumanPage";
-import { ContactPage } from "./pages/ContactPage";
-import { DonationsPage } from "./pages/DonationsPage";
-import { EventsPage } from "./pages/EventsPage";
-import { TransparencyPage } from "./pages/TransparencyPage";
-import { AboutPage } from "./pages/AboutPage";
+
+// The home page ships in the main bundle; every other page is downloaded when visited.
+const page = <Name extends string>(name: Name, load: () => Promise<Record<Name, React.ComponentType>>) =>
+  lazy(() => load().then((module) => ({ default: module[name] })));
+const AboutPage = page("AboutPage", () => import("./pages/AboutPage"));
+const ProjectsPage = page("ProjectsPage", () => import("./pages/ProjectsPage"));
+const PorEllosProjectPage = page("PorEllosProjectPage", () => import("./pages/PorEllosProjectPage"));
+const HeroesQueSumanPage = page("HeroesQueSumanPage", () => import("./pages/HeroesQueSumanPage"));
+const StoriesPage = page("StoriesPage", () => import("./pages/StoriesPage"));
+const ContactPage = page("ContactPage", () => import("./pages/ContactPage"));
+const DonationsPage = page("DonationsPage", () => import("./pages/DonationsPage"));
+const DonationStatusPage = page("DonationStatusPage", () => import("./pages/DonationStatusPage"));
+const EventsPage = page("EventsPage", () => import("./pages/EventsPage"));
+const TransparencyPage = page("TransparencyPage", () => import("./pages/TransparencyPage"));
 
 export default function App() {
   const { t } = useTranslation();
@@ -34,7 +39,7 @@ export default function App() {
         <Route path="eventos" element={<EventsPage />} />
         <Route path="transparencia" element={<TransparencyPage />} />
         <Route path="donaciones/estado" element={<DonationStatusPage />} />
-        {futurePages.filter((page) => !["sobre-nosotros", "proyectos", "historias", "contacto", "donaciones", "eventos", "transparencia"].includes(page.path)).map((page) => (
+        {futurePages.map((page) => (
           <Route
             key={page.path}
             path={page.path}

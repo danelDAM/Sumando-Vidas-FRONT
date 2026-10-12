@@ -8,14 +8,7 @@
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "readMore": "Leer más",
-    "seeMore": "Ver más",
-    "supportCause": "Apoyar la causa",
-    "readStory": "Leer historia",
-    "viewRanking": "Ver el ranking",
-    "readHistory": "Conocer nuestra historia",
-    "months": "meses",
-    "distance": "km",
-    "country": "España"
+    "readStory": "Leer historia"
   },
   "nav": {
     "about": "Quiénes somos",
@@ -71,11 +64,7 @@
     "impact": {
       "eyebrow": "Impacto",
       "title": "Cifras de impacto",
-      "description": "Indicadores publicados por la asociación, con su fecha de referencia.",
-      "families": "Familias acompañadas",
-      "scholarships": "Ayudas gestionadas",
-      "volunteers": "Personas colaboradoras",
-      "events": "Eventos solidarios"
+      "description": "Indicadores publicados por la asociación, con su fecha de referencia."
     },
     "collaborate": {
       "eyebrow": "Colaborar",
@@ -101,10 +90,6 @@
       "description": "Cada aportación, cada hora y cada gesto ayudan a sostener una red de apoyo real."
     },
     "programs": {
-      "porEllos": {
-        "title": "Por Ellos",
-        "description": "Proyecto solidario para recaudar el máximo dinero posible mientras Felipe, fundador de Sumando Vidas y superviviente de cáncer infantil, junto al equipo de la asociación, corre las cinco grandes medias maratones de España."
-      },
       "familySupport": {
         "title": "Acompañamiento familiar",
         "description": "Apoyo cercano a familias durante el diagnóstico, tratamiento y recuperación."
@@ -148,26 +133,6 @@
         "title": "Empresas y voluntariado",
         "description": "Colabora desde tu empresa o suma tu tiempo como persona voluntaria."
       }
-    },
-    "eventsList": {
-      "valencia": "Medio Maratón Valencia Trinidad Alfonso Zurich",
-      "donosti": "Media Maratón de Donosti",
-      "sevilla": "Media Maratón de Sevilla",
-      "barcelona": "Media Maratón de Barcelona",
-      "malaga": "Media Maratón de Málaga",
-      "madrid": "Movistar Madrid Medio Maratón",
-      "locationValencia": "Valencia",
-      "locationDonosti": "San Sebastián",
-      "locationSevilla": "Sevilla",
-      "locationBarcelona": "Barcelona",
-      "locationMalaga": "Málaga",
-      "locationMadrid": "Madrid",
-      "dateValencia": "25 oct 2026",
-      "dateDonosti": "Fecha por confirmar",
-      "dateSevilla": "Fecha por confirmar",
-      "dateBarcelona": "Fecha por confirmar",
-      "dateMalaga": "7 mar 2027",
-      "dateMadrid": "4 abr 2027"
     }
   },
   "projects": {
@@ -176,12 +141,7 @@
       "title": "Iniciativas para sumar apoyo real",
       "description": "Proyectos publicados y campañas activas de Sumando Vidas.",
       "stats": {
-        "marathons": "Medias maratones",
-        "goal": "Objetivo de campaña",
-        "distance": "Recorrido solidario",
-        "monthlyChallenge": "Reto mensual",
-        "leaderboards": "Leaderboards mensuales",
-        "challenges": "Retos al año"
+        "goal": "Objetivo de campaña"
       },
       "moreProjects": {
         "eyebrow": "Más proyectos",
@@ -190,12 +150,7 @@
       }
     },
     "featured": {
-      "title": "Por Ellos",
-      "summary": "Una campaña para transformar cada kilómetro en apoyo real para familias con cáncer infantil.",
-      "description": "Todos los fondos y los retos de las carreras estarán orientados a sostener ayudas concretas y acompañamiento cercano.",
-      "cta": "Ver más",
-      "btnDonate": "Donar",
-      "ranking": "Ver el ranking"
+      "cta": "Ver más"
     },
     "category": {
       "family": "Acompañamiento familiar",
@@ -204,11 +159,6 @@
       "aidDescription": "Futura línea para necesidades asociadas a desplazamientos, estancia y cuidados.",
       "wellbeing": "Bienestar emocional",
       "wellbeingDescription": "Espacio preparado para recursos y actividades de apoyo emocional."
-    },
-    "challenges": {
-      "title": "Héroes que suman",
-      "description": "Empresas y personas compiten cada mes para liderar una clasificación solidaria y dejar su huella en la lucha contra el cáncer infantil.",
-      "text": "Empresas y personas compiten cada mes para liderar una clasificación solidaria y dejar su huella en la lucha contra el cáncer infantil."
     }
   },
   "payments": {
@@ -269,6 +219,21 @@
       "upcomingStops": "Próximas paradas",
       "supportCity": "Apoyar una ciudad",
       "pendingAmount": "Pendiente"
+    },
+    "story": {
+      "eyebrow": "Cómo funciona",
+      "scrollHint": "Desliza",
+      "step2Title": "{{count}} medias maratones, {{count}} ciudades",
+      "step2Text": "Cada carrera es una parada del recorrido por España.",
+      "step3Title": "Cada kilómetro suma",
+      "step3Text": "En cada parada puedes donar o comprar un producto solidario. Todo lo recaudado va a la campaña Por Ellos.",
+      "step4Title": "¿Qué ciudad sumará más?",
+      "step4Text": "Las aportaciones de cada parada compiten en el reto solidario entre ciudades.",
+      "activeCampaign": "Campaña activa",
+      "viewRoute": "Ver recorrido",
+      "goalLabel": "Meta de recaudación",
+      "raisedLabel": "Recaudado",
+      "quickDonate": "Donaciones rápidas"
     }
   },
   "aboutPage": {
@@ -278,12 +243,12 @@
     "community": "Comunidad",
     "founders": "Fundadores",
     "founderRole": "Fundador",
-    "people": "Personas",
     "team": "Equipo",
     "teamDescription": "Espacio reservado para presentar a quienes forman parte del equipo.",
     "collaborators": "Personas colaboradoras",
     "collaboratorsDescription": "Un espacio para reconocer a quienes colaboran con la asociación.",
-    "profilesComing": "Los perfiles de esta sección se incorporarán próximamente."
+    "profilesComing": "Los perfiles de esta sección se incorporarán próximamente.",
+    "joinTitle": "¿Quieres sumar con nosotros?"
   },
   "storiesPage": {
     "eyebrow": "Historias",
@@ -299,5 +264,33 @@
     "readHistory": "Leer historia",
     "summary": "Es el fundador de la asociación, superó un cáncer infantil y ahora quiere terminar Medicina para especializarse en oncología infantil y seguir ayudando a otros niños.",
     "longDescription": "A los 12 años, al malagueño le diagnosticaron un linfoma de no Hodgkin de células T. Estando en la UCI, una amiga le acercó una imagen sagrada a través de una pulsera y una estampa, y desde entonces no se ha separado de ella. Tras superar la enfermedad, decidió estudiar Medicina para poder ayudar a más niños con su misma condición y, mientras cursaba la carrera, fundó la asociación."
+  },
+  "heroesStory": {
+    "projectLabel": "Proyecto mensual",
+    "eyebrow": "Cómo funciona",
+    "scrollHint": "Desliza",
+    "support": "Sumar mi apoyo",
+    "viewRanking": "Ver clasificación",
+    "step1Title": "Un reto cada mes",
+    "step1Text": "El marcador se reinicia al empezar cada mes y la clasificación histórica conserva cada logro.",
+    "step2Title": "Empresas y personas compiten",
+    "step2Text": "Cada una en su propia clasificación, con quienes han dado su consentimiento público.",
+    "step3Title": "Cada aportación suma",
+    "step3Text": "Las aportaciones de cada participante hacen crecer su marcador durante el mes.",
+    "step4Title": "¿Quién se pone la corona?",
+    "step4Text": "Quienes más suman en el mes suben al podio.",
+    "monthTotal": "Aportado este mes",
+    "resetIn": "El marcador se reinicia en",
+    "units": {
+      "days": "d",
+      "hours": "h",
+      "minutes": "min",
+      "seconds": "s"
+    },
+    "daysLeft_one": "Queda {{count}} día",
+    "daysLeft_other": "Quedan {{count}} días",
+    "companies": "Empresas",
+    "people": "Personas",
+    "leader": "Líder del mes"
   }
 }

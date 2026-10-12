@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
+import { RaceScrollStory } from "../components/ui/RaceScrollStory";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPorEllosPublicData, type PublicProduct } from "../services/publicData";
 import { fallbackCampaigns, fallbackCampaignStops, fallbackEvents, fallbackProducts, fallbackProjects, mergePublicRows } from "../data/publicFallbacks";
 import { createDonationCheckoutSession } from "../services/payments";
+import { CityPodium3D } from "../components/ui/CityPodium3D";
 
 const donationOptions = [10, 25, 50, 100];
 
@@ -33,7 +35,9 @@ export function PorEllosProjectPage() {
 
   const project = data?.project ?? fallbackProjects[0];
   const campaign = data?.campaign ?? fallbackCampaigns[0];
-  const stops = mergePublicRows(data?.stops, fallbackCampaignStops, (stop) => String(stop.stop_number));
+  const stops = mergePublicRows(data?.stops, fallbackCampaignStops, (stop) => String(stop.stop_number)).sort(
+    (first, second) => first.stop_number - second.stop_number,
+  );
   const events = mergePublicRows(data?.events, fallbackEvents, (event) => event.slug);
   const products = mergePublicRows(data?.products, fallbackProducts, (product) => product.slug);
   const cityTotals = new Map((data?.cityLeaderboard ?? []).map((entry) => [entry.stop_number, entry]));
@@ -77,13 +81,6 @@ export function PorEllosProjectPage() {
   const totalDistance = races.reduce((total, race) => total + race.distanceKm, 0).toLocaleString("es-ES", {
     maximumFractionDigits: 1,
   });
-  const campaignGoal = campaign.goal_amount == null
-    ? null
-    : new Intl.NumberFormat("es-ES", {
-        style: "currency",
-        currency: campaign.currency,
-        maximumFractionDigits: 0,
-      }).format(campaign.goal_amount);
   const leaderboardRows = races
     .map((race) => ({
       ...race,
@@ -103,20 +100,22 @@ export function PorEllosProjectPage() {
     ? t("porEllos.cityLeaderboard.pendingAmount")
     : new Intl.NumberFormat(i18n.resolvedLanguage || i18n.language || "es", { style: "currency", currency, maximumFractionDigits: 0 }).format(amount);
 
-  const renderCityRow = (race: (typeof leaderboardRows)[number], index: number, isPodium: boolean) => {
+  const selectCity = (race: (typeof leaderboardRows)[number]) => {
+    setSelectedRaceCity(race.city);
+    setActiveRaceIndex(races.findIndex((item) => item.stop.id === race.stop.id));
+  };
+
+  const renderCityRow = (race: (typeof leaderboardRows)[number], index: number) => {
     const progress = leadingCityTotal > 0 && race.total !== null
       ? Math.round((race.total / leadingCityTotal) * 100)
       : 0;
 
     return (
       <button
-        className={`leaderboard-row ${hasCityDonations && isPodium ? `leaderboard-row--top-${index + 1}` : ""} ${selectedRaceCity === race.city ? "is-selected" : ""}`}
+        className={`leaderboard-row ${selectedRaceCity === race.city ? "is-selected" : ""}`}
         key={race.stop.id}
         type="button"
-        onClick={() => {
-          setSelectedRaceCity(race.city);
-          setActiveRaceIndex(races.findIndex((item) => item.stop.id === race.stop.id));
-        }}
+        onClick={() => selectCity(race)}
         aria-pressed={selectedRaceCity === race.city}
       >
         <span className="leaderboard-rank">{index + 1}</span>
@@ -162,6 +161,28 @@ export function PorEllosProjectPage() {
     setIsDonationModalOpen(false);
   };
 
+  useEffect(() => {
+    if (!isDonationModalOpen) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setDonationFeedback(null);
+        setIsSubmittingDonation(false);
+        setIsDonationModalOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isDonationModalOpen]);
+
   const handleDonationSubmit = async () => {
     const parsedAmount = Number(donationAmount);
 
@@ -200,11 +221,8 @@ export function PorEllosProjectPage() {
         amount: selectedStoreItem ? undefined : parsedAmount,
         currency: campaign.currency,
         participantType: donorType,
-        participant_type: donorType,
         isAnonymous: isAnonymousDonation,
-        donorName: donorName.trim(),
-        donor_name: donorName.trim(),
-        is_anonymous: isAnonymousDonation,
+        donorName,
       });
       navigate(`/donaciones/estado?donation_id=${encodeURIComponent(payment.donationId)}`);
     } catch (error) {
@@ -218,38 +236,18 @@ export function PorEllosProjectPage() {
 
   return (
     <>
-      <section className="por-ellos-hero page-hero">
-        <div className="container por-ellos-hero-grid">
-          <div className="por-ellos-copy">
-            <p className="eyebrow">{campaign.status === "active" ? "Campaña activa" : campaign.status}</p>
-            <h1>{project.title}</h1>
-            {project.description && <p>{project.description}</p>}
-            <div className="action-row">
-              <Link className="button button-primary" to="/donaciones">
-                Donar ahora
-              </Link>
-              <a className="button button-secondary" href="#recorrido">
-                Ver recorrido
-              </a>
-            </div>
-          </div>
-          <aside className="fundraising-panel" aria-label="Objetivo de recaudación">
-            <p className="card-meta">Meta de recaudación</p>
-            <strong>{campaignGoal ?? "Sin objetivo publicado"}</strong>
-            <div className="donation-chips" aria-label="Donaciones rápidas">
-              {donationOptions.map((amount) => (
-                <button
-                  key={amount}
-                  type="button"
-                  onClick={() => openDonationModal(amount)}
-                >
-                  {amount} €
-                </button>
-              ))}
-            </div>
-          </aside>
-        </div>
-      </section>
+      <RaceScrollStory
+        statusLabel={campaign.status === "active" ? t("porEllos.story.activeCampaign") : campaign.status}
+        title={project.title}
+        description={project.description}
+        cities={races.map((race) => race.city)}
+        goalAmount={campaign.goal_amount}
+        raisedAmount={data?.cityLeaderboard ? data.cityLeaderboard.reduce((total, entry) => total + Number(entry.amount), 0) : null}
+        currency={campaign.currency}
+        quickAmounts={donationOptions}
+        onQuickDonate={openDonationModal}
+        ctaHref="#ranking-ciudades"
+      />
 
       {error && <section className="page-section"><div className="container"><PublicDataStatus loading={false} error="No se pudo actualizar el contenido; mostramos la información disponible." empty={false} /></div></section>}
       {loading && <p className="container" role="status">Actualizando información…</p>}
@@ -372,7 +370,7 @@ export function PorEllosProjectPage() {
         </div>
       </section>
 
-      <section className="page-section reveal-group" data-reveal>
+      <section className="page-section city-ranking reveal-group" id="ranking-ciudades" data-reveal>
         <div className="container">
           <SectionHeader
             eyebrow={t("porEllos.cityLeaderboard.eyebrow")}
@@ -394,14 +392,54 @@ export function PorEllosProjectPage() {
                     : t("porEllos.cityLeaderboard.unavailable")}
               </span>
             </div>
-            <div className="leaderboard-podium">
-              {leaderboardRows.slice(0, 3).map((race, index) => renderCityRow(race, index, true))}
-            </div>
+            <CityPodium3D
+              label={t("porEllos.cityLeaderboard.ariaLabel")}
+              hasDonations={hasCityDonations}
+              places={leaderboardRows.slice(0, 3).map((race, index) => ({
+                key: race.stop.id,
+                city: race.city,
+                rank: (index + 1) as 1 | 2 | 3,
+                amount: formatCityAmount(race.total, race.currency),
+                status: race.status,
+                selected: selectedRaceCity === race.city,
+              }))}
+              onSelect={(key) => {
+                const race = leaderboardRows.find((row) => row.stop.id === key);
+                if (race) {
+                  selectCity(race);
+                }
+              }}
+              fallback={
+                <div className={`city-podium ${hasCityDonations ? "has-donations" : ""}`}>
+                  {leaderboardRows.slice(0, 3).map((race, index) => (
+                    <button
+                      key={race.stop.id}
+                      type="button"
+                      className={`city-podium-place city-podium-place--${index + 1} ${selectedRaceCity === race.city ? "is-selected" : ""}`}
+                      onClick={() => selectCity(race)}
+                      aria-pressed={selectedRaceCity === race.city}
+                    >
+                      <span className="city-podium-label">
+                        <strong>{race.city}</strong>
+                        <span>{formatCityAmount(race.total, race.currency)}</span>
+                      </span>
+                      <span className="city-podium-block">
+                        <span className="city-podium-face city-podium-face--top" aria-hidden="true" />
+                        <span className="city-podium-face city-podium-face--left" aria-hidden="true" />
+                        <span className="city-podium-face city-podium-face--right" aria-hidden="true" />
+                        <b>{index + 1}</b>
+                        <small>{race.status}</small>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              }
+            />
             {leaderboardRows.length > 3 && (
               <div className="leaderboard-chasers">
                 <p>{hasCityDonations ? t("porEllos.cityLeaderboard.otherStops") : t("porEllos.cityLeaderboard.upcomingStops")}</p>
                 <div className="leaderboard-list">
-                  {leaderboardRows.slice(3).map((race, index) => renderCityRow(race, index + 3, false))}
+                  {leaderboardRows.slice(3).map((race, index) => renderCityRow(race, index + 3))}
                 </div>
               </div>
             )}
@@ -577,6 +615,7 @@ export function PorEllosProjectPage() {
                 className="button button-primary"
                 onClick={handleDonationSubmit}
                 disabled={isSubmittingDonation || !import.meta.env.DEV}
+                aria-busy={isSubmittingDonation}
               >
                 {!import.meta.env.DEV
                   ? t("payments.developmentOnly")

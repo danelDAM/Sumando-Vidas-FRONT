@@ -1,19 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
+import { HeroesScrollStory, type TimeLeft } from "../components/ui/HeroesScrollStory";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicHeroesData } from "../services/publicData";
 import { fallbackProjects } from "../data/publicFallbacks";
 
 type LeaderboardType = "companies" | "people";
-
-type TimeLeft = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-};
 
 function getNextMonthStart() {
   const now = new Date();
@@ -53,64 +46,32 @@ export function HeroesQueSumanPage() {
     const timer = window.setInterval(() => setTimeLeft(getTimeLeft(countdownTarget)), 1000);
 
     const refreshData = () => setRefreshKey((current) => current + 1);
-    window.addEventListener("focus", refreshData);
-    document.addEventListener("visibilitychange", () => {
+    const refreshWhenVisible = () => {
       if (!document.hidden) {
         refreshData();
       }
-    });
+    };
+    window.addEventListener("focus", refreshData);
+    document.addEventListener("visibilitychange", refreshWhenVisible);
 
     return () => {
       window.clearInterval(timer);
       window.removeEventListener("focus", refreshData);
-      document.removeEventListener("visibilitychange", refreshData);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
     };
   }, []);
-
-  const countdown = useMemo(
-    () => [
-      { value: timeLeft.days, label: "días" },
-      { value: timeLeft.hours, label: "horas" },
-      { value: timeLeft.minutes, label: "min" },
-      { value: timeLeft.seconds, label: "seg" },
-    ],
-    [timeLeft],
-  );
 
   const project = data?.project ?? fallbackProjects[1];
 
   return (
     <>
-      <section className="page-section page-hero heroes-project-hero">
-        <div className="container heroes-project-hero-grid">
-          <div>
-            <p className="eyebrow">Proyecto mensual</p>
-            <h1>{project.title}</h1>
-            {project.summary && <p>{project.summary}</p>}
-            <p>Las aportaciones se mostrarán aquí cuando el reto esté activo. Solo aparecerán participantes que hayan dado su consentimiento público.</p>
-            <div className="action-row">
-              <Link className="button button-primary" to="/donaciones">
-                Sumar mi apoyo
-              </Link>
-              <a className="button button-secondary" href="#clasificacion">
-                Ver clasificación
-              </a>
-            </div>
-          </div>
-          <aside className="heroes-countdown" aria-label="Tiempo restante del reto mensual">
-            <p className="card-meta">El marcador se reinicia en</p>
-            <div className="countdown-grid">
-              {countdown.map((unit) => (
-                <div key={unit.label}>
-                  <strong>{String(unit.value).padStart(2, "0")}</strong>
-                  <span>{unit.label}</span>
-                </div>
-              ))}
-            </div>
-            <p>La clasificación histórica conserva cada logro.</p>
-          </aside>
-        </div>
-      </section>
+      <HeroesScrollStory
+        title={project.title}
+        summary={project.summary}
+        monthlyEntries={monthlyEntries}
+        timeLeft={timeLeft}
+        rankingHref="#clasificacion"
+      />
 
       {(loading || error) && <section className="page-section"><div className="container"><PublicDataStatus loading={loading} error={error ? "No se pudo actualizar el ranking; la información del proyecto sigue disponible." : null} empty={false} /></div></section>}
 

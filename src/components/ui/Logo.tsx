@@ -3,7 +3,7 @@ export function Logo() {
     <span className="logo" aria-label="Sumando Vidas">
       <img
         className="logo-mark"
-        src="/images/logo.png"
+        src="/images/logo.webp"
         alt=""
         aria-hidden="true"
       />
