@@ -1,15 +1,4 @@
 /* 05. About page */
-.about-hero {
-  position: relative;
-  overflow: hidden;
-  padding-block: clamp(64px, 9vw, 120px);
-  background:
-    radial-gradient(circle at 85% 30%, rgba(245, 214, 118, 0.18), transparent 45%),
-    radial-gradient(circle at 10% 110%, rgba(245, 214, 118, 0.1), transparent 40%),
-    #141c24;
-  color: #ffffff;
-}
-
 .about-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr);
@@ -17,39 +6,29 @@
   align-items: center;
 }
 
-.about-hero-copy .eyebrow {
-  color: #f5d676;
-  letter-spacing: 0.12em;
-}
-
-.about-hero-copy h1 {
-  margin-bottom: 20px;
-  font-size: clamp(2.6rem, 6vw, 4.8rem);
-  line-height: 1.02;
-  text-wrap: balance;
-}
-
-.about-hero-copy p:not(.eyebrow) {
-  max-width: 52ch;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 1.15rem;
-}
-
 .about-hero-faces {
+  --face-overlap: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 0;
 }
 
+/* Faces overlap and shrink with --face-count so the row always fits its column. */
 .about-hero-faces img,
 .about-hero-face-placeholder {
-  width: clamp(120px, 14vw, 180px);
+  flex: none;
+  width: min(180px, calc((100% + (var(--face-count, 1) - 1) * var(--face-overlap)) / var(--face-count, 1)));
   aspect-ratio: 1;
   border: 4px solid #141c24;
   border-radius: 50%;
   box-shadow: 0 0 0 2px #c7a858, 0 24px 50px rgba(0, 0, 0, 0.35);
   animation: about-float 6s ease-in-out infinite;
   animation-delay: calc(var(--face-index, 0) * -1.5s);
+}
+
+.about-hero-faces > * + * {
+  margin-left: calc(var(--face-overlap) * -1);
 }
 
 .about-hero-faces img {
@@ -59,7 +38,6 @@
 .about-hero-face-placeholder {
   display: grid;
   place-items: center;
-  margin-left: -28px;
   border-style: dashed;
   border-color: rgba(245, 214, 118, 0.6);
   background: rgba(255, 255, 255, 0.04);
@@ -311,11 +289,40 @@
     margin var(--motion-medium);
 }
 
-.about-member:hover .about-member-copy p,
-.about-member:focus-visible .about-member-copy p {
-  max-height: 8em;
+.about-member.has-bio {
+  cursor: pointer;
+}
+
+.about-member-toggle {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f2933;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform var(--motion-medium);
+}
+
+.about-member.is-open .about-member-toggle {
+  transform: rotate(45deg);
+}
+
+.about-member.is-open::before {
+  background: linear-gradient(180deg, rgba(20, 28, 36, 0.15) 10%, rgba(20, 28, 36, 0.94) 60%);
+}
+
+.about-member.is-open .about-member-copy p {
+  max-height: 16em;
   margin-top: 10px;
   opacity: 1;
+  -webkit-line-clamp: unset;
 }
 
 .about-member-empty {
@@ -413,7 +420,14 @@
   }
 
   .about-hero-faces {
+    --face-overlap: 18px;
     justify-content: flex-start;
+  }
+
+  .about-hero-faces img,
+  .about-hero-face-placeholder {
+    width: min(84px, calc((100% + (var(--face-count, 1) - 1) * var(--face-overlap)) / var(--face-count, 1)));
+    font-size: 2rem;
   }
 
   .about-founder-portrait {
@@ -443,12 +457,6 @@
 @media (hover: none) {
   .about-member img {
     filter: none;
-  }
-
-  .about-member-copy p {
-    max-height: 8em;
-    margin-top: 10px;
-    opacity: 1;
   }
 }
 
@@ -1308,10 +1316,6 @@
 }
 
 /* 12. Project pages: overview and cards */
-.placeholder-page {
-  min-height: 52vh;
-}
-
 .project-feature-grid {
   display: grid;
   gap: 28px;
@@ -1619,26 +1623,124 @@
 }
 
 /* 15. Project summaries */
-.project-mini-stats {
+.project-progress {
+  align-self: center;
   display: grid;
-  gap: 14px;
+  gap: 10px;
+  border-left: 3px solid #c7a858;
+  padding: 4px 0 4px clamp(18px, 3vw, 28px);
 }
 
-.project-mini-stats article {
-  display: grid;
-  gap: 4px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 18px;
-  background: #ffffff;
+.project-progress-figures {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
 }
 
-.project-mini-stats strong {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+.project-progress-figures strong {
+  color: #1f2933;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-variant-numeric: tabular-nums;
   line-height: 1;
 }
 
-.project-mini-stats span {
-  color: #4b5563;
+.project-progress-figures span,
+.project-progress-note {
+  color: #52606d;
+  font-size: 0.85rem;
+}
+
+.project-progress-note {
+  margin: 0;
+}
+
+.project-progress-track {
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: #e2e8e4;
+}
+
+.project-progress-track span {
+  display: block;
+  min-width: 8px;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #88671c, #c7a858);
+}
+
+.project-progress-route {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-progress-route::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  border-top: 1px solid #d5dcd7;
+}
+
+.project-progress-route li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.project-progress-route li:first-child {
+  justify-items: start;
+}
+
+.project-progress-route li:last-child {
+  justify-items: end;
+}
+
+.project-progress-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #9aa5b1;
+}
+
+.project-progress-route li.is-done .project-progress-dot,
+.project-progress-route li.is-current .project-progress-dot {
+  background: #c7a858;
+}
+
+.project-progress-route li.is-current .project-progress-dot {
+  box-shadow: 0 0 0 3px rgba(199, 168, 88, 0.3);
+}
+
+.project-progress-city {
+  max-width: 100%;
+  overflow: hidden;
+  color: #52606d;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-progress-leader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 8px 0 0;
+  color: #52606d;
+  font-size: 0.85rem;
+}
+
+.project-progress-leader strong {
+  color: #1f2933;
 }
 

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { HeroesScrollStory, type TimeLeft } from "../components/ui/HeroesScrollStory";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicHeroesData } from "../services/publicData";
 import { fallbackProjects } from "../data/publicFallbacks";
+import { localizeProject } from "../data/publicContent";
 
 type LeaderboardType = "companies" | "people";
 
@@ -30,6 +32,7 @@ function formatAmount(amount: number) {
 }
 
 export function HeroesQueSumanPage() {
+  const { t } = useTranslation();
   const [refreshKey, setRefreshKey] = useState(0);
   const { data, loading, error } = usePublicQuery(`heroes-leaderboards-${refreshKey}`, getPublicHeroesData, null);
   const [leaderboardType, setLeaderboardType] = useState<LeaderboardType>("companies");
@@ -61,7 +64,7 @@ export function HeroesQueSumanPage() {
     };
   }, []);
 
-  const project = data?.project ?? fallbackProjects[1];
+  const project = localizeProject(t, data?.project ?? fallbackProjects[1]);
 
   return (
     <>

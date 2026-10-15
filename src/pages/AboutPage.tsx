@@ -1,4 +1,4 @@
-import type { CSSProperties, PointerEvent } from "react";
+import { useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { SectionHeader } from "../components/ui/SectionHeader";
@@ -37,6 +37,14 @@ type PeopleSectionProps = {
 
 function PeopleSection({ eyebrow, title, people, emptyMessage, className = "" }: PeopleSectionProps) {
   const { t } = useTranslation();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const toggle = (index: number) => setOpenIndex((current) => (current === index ? null : index));
+  const toggleWithKey = (event: KeyboardEvent<HTMLElement>, index: number) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggle(index);
+    }
+  };
 
   return (
     <section className={`page-section about-people-section reveal-group ${className}`} data-reveal>
@@ -46,9 +54,13 @@ function PeopleSection({ eyebrow, title, people, emptyMessage, className = "" }:
           {people.length > 0 ? (
             people.map((person, index) => (
               <article
-                className="about-member"
+                className={`about-member ${person.bioKey ? "has-bio" : ""} ${openIndex === index ? "is-open" : ""}`}
                 key={`${person.name}-${index}`}
                 tabIndex={0}
+                role={person.bioKey ? "button" : undefined}
+                aria-expanded={person.bioKey ? openIndex === index : undefined}
+                onClick={person.bioKey ? () => toggle(index) : undefined}
+                onKeyDown={person.bioKey ? (event) => toggleWithKey(event, index) : undefined}
                 onPointerMove={handleTilt}
                 onPointerLeave={resetTilt}
               >
@@ -58,9 +70,10 @@ function PeopleSection({ eyebrow, title, people, emptyMessage, className = "" }:
                   <PersonInitial name={person.name} className="about-member-initial" />
                 )}
                 <span className="about-member-role">{t(person.roleKey)}</span>
+                {person.bioKey && <span className="about-member-toggle" aria-hidden="true">+</span>}
                 <div className="about-member-copy">
                   <h3>{person.name}</h3>
-                  <p>{t(person.bioKey)}</p>
+                  {person.bioKey && <p>{t(person.bioKey)}</p>}
                 </div>
               </article>
             ))
@@ -90,14 +103,18 @@ export function AboutPage() {
 
   return (
     <>
-      <section className="about-hero">
-        <div className="container about-hero-grid">
+      <section className="page-section page-hero">
+        <div className="container page-hero-content about-hero-grid">
           <div className="about-hero-copy">
             <p className="eyebrow">{t("home.whoWeAre.eyebrow")}</p>
             <h1>{t("aboutPage.title")}</h1>
             <p>{t("home.whoWeAre.description")}</p>
           </div>
-          <div className="about-hero-faces" aria-hidden="true">
+          <div
+            className="about-hero-faces"
+            aria-hidden="true"
+            style={{ "--face-count": peopleWithPhotos.length + 1 } as CSSProperties}
+          >
             {peopleWithPhotos.map((person, index) => (
               <img
                 key={person.name}
@@ -131,7 +148,7 @@ export function AboutPage() {
                   <span className="about-founder-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                   <span className="about-role-pill">{t(person.roleKey)}</span>
                   <h3>{person.name}</h3>
-                  <p>{t(person.bioKey)}</p>
+                  {person.bioKey && <p>{t(person.bioKey)}</p>}
                   <Link className="text-link" to="/historias">
                     {t("common.readStory")}
                   </Link>

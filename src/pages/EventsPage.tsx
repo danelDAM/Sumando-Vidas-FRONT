@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicEvents } from "../services/publicData";
 import { fallbackEvents, mergePublicRows } from "../data/publicFallbacks";
+import { localizeEvent } from "../data/publicContent";
 
 function getTimelineDateParts(date: string | null, fallback: string) {
   if (!date) {
@@ -23,8 +25,9 @@ function getTimelineDateParts(date: string | null, fallback: string) {
 }
 
 export function EventsPage() {
+  const { t } = useTranslation();
   const { data, loading, error } = usePublicQuery("events", getPublicEvents, null);
-  const events = mergePublicRows(data, fallbackEvents, (event) => event.slug);
+  const events = mergePublicRows(data, fallbackEvents, (event) => event.slug).map((event) => localizeEvent(t, event));
   const confirmedEvents = events.filter((event) => event.schedule_status === "confirmed");
   const eventsToConfirm = events.filter((event) => event.schedule_status === "pending");
 
@@ -32,10 +35,10 @@ export function EventsPage() {
     <>
       <section className="page-section page-hero">
         <div className="container page-hero-content">
-            <p className="eyebrow">Agenda Sumando Vidas</p>
+            <p className="eyebrow">Agenda Sumando Vida</p>
             <h1>Eventos para seguir sumando</h1>
           <p>
-              Aquí encontrarás las actividades, encuentros y carreras en las que Sumando Vidas participa o colabora para apoyar a niños y familias.
+              Aquí encontrarás las actividades, encuentros y carreras en las que Sumando Vida participa o colabora para apoyar a niños y familias.
           </p>
         </div>
       </section>

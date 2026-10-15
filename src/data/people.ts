@@ -2,7 +2,7 @@
 export type PersonProfile = {
   name: string;
   roleKey: string;
-  bioKey: string;
+  bioKey?: string;
   image?: string;
   imageAltKey?: string;
 };
@@ -17,6 +17,25 @@ export const founders: PersonProfile[] = [
   },
 ];
 
-export const teamMembers: PersonProfile[] = [];
+export const teamMembers: PersonProfile[] = [
+  {
+    name: "Danel Egues",
+    roleKey: "aboutPage.ctoRole",
+    bioKey: "aboutPage.danelBio",
+    image: "/images/fotoDanel.webp",
+  },
+  {
+    name: "Jose Luis Maireles",
+    roleKey: "aboutPage.cooRole",
+    bioKey: "aboutPage.joseLuisBio",
+    image: "/images/fotoJoseLuisMaireles.webp",
+  },
+  {
+    name: "Alberto Morales",
+    roleKey: "aboutPage.caoRole",
+    bioKey: "aboutPage.albertoBio",
+    image: "/images/fotoAlbertoMorales.webp",
+  },
+];
 
 export const collaborators: PersonProfile[] = [];

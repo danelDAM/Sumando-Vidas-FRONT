@@ -4,6 +4,7 @@ import type {
   PublicEvent,
   PublicProduct,
   PublicProject,
+  PublicSponsor,
   PublicStory,
 } from "../services/publicData";
 
@@ -14,7 +15,7 @@ export const fallbackProjects: PublicProject[] = [
     title: "Por Ellos",
     summary: "Una campaña deportiva y solidaria para apoyar a niños y familias afectados por el cáncer infantil.",
     description:
-      "Felipe, fundador de Sumando Vidas y superviviente de cáncer infantil, correrá junto al equipo de la asociación cinco medias maratones para visibilizar la causa y sumar apoyos.",
+      "Felipe, fundador de Sumando Vida y superviviente de cáncer infantil, correrá junto al equipo de la asociación cinco medias maratones para visibilizar la causa y sumar apoyos.",
     status: "published",
   },
   {
@@ -87,12 +88,12 @@ export const fallbackEvents: PublicEvent[] = [
     slug: "media-maraton-sevilla",
     title: "Media Maratón de Sevilla",
     city: "Sevilla",
-    starts_on: null,
-    schedule_status: "pending",
-    distance_km: 21.1,
+    starts_on: "2026-12-13",
+    schedule_status: "confirmed",
+    distance_km: 21.097,
     description: "Una carrera urbana en Sevilla que suma visibilidad, corredores y solidaridad al proyecto.",
-    official_url: "https://www.mediamaratonsevilla.es/",
-    registration_url: null,
+    official_url: "https://www.mediomaratondesevilla.es/",
+    registration_url: "https://www.mediomaratondesevilla.es/web-evento/12859-mms26",
   },
   {
     id: "fallback-event-barcelona",
@@ -107,20 +108,6 @@ export const fallbackEvents: PublicEvent[] = [
     description: "Barcelona se incorpora al recorrido como una nueva oportunidad para correr por las familias.",
     official_url: "https://www.barcelonahalf.com/",
     registration_url: null,
-  },
-  {
-    id: "fallback-event-malaga",
-    project_id: "fallback-por-ellos",
-    campaign_id: "fallback-campaign-por-ellos",
-    slug: "media-maraton-malaga",
-    title: "XXXVI TotalEnergies Media Maratón Ciudad de Málaga",
-    city: "Málaga",
-    starts_on: "2027-03-07",
-    schedule_status: "confirmed",
-    distance_km: 21.097,
-    description: "La ciudad que vio nacer el reto acogerá una de sus paradas más especiales.",
-    official_url: "https://www.mediamaratonmalaga.com/",
-    registration_url: "https://www.mediamaratonmalaga.com/web-evento/13023-xxxvi-totalenergies-media-maraton-ciudad-de-malaga",
   },
   {
     id: "fallback-event-madrid",
@@ -151,15 +138,15 @@ export const fallbackCampaignStops: PublicCampaignStop[] = [
     status: "planned",
   },
   {
-    id: "fallback-stop-malaga",
-    event_id: "fallback-event-malaga",
+    id: "fallback-stop-sevilla",
+    event_id: "fallback-event-sevilla",
     stop_number: 2,
-    city: "Málaga",
-    title: "Media Maratón de Málaga",
+    city: "Sevilla",
+    title: "Media Maratón de Sevilla",
     label: "Parada 2",
     distance_km: 21.1,
     description: "Segunda parada para conectar deporte, historia personal y apoyo a familias.",
-    status: "ready",
+    status: "planned",
   },
   {
     id: "fallback-stop-madrid",
@@ -265,7 +252,7 @@ export const fallbackStories: PublicStory[] = [
     slug: "historia-de-felipe",
     locale: "es",
     title: "La historia de Felipe",
-    summary: "La historia del fundador de Sumando Vidas y su compromiso con la oncología infantil.",
+    summary: "La historia del fundador de Sumando Vida y su compromiso con la oncología infantil.",
     body:
       "A los 12 años, a Felipe le diagnosticaron un linfoma de no Hodgkin de células T. Tras superar la enfermedad, decidió estudiar Medicina y especializarse en oncología infantil para ayudar a otros niños. Mientras cursaba la carrera, fundó la asociación.",
     image_url: "/images/fotoFelipeMedina.webp",
@@ -290,6 +277,25 @@ export const fallbackStories: PublicStory[] = [
     body: null,
     image_url: null,
     image_alt: "",
+  },
+];
+
+export const fallbackSponsors: PublicSponsor[] = [
+  {
+    id: "fallback-sponsor-maireles",
+    name: "Maireles Abogados",
+    logo_url: "/images/sponsor1.webp",
+    website_url: "https://mairelesabogados.com/",
+    tier: null,
+    display_order: 1,
+  },
+  {
+    id: "fallback-sponsor-togga",
+    name: "Togga",
+    logo_url: "/images/toggaLogo.webp",
+    website_url: "https://togga.com/",
+    tier: null,
+    display_order: 2,
   },
 ];
 

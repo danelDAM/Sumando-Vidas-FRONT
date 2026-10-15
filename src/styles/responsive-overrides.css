@@ -1,8 +1,9 @@
 /* 23. Responsive adjustments: shared, sponsor, and leaderboard */
 @media (max-width: 640px) {
   .sponsor-slide {
-    width: 140px;
-    height: 56px;
+    width: 150px;
+    height: 60px;
+    padding: 8px 20px;
   }
 
   .leaderboard-row {
@@ -292,8 +293,23 @@
     animation: none;
   }
 
+  .sponsor-marquee {
+    width: auto;
+    justify-content: center;
+  }
+
+  .sponsor-marquee-group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sponsor-marquee-group[aria-hidden="true"],
+  .sponsor-slide[aria-hidden="true"] {
+    display: none;
+  }
+
   .hero-section {
-    background: #d8dde1 url("/images/niñaCancerPaginaInicio.webp") center / cover no-repeat;
+    background: #141c24;
   }
 
   .hero-background-video {

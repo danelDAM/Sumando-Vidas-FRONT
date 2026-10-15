@@ -64,7 +64,7 @@ export function Header() {
         {t("common.skipContent")}
       </a>
       <div className="container header-content">
-        <Link className="brand-link" to="/" aria-label="Sumando Vidas, inicio">
+        <Link className="brand-link" to="/" aria-label="Sumando Vida, inicio">
           <Logo />
         </Link>
         <button

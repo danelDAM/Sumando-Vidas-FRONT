@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { createDonationCheckoutSession } from "../services/payments";
+import { DonorIdentityFields } from "../components/ui/DonorIdentityFields";
 
 const donationOptions = [10, 25, 50, 100];
 type DonationMode = "single" | "subscription";
@@ -14,6 +15,9 @@ export function DonationsPage() {
   const [frequency, setFrequency] = useState<SubscriptionFrequency>("month");
   const [amount, setAmount] = useState("25");
   const [isCustomAmount, setIsCustomAmount] = useState(false);
+  const [isAnonymous, setIsAnonymous] = useState(true);
+  const [donorType, setDonorType] = useState<"person" | "company">("person");
+  const [donorName, setDonorName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
 
@@ -42,11 +46,22 @@ export function DonationsPage() {
       return;
     }
 
+    if (!isAnonymous && donorName.trim().length < 2) {
+      setFeedback(t("payments.nameRequired"));
+      return;
+    }
+
     setIsSubmitting(true);
     setFeedback(null);
 
     try {
-      const payment = await createDonationCheckoutSession({ amount: numericAmount, currency: "EUR" });
+      const payment = await createDonationCheckoutSession({
+        amount: numericAmount,
+        currency: "EUR",
+        participantType: donorType,
+        isAnonymous,
+        donorName,
+      });
       navigate(`/donaciones/estado?donation_id=${encodeURIComponent(payment.donationId)}`);
     } catch (error) {
       setFeedback(error instanceof Error ? error.message : "No se pudo iniciar la donación.");
@@ -173,6 +188,15 @@ export function DonationsPage() {
                 />
               </label>
             )}
+
+            <DonorIdentityFields
+              isAnonymous={isAnonymous}
+              onAnonymousChange={setIsAnonymous}
+              donorType={donorType}
+              onDonorTypeChange={setDonorType}
+              donorName={donorName}
+              onDonorNameChange={setDonorName}
+            />
 
             <div className="donation-summary">
               <span>{mode === "single" ? "Aportación total" : `Tu apoyo ${frequency === "month" ? "mensual" : "anual"}`}</span>
