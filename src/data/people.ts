@@ -19,10 +19,22 @@ export const founders: PersonProfile[] = [
 
 export const teamMembers: PersonProfile[] = [
   {
-    name: "Danel",
+    name: "Danel Egues",
     roleKey: "aboutPage.ctoRole",
     bioKey: "aboutPage.danelBio",
     image: "/images/fotoDanel.webp",
+  },
+  {
+    name: "Jose Luis Maireles",
+    roleKey: "aboutPage.cooRole",
+    bioKey: "aboutPage.joseLuisBio",
+    image: "/images/fotoJoseLuisMaireles.webp",
+  },
+  {
+    name: "Alberto Morales",
+    roleKey: "aboutPage.caoRole",
+    bioKey: "aboutPage.albertoBio",
+    image: "/images/fotoAlbertoMorales.webp",
   },
 ];
 

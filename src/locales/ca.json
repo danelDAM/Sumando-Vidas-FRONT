@@ -31,8 +31,8 @@
     "social": "Xarxes socials",
     "contact": "Contacte",
     "legal": "Informació legal",
-    "email": "info@sumandovidas.org",
-    "phone": "+34 000 000 000",
+    "email": "asociacionsumandovida@gmail.com",
+    "phone": "+34 699 283 975",
     "country": "Espanya"
   },
   "home": {
@@ -74,7 +74,7 @@
     "events": {
       "eyebrow": "Propers esdeveniments",
       "title": "Una agenda per seguir sumant",
-      "description": "Aquestes són les primeres curses del nostre calendari. Aviat afegirem nous esdeveniments, trobades i activitats de Sumando Vidas."
+      "description": "Aquestes són les primeres curses del nostre calendari. Aviat afegirem nous esdeveniments, trobades i activitats de Sumando Vida."
     },
     "transparency": {
       "eyebrow": "Transparència",
@@ -133,13 +133,16 @@
         "title": "Empreses i voluntariat",
         "description": "Col·labora des de la teva empresa o suma el teu temps com a persona voluntària."
       }
+    },
+    "sponsors": {
+      "title": "Ens donen suport"
     }
   },
   "projects": {
     "page": {
       "eyebrow": "Projectes",
       "title": "Iniciatives per sumar suport real",
-      "description": "Projectes publicats i campanyes actives de Sumando Vidas.",
+      "description": "Projectes publicats i campanyes actives de Sumando Vida.",
       "stats": {
         "ofGoal": "de {{goal}}",
         "percent": "{{percent}} % de l’objectiu"
@@ -242,13 +245,17 @@
     }
   },
   "aboutPage": {
-    "title": "Les persones darrere de Sumando Vidas",
+    "title": "Les persones darrere de Sumando Vida",
     "origin": "Els inicis",
     "dailyWork": "El dia a dia",
     "community": "Comunitat",
     "founders": "Fundadors",
     "founderRole": "Fundador",
     "ctoRole": "CTO",
+    "cooRole": "COO (Vicepresident)",
+    "joseLuisBio": "Al capdavant de Maireles Abogados, dirigeix l'àrea legal de l'associació, vetllant pel compliment normatiu, la protecció de dades i la seguretat jurídica de cada projecte i iniciativa perquè l'ajuda arribi a les famílies amb totes les garanties.",
+    "albertoBio": "Coordina l'administració i la gestió interna de l'associació, supervisant la documentació, les actes i els processos organitzatius per garantir una gestió transparent i eficient que n'impulsi l'impacte social.",
+    "caoRole": "CAO (Secretari)",
     "danelBio": "Lidera el desenvolupament de nous projectes i iniciatives, impulsant la innovació tecnològica, les plataformes digitals i les estratègies de creixement de l'associació per maximitzar-ne l'impacte social.",
     "team": "Equip",
     "teamDescription": "Espai reservat per presentar les persones que formen part de l'equip.",
@@ -304,7 +311,7 @@
     "projects": {
       "por-ellos": {
         "summary": "Una campanya esportiva i solidària per recaptar el màxim de diners possible en suport d'infants i famílies afectats pel càncer infantil.",
-        "description": "Felipe, fundador de Sumando Vidas i supervivent d'un càncer infantil, correrà amb un equip de l'associació les cinc grans mitges maratons d'Espanya. Cada cursa serà una oportunitat per donar visibilitat a la causa, sumar donacions i construir comunitat al voltant de les famílies."
+        "description": "Felipe, fundador de Sumando Vida i supervivent d'un càncer infantil, correrà amb un equip de l'associació les cinc grans mitges maratons d'Espanya. Cada cursa serà una oportunitat per donar visibilitat a la causa, sumar donacions i construir comunitat al voltant de les famílies."
       },
       "heroes-que-suman": {
         "summary": "Un repte mensual perquè empreses i persones converteixin el seu suport contra el càncer infantil en una classificació que inspira a continuar sumant."
@@ -336,16 +343,13 @@
         "title": "Mitja Marató de Barcelona",
         "description": "Barcelona s'incorpora al recorregut com una nova oportunitat per córrer per les famílies."
       },
-      "media-maraton-malaga": {
-        "description": "La ciutat que va veure néixer el repte acollirà una de les seves parades més especials."
-      },
       "movistar-madrid-medio-maraton": {
         "description": "La gran festa de l'atletisme popular a Madrid serà una altra parada clau del recorregut solidari."
       }
     },
     "stops": {
-      "malaga": {
-        "title": "Mitja Marató de Málaga"
+      "sevilla": {
+        "title": "Mitja Marató de Sevilla"
       },
       "donosti": {
         "title": "Mitja Marató de Donosti"

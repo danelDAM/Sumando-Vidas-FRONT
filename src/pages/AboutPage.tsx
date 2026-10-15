@@ -103,14 +103,18 @@ export function AboutPage() {
 
   return (
     <>
-      <section className="about-hero">
-        <div className="container about-hero-grid">
+      <section className="page-section page-hero">
+        <div className="container page-hero-content about-hero-grid">
           <div className="about-hero-copy">
             <p className="eyebrow">{t("home.whoWeAre.eyebrow")}</p>
             <h1>{t("aboutPage.title")}</h1>
             <p>{t("home.whoWeAre.description")}</p>
           </div>
-          <div className="about-hero-faces" aria-hidden="true">
+          <div
+            className="about-hero-faces"
+            aria-hidden="true"
+            style={{ "--face-count": peopleWithPhotos.length + 1 } as CSSProperties}
+          >
             {peopleWithPhotos.map((person, index) => (
               <img
                 key={person.name}

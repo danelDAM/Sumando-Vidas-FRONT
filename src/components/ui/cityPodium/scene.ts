@@ -242,7 +242,21 @@ export function createCityPodiumScene(canvas: HTMLCanvasElement) {
     renderer.render(scene, camera);
   }
 
+  let disposed = false;
+
   return {
+    // Builds the missing city models one per task (~0.1-0.3 s each) so the page keeps responding.
+    async prepare(nextPlaces: { key: string; city: string }[]) {
+      for (const place of nextPlaces) {
+        if (disposed) {
+          return;
+        }
+        if (!cityModels.has(`${place.key}|${place.city}`)) {
+          cityModel(place.key, place.city);
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }
+      }
+    },
     update(nextPlaces: PodiumPlace[], hasDonations: boolean) {
       update(nextPlaces, hasDonations);
       fitCamera();
@@ -261,6 +275,7 @@ export function createCityPodiumScene(canvas: HTMLCanvasElement) {
       return layout();
     },
     dispose() {
+      disposed = true;
       places.forEach((place) => place.blocks.forEach(disposeObject));
       blockResources.forEach((resource) => resource.dispose());
       cityModels.forEach(disposeObject);

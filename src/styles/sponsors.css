@@ -1,35 +1,30 @@
 /* 22. Sponsor carousel */
+.sponsor-strip {
+  padding: 28px 0 32px;
+  border-bottom: 1px solid #e3e8e5;
+  background: #fff;
+}
+
+.sponsor-strip-title {
+  margin: 0 0 14px;
+  text-align: center;
+  color: #88671c;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .sponsor-marquee-viewport {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding-block: 0;
   overflow: hidden;
-  margin-top: 12px;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 18%,
-    #000 82%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 18%,
-    #000 82%,
-    transparent 100%
-  );
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
 
 .sponsor-marquee {
   display: flex;
   width: max-content;
-  overflow: hidden;
-  animation: marquee var(--marquee-duration, 20s) linear infinite;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
   will-change: transform;
 }
 
@@ -40,31 +35,44 @@
 
 .sponsor-marquee-group {
   display: flex;
-  justify-content: center;
-  width: 78vw;
-  min-width: 78vw;
-  gap: 18px;
+  flex: 0 0 auto;
   align-items: center;
-  flex-wrap: nowrap;
-  padding: 6px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
+/* Spacing lives on each slide (not as a gap) so both groups are identical and the loop is seamless. */
 .sponsor-slide {
   flex: 0 0 auto;
-  width: 180px;
+  width: 200px;
   height: 72px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: 0;
-  padding: 8px 18px;
+  padding: 10px 28px;
 }
 
+.sponsor-slide a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* One neutral tone for every logo (some are white on transparent); full colour on hover. */
 .sponsor-slide img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  filter: brightness(0) opacity(0.5);
+  transition: filter 0.25s ease;
+}
+
+.sponsor-slide:hover img,
+.sponsor-slide a:focus-visible img {
+  filter: brightness(0) opacity(0.85);
 }
 
 @keyframes marquee {
@@ -76,4 +84,3 @@
     transform: translateX(-50%);
   }
 }
-

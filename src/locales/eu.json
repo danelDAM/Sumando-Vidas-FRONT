@@ -31,8 +31,8 @@
     "social": "Sare sozialak",
     "contact": "Kontaktua",
     "legal": "Informazio juridikoa",
-    "email": "info@sumandovidas.org",
-    "phone": "+34 000 000 000",
+    "email": "asociacionsumandovida@gmail.com",
+    "phone": "+34 699 283 975",
     "country": "Espainia"
   },
   "home": {
@@ -74,7 +74,7 @@
     "events": {
       "eyebrow": "Hurrengo ekitaldiak",
       "title": "Gehiago batzen jarraitzeko egutegia",
-      "description": "Hauek dira gure egutegiaren lehen lasterketak. Laster Sumando Vidasen ekitaldi eta jarduera berriak gehituko dira."
+      "description": "Hauek dira gure egutegiaren lehen lasterketak. Laster Sumando Vidaren ekitaldi eta jarduera berriak gehituko dira."
     },
     "transparency": {
       "eyebrow": "Gardenakotasuna",
@@ -133,13 +133,16 @@
         "title": "Enpresak eta boluntariotza",
         "description": "Lankidetzan parte hartu enpresan edo eman denbora boluntario gisa."
       }
+    },
+    "sponsors": {
+      "title": "Laguntzen gaituzte"
     }
   },
   "projects": {
     "page": {
       "eyebrow": "Proiektuak",
       "title": "Laguntza errealerako ekimenak",
-      "description": "Sumando Vidasen argitaratutako proiektuak eta kanpaina aktiboak.",
+      "description": "Sumando Vidaren argitaratutako proiektuak eta kanpaina aktiboak.",
       "stats": {
         "ofGoal": "Helburua: {{goal}}",
         "percent": "Helburuaren % {{percent}}"
@@ -242,13 +245,17 @@
     }
   },
   "aboutPage": {
-    "title": "Sumando Vidasen atzean dauden pertsonak",
+    "title": "Sumando Vidaren atzean dauden pertsonak",
     "origin": "Hasierak",
     "dailyWork": "Egunerokoa",
     "community": "Komunitatea",
     "founders": "Sortzaileak",
     "founderRole": "Sortzailea",
     "ctoRole": "CTO",
+    "cooRole": "COO (Presidenteordea)",
+    "joseLuisBio": "Maireles Abogados bulegoaren buru, elkartearen arlo juridikoa zuzentzen du, araudia betetzea, datuen babesa eta proiektu eta ekimen bakoitzaren segurtasun juridikoa zainduz, laguntza familiengana berme guztiekin irits dadin.",
+    "albertoBio": "Elkartearen administrazioa eta barne-kudeaketa koordinatzen ditu, dokumentazioa, aktak eta antolaketa-prozesuak gainbegiratuz, haren eragin soziala bultzatuko duen kudeaketa garden eta eraginkorra bermatzeko.",
+    "caoRole": "CAO (Idazkaria)",
     "danelBio": "Proiektu eta ekimen berrien garapena gidatzen du, berrikuntza teknologikoa, plataforma digitalak eta elkartearen hazkunde-estrategiak bultzatuz, haren eragin soziala ahalik eta handiena izan dadin.",
     "team": "Taldea",
     "teamDescription": "Taldea osatzen duten pertsonak aurkezteko gunea.",
@@ -304,7 +311,7 @@
     "projects": {
       "por-ellos": {
         "summary": "Kirol- eta elkartasun-kanpaina bat, ahalik eta diru gehien biltzeko minbizi infantilak eragindako haur eta familiei laguntzeko.",
-        "description": "Felipek, Sumando Vidaseko sortzaileak eta txikitan minbizia gainditu zuenak, elkarteko talde batekin batera Espainiako bost maratoi erdi handiak korrituko ditu. Lasterketa bakoitza aukera bat izango da kausa ikusarazteko, dohaintzak batzeko eta familien inguruan komunitatea eraikitzeko."
+        "description": "Felipek, Sumando Vidako sortzaileak eta txikitan minbizia gainditu zuenak, elkarteko talde batekin batera Espainiako bost maratoi erdi handiak korrituko ditu. Lasterketa bakoitza aukera bat izango da kausa ikusarazteko, dohaintzak batzeko eta familien inguruan komunitatea eraikitzeko."
       },
       "heroes-que-suman": {
         "summary": "Hileko erronka bat, enpresek eta pertsonek minbizi infantilaren aurkako laguntza batzen jarraitzeko inspirazioa ematen duen sailkapen bihur dezaten."
@@ -336,16 +343,13 @@
         "title": "Bartzelonako Maratoi Erdia",
         "description": "Bartzelona ibilbidera batu da, familien alde korrika egiteko aukera berri gisa."
       },
-      "media-maraton-malaga": {
-        "description": "Erronka jaio zen hiriak bere geldialdirik berezienetako bat hartuko du."
-      },
       "movistar-madrid-medio-maraton": {
         "description": "Madrilgo herri-atletismoaren jai handia elkartasun-ibilbideko beste geldialdi garrantzitsu bat izango da."
       }
     },
     "stops": {
-      "malaga": {
-        "title": "Málagako Maratoi Erdia"
+      "sevilla": {
+        "title": "Sevillako Maratoi Erdia"
       },
       "donosti": {
         "title": "Donostiako Maratoi Erdia"

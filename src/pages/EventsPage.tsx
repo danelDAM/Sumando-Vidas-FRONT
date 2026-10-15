@@ -35,10 +35,10 @@ export function EventsPage() {
     <>
       <section className="page-section page-hero">
         <div className="container page-hero-content">
-            <p className="eyebrow">Agenda Sumando Vidas</p>
+            <p className="eyebrow">Agenda Sumando Vida</p>
             <h1>Eventos para seguir sumando</h1>
           <p>
-              Aquí encontrarás las actividades, encuentros y carreras en las que Sumando Vidas participa o colabora para apoyar a niños y familias.
+              Aquí encontrarás las actividades, encuentros y carreras en las que Sumando Vida participa o colabora para apoyar a niños y familias.
           </p>
         </div>
       </section>

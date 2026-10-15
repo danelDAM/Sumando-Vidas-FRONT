@@ -35,13 +35,13 @@ export function Footer() {
         </nav>
         <address>
           <h2>{t("footer.contact")}</h2>
-          <a href="mailto:info@sumandovidas.org">{t("footer.email")}</a>
-          <a href="tel:+34000000000">{t("footer.phone")}</a>
+          <a href="mailto:asociacionsumandovida@gmail.com">{t("footer.email")}</a>
+          <a href="tel:+34699283975">{t("footer.phone")}</a>
           <span>{t("footer.country")}</span>
         </address>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} Sumando Vidas</span>
+        <span>© {new Date().getFullYear()} Sumando Vida</span>
         <nav aria-label={t("footer.legal")}>
           {legalNavigation.map((item) => (
             <Link key={item.href} to={item.href}>

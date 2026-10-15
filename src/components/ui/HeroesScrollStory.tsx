@@ -186,7 +186,7 @@ export function HeroesScrollStory({ title, summary, monthlyEntries, timeLeft, ra
                 <span key={start} className={index <= activeStep ? "is-active" : ""} />
               ))}
             </div>
-            {!isStatic && <p className="race-story-hint" aria-hidden="true">{t("heroesStory.scrollHint")}</p>}
+            {!isStatic && <p className={`race-story-hint ${progress >= 0.98 ? "is-done" : ""}`} aria-hidden="true">{t("heroesStory.scrollHint")}</p>}
           </div>
 
           <div className="race-story-stage">

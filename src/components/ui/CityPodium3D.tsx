@@ -11,6 +11,7 @@ export type CityPodiumPlace = {
 };
 
 type SceneHandle = {
+  prepare(places: { key: string; city: string }[]): Promise<void>;
   update(places: { key: string; city: string; rank: 1 | 2 | 3; status: string; selected: boolean }[], hasDonations: boolean): PlaceLayout[];
   resize(width: number, height: number): PlaceLayout[];
   dispose(): void;
@@ -25,7 +26,10 @@ type CityPodium3DProps = {
   fallback: ReactNode;
 };
 
-// 3D podium with a model of each city. three.js is loaded only when the podium is about to be seen.
+const loadScene = () => import("./cityPodium/scene");
+
+// 3D podium with a model of each city. three.js is fetched when the browser is idle and the scene is
+// built when the podium gets close to the viewport.
 export function CityPodium3D({ places, hasDonations, label, onSelect, fallback }: CityPodium3DProps) {
   const stageRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -43,6 +47,7 @@ export function CityPodium3D({ places, hasDonations, label, onSelect, fallback }
       setShouldLoad(true);
       return undefined;
     }
+    const prefetch = "requestIdleCallback" in window ? window.requestIdleCallback(() => void loadScene().catch(() => undefined)) : undefined;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
@@ -50,10 +55,15 @@ export function CityPodium3D({ places, hasDonations, label, onSelect, fallback }
           observer.disconnect();
         }
       },
-      { rootMargin: "600px 0px" },
+      { rootMargin: "1200px 0px" },
     );
     observer.observe(stage);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (prefetch !== undefined) {
+        window.cancelIdleCallback(prefetch);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -62,8 +72,8 @@ export function CityPodium3D({ places, hasDonations, label, onSelect, fallback }
     }
     let cancelled = false;
     let handle: SceneHandle | null = null;
-    import("./cityPodium/scene")
-      .then(({ createCityPodiumScene, isWebGLAvailable }) => {
+    loadScene()
+      .then(async ({ createCityPodiumScene, isWebGLAvailable }) => {
         const stage = stageRef.current;
         if (cancelled || !canvasRef.current || !stage) {
           return;
@@ -73,6 +83,10 @@ export function CityPodium3D({ places, hasDonations, label, onSelect, fallback }
           return;
         }
         handle = createCityPodiumScene(canvasRef.current);
+        await handle.prepare(latest.current.places);
+        if (cancelled) {
+          return;
+        }
         sceneRef.current = handle;
         handle.resize(stage.clientWidth, stage.clientHeight);
         setPhase("ready");
@@ -91,9 +105,18 @@ export function CityPodium3D({ places, hasDonations, label, onSelect, fallback }
 
   useEffect(() => {
     const handle = sceneRef.current;
-    if (phase === "ready" && handle) {
-      setLayout(handle.update(latest.current.places, latest.current.hasDonations));
+    if (phase !== "ready" || !handle) {
+      return undefined;
     }
+    let cancelled = false;
+    void handle.prepare(latest.current.places).then(() => {
+      if (!cancelled) {
+        setLayout(handle.update(latest.current.places, latest.current.hasDonations));
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [phase, sceneKey]);
 
   useEffect(() => {

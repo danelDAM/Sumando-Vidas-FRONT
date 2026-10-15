@@ -71,13 +71,13 @@ export function ContactPage() {
             />
 
             <div className="contact-details">
-              <a className="contact-detail" href="mailto:info@sumandovidas.org">
+              <a className="contact-detail" href="mailto:asociacionsumandovida@gmail.com">
                 <span className="contact-detail-label">Email</span>
-                <strong>info@sumandovidas.org</strong>
+                <strong>asociacionsumandovida@gmail.com</strong>
               </a>
-              <a className="contact-detail" href="tel:+34000000000">
+              <a className="contact-detail" href="tel:+34699283975">
                 <span className="contact-detail-label">Teléfono</span>
-                <strong>+34 000 000 000</strong>
+                <strong>+34 699 283 975</strong>
               </a>
               <div className="contact-detail">
                 <span className="contact-detail-label">Dónde estamos</span>

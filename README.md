@@ -1,6 +1,6 @@
 # Por Ellos Web
 
-Frontend Vite + React + TypeScript de Sumando Vidas.
+Frontend Vite + React + TypeScript de Sumando Vida.
 
 ## Entornos y ramas
 

@@ -121,22 +121,31 @@
 }
 
 .race-story-hint {
-  margin: 14px 0 0;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 8px 18px;
+  border: 1px solid rgba(199, 168, 88, 0.55);
+  border-radius: 999px;
+  color: #c7a858;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: opacity var(--motion-medium);
 }
 
 .race-story-hint::after {
-  content: " ↓";
+  content: "↓";
   display: inline-block;
+  font-size: 1.35rem;
+  line-height: 1;
   animation: story-hint 1.4s ease-in-out infinite;
 }
 
-.race-story:not(.race-story--step-0) .race-story-hint {
+/* Stays until the scroll story has finished */
+.race-story-hint.is-done {
   opacity: 0;
 }
 
@@ -603,7 +612,7 @@
   }
 
   50% {
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
 }
 
@@ -653,9 +662,14 @@
     margin-top: 16px;
   }
 
-  .race-story-hint,
   .race-story-chips {
     display: none;
+  }
+
+  .race-story-hint {
+    margin-top: 14px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
   }
 
   .race-story-stage {

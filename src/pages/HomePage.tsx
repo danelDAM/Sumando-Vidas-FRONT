@@ -6,7 +6,7 @@ import { SponsorCarousel } from "../components/ui/SponsorCarousel";
 import { PublicDataStatus } from "../components/ui/PublicDataStatus";
 import { usePublicQuery } from "../hooks/usePublicQuery";
 import { getPublicHomeData } from "../services/publicData";
-import { fallbackEvents, fallbackProjects, fallbackStories, mergePublicRows } from "../data/publicFallbacks";
+import { fallbackEvents, fallbackProjects, fallbackSponsors, fallbackStories, mergePublicRows } from "../data/publicFallbacks";
 import { localizeEvent, localizeProject } from "../data/publicContent";
 
 function formatEventDate(date: string | null, locale: string, fallback: string) {
@@ -53,6 +53,7 @@ export function HomePage() {
     (story) => story.slug,
   );
   const events = mergePublicRows(data?.events, fallbackEvents, (event) => event.slug).map((event) => localizeEvent(t, event));
+  const sponsors = mergePublicRows(data?.sponsors, fallbackSponsors, (sponsor) => sponsor.logo_url ?? sponsor.id);
   const metrics = (data?.metrics ?? []).filter(
     (metric, index, allMetrics) => allMetrics.findIndex((item) => item.metric_key === metric.metric_key) === index,
   );
@@ -96,7 +97,6 @@ export function HomePage() {
           loop
           playsInline
           preload="auto"
-          poster="/images/niñaCancerPaginaInicio.webp"
           aria-hidden="true"
           src="/videos/hero-background.mp4"
         />
@@ -117,7 +117,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {data?.sponsors.length ? <SponsorCarousel sponsors={data.sponsors} /> : null}
+      <SponsorCarousel sponsors={sponsors} />
 
       <div className="home-ribbon-stage">
         <div className="home-gold-ribbon-background" aria-hidden="true">
